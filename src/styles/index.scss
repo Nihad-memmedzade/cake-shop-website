@@ -1,0 +1,61 @@
+body {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 247, 251, 0.95) 0%,
+      rgba(255, 252, 248, 0.92) 48%,
+      rgba(255, 247, 251, 0.95) 100%
+    );
+  color: #1d1316;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 10px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+a,
+ul,
+ol {
+  color: #000;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+@font-face {
+  font-family: "ClashGrotesk";
+  src: url("./../assets//fonts/ClashGrotesk-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "ClashGrotesk";
+}

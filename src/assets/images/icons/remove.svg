@@ -1,0 +1,16 @@
+<svg
+  width="12"
+  height="12"
+  viewBox="0 0 12 12"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <use href="#icon_close" />
+  <path
+    d="M0.311322 10.6261L10.9374 0L12 1.06261L1.37393 11.6887L0.311322 10.6261Z"
+    fill="currentColor"
+  />
+  <path
+    d="M1.06261 0.106781L11.6887 10.7329L10.6261 11.7955L0 1.16939L1.06261 0.106781Z"
+    fill="currentColor"
+  />
+</svg>

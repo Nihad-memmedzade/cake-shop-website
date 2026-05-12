@@ -1,0 +1,121 @@
+@import "./maps.module";
+
+@mixin flex($direction: null, $gap: null, $align: null, $justify: null) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin font(
+  $size: null,
+  $family: null,
+  $weight: null,
+  $height: null,
+  $color: null
+) {
+  font-size: $size;
+  font-family: $family;
+  font-weight: $weight;
+  line-height: $height;
+  color: $color;
+}
+
+@mixin container(
+  $width: null,
+  $height: null,
+  $border-r: null,
+  $border: null,
+  $background: null,
+  $max-width: null,
+  $min-width: null
+) {
+  width: $width;
+  height: $height;
+  border-radius: $border-r;
+  border: $border;
+  background: $background;
+  max-width: $max-width;
+  min-width: $min-width;
+}
+
+@mixin position(
+  $position: null,
+  $top: null,
+  $left: null,
+  $right: null,
+  $bottom: null,
+  $z-index: null
+) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  z-index: $z-index;
+}
+
+// Responsive helper
+@mixin respond($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Reusable page container
+@mixin page-container($width: min(94%, 1400px)) {
+  width: $width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Icon button
+@mixin icon-button($size: 42px, $background: #fff, $color: #51313a) {
+  width: $size;
+  height: $size;
+  border: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: $background;
+  color: $color;
+  transition: 0.2s ease;
+}
+
+// Truncate long text
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Pink section title
+@mixin section-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: clamp(24px, 2.2vw, 36px);
+  font-weight: 900;
+  color: #b94867;
+}
+
+// Glass panel
+@mixin glass-panel {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+// Card hover
+@mixin lift-hover {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+}

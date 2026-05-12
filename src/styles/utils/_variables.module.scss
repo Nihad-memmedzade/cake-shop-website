@@ -1,0 +1,49 @@
+// Brand colors
+$brand-primary: #b94867;
+$brand-primary-light: #f8e4eb;
+$brand-primary-soft: rgba(185, 72, 103, 0.1);
+
+$brand-dark: #51313a;
+$brand-dark-hover: #3d242b;
+
+$brand-gold: #c59b5f;
+$brand-cream: #fffafc;
+$brand-white: #ffffff;
+
+// Text colors
+$text-main: #1d1316;
+$text-muted: rgba(81, 49, 58, 0.65);
+$text-soft: rgba(81, 49, 58, 0.48);
+$text-white: #ffffff;
+
+// Border colors
+$border-soft: rgba(185, 72, 103, 0.14);
+$border-medium: rgba(185, 72, 103, 0.22);
+$border-dark: rgba(81, 49, 58, 0.12);
+
+// Shadows
+$shadow-soft: 0 14px 36px rgba(81, 32, 46, 0.08);
+$shadow-card: 0 18px 55px rgba(81, 49, 58, 0.12);
+$shadow-card-hover: 0 26px 70px rgba(81, 49, 58, 0.16);
+$shadow-drawer: -24px 0 70px rgba(41, 18, 26, 0.22);
+
+// Layout
+$container-width: min(94%, 1400px);
+$container-width-small: min(92%, 420px);
+
+// Radius
+$radius-sm: 10px;
+$radius-md: 14px;
+$radius-lg: 18px;
+$radius-xl: 22px;
+$radius-pill: 999px;
+
+// Header
+$header-height: 72px;
+$header-height-mobile: 68px;
+$header-padding-desktop: 16px 0;
+$header-padding-mobile: 0 22px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.25s ease;
