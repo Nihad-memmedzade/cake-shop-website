@@ -1,0 +1,175 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.products {
+  @include page-container($container-width);
+  @include flex($direction: column);
+
+  justify-content: center;
+  margin-top: clamp(72px, 8vw, 110px);
+  margin-bottom: clamp(72px, 8vw, 110px);
+
+  .product_title {
+    @include section-title;
+
+    margin-bottom: 22px;
+
+    strong {
+      color: $text-main;
+      font-weight: 900;
+    }
+  }
+
+  .tabs {
+    .tabContainer {
+      @include flex($gap: 14px, $align: center, $justify: center);
+
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto 28px;
+      padding: 10px;
+      border-radius: $radius-pill;
+      background: $brand-primary-soft;
+      border: 1px solid $border-dark;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .tabs_title {
+      padding: 10px 14px;
+      border-radius: $radius-pill;
+      white-space: nowrap;
+      text-transform: uppercase;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: $transition-fast;
+      user-select: none;
+
+      @include font($size: 13px, $weight: 800, $color: $brand-primary);
+
+      &:hover {
+        color: $brand-dark;
+        background: rgba(255, 255, 255, 0.65);
+      }
+    }
+
+    .active_tab {
+      color: $brand-dark !important;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid $border-dark;
+      box-shadow: $shadow-soft;
+    }
+
+    .all_products_container {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(14px, 2vw, 34px);
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate {
+      animation: fadeSlideIn 0.45s ease both;
+    }
+
+    .discoverMore {
+      @include flex($justify: center);
+
+      margin-top: 38px;
+
+      p {
+        @include flex($gap: 10px, $align: center);
+        @include container(
+          $border-r: $radius-pill,
+          $border: 1px solid $border-dark,
+          $background: rgba(255, 255, 255, 0.85)
+        );
+
+        padding: 12px 18px;
+        cursor: pointer;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        box-shadow: $shadow-soft;
+        transition: $transition-fast;
+
+        @include font($size: 12px, $weight: 900, $color: $text-main);
+
+        &::after {
+          content: "->";
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $shadow-card;
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+@include respond(lg) {
+  .products {
+    .tabs {
+      .all_products_container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+@include respond(md) {
+  .products {
+    .tabs {
+      .all_products_container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+@include respond(sm) {
+  .products {
+    .tabs {
+      .tabContainer {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .all_products_container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+@include respond(xs) {
+  .products {
+    .tabs {
+      .all_products_container {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
