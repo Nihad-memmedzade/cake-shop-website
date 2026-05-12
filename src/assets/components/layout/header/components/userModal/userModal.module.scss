@@ -1,0 +1,291 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.backWall {
+  @include position($position: fixed, $z-index: map-get($z-indexes, overlay));
+
+  inset: 0;
+  background: rgba(29, 19, 22, 0.48);
+  backdrop-filter: blur(4px);
+  animation: overlayIn 0.24s ease forwards;
+}
+
+.backWallClosing {
+  animation: overlayOut 0.28s ease forwards;
+}
+
+.userModal {
+  @include position(
+    $position: fixed,
+    $top: 0,
+    $right: 0,
+    $z-index: map-get($z-indexes, modal)
+  );
+
+  @include container(
+    $width: min(420px, 100%),
+    $height: 100vh,
+    $background: $brand-cream
+  );
+
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: $shadow-drawer;
+  animation: drawerIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  background:
+    radial-gradient(circle at top left, rgba(248, 228, 235, 0.9), transparent 34%),
+    $brand-cream;
+}
+
+.userModalClosing {
+  animation: drawerOut 0.28s ease forwards;
+}
+
+.modalTop {
+  @include flex($align: center, $justify: space-between);
+
+  padding-bottom: 22px;
+  border-bottom: 1px solid $border-soft;
+
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+
+    @include font($size: 24px, $weight: 900, $color: $text-main);
+  }
+}
+
+.modalKicker {
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+
+  @include font($size: 11px, $weight: 900, $color: $brand-primary);
+}
+
+.closeIcon {
+  @include icon-button(
+    $size: 38px,
+    $background: $brand-primary-soft,
+    $color: $brand-dark
+  );
+
+  @include font($size: 18px, $weight: 900);
+
+  &:hover {
+    background: rgba(185, 72, 103, 0.16);
+    transform: translateY(-1px);
+  }
+}
+
+.formModal {
+  margin-top: 24px;
+
+  @include flex($direction: column, $gap: 16px);
+}
+
+.inputGroup {
+  @include flex($direction: column, $gap: 8px);
+
+  label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    @include font($size: 12px, $weight: 900, $color: $text-muted);
+  }
+}
+
+.modalInput {
+  @include container(
+    $width: 100%,
+    $height: 50px,
+    $border-r: $radius-md,
+    $border: 1px solid $border-medium,
+    $background: $brand-white
+  );
+
+  padding: 0 16px;
+  outline: none;
+  transition: $transition-fast;
+  box-shadow: $shadow-soft;
+
+  @include font($size: 14px, $weight: 700, $color: $brand-dark);
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: rgba(185, 72, 103, 0.58);
+    box-shadow: 0 14px 34px rgba(185, 72, 103, 0.12);
+  }
+}
+
+.loginBtn,
+.logoutBtn {
+  @include container($width: 100%, $height: 50px, $border-r: $radius-pill);
+
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: $transition-fast;
+
+  @include font($size: 13px, $weight: 900);
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+.loginBtn {
+  border: none;
+  background: $brand-dark;
+  color: $text-white;
+  box-shadow: 0 16px 38px rgba(81, 49, 58, 0.22);
+
+  &:hover {
+    transform: translateY(-2px);
+    background: $brand-dark-hover;
+  }
+}
+
+.logoutBtn {
+  border: 1px solid $border-medium;
+  background: $brand-white;
+  color: $brand-primary;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(81, 32, 46, 0.1);
+  }
+}
+
+.profileBox {
+  @include container(
+    $border-r: 20px,
+    $border: 1px solid $border-soft,
+    $background: linear-gradient(135deg, $brand-white 0%, $brand-primary-light 100%)
+  );
+
+  @include flex($gap: 14px, $align: center);
+
+  padding: 16px;
+
+  p {
+    margin: 0;
+
+    @include font($size: 15px, $weight: 700, $height: 1.4, $color: #5d3a45);
+  }
+
+  strong {
+    color: $brand-primary;
+  }
+
+  span {
+    display: block;
+    margin-top: 4px;
+
+    @include font($size: 13px, $weight: 700, $color: $text-muted);
+  }
+}
+
+.avatar {
+  @include container(
+    $width: 48px,
+    $height: 48px,
+    $border-r: 50%,
+    $background: $brand-dark
+  );
+
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+
+  @include font($size: 18px, $weight: 900, $color: $text-white);
+}
+
+.createAcc {
+  margin: 2px 0 0;
+  text-align: center;
+
+  @include font($size: 14px, $weight: 700, $color: $text-muted);
+
+  a {
+    text-decoration: none;
+
+    @include font($weight: 900, $color: $brand-primary);
+  }
+}
+
+.errorText {
+  margin: 0;
+  padding: 12px 14px;
+  text-align: center;
+
+  @include container(
+    $border-r: $radius-md,
+    $border: 1px solid rgba(217, 48, 37, 0.14),
+    $background: rgba(217, 48, 37, 0.08)
+  );
+
+  @include font($size: 13px, $weight: 800, $color: #d93025);
+}
+
+@include respond(sm) {
+  .userModal {
+    width: 100%;
+    padding: 20px 18px;
+  }
+
+  .modalTop h3 {
+    font-size: 22px;
+  }
+}
+
+@keyframes drawerIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes drawerOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
