@@ -1,0 +1,182 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.category-section {
+  @include page-container($container-width);
+  margin-top: clamp(64px, 8vw, 100px);
+}
+
+.section-kicker {
+  margin-bottom: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+
+  @include font($size: 12px, $weight: 900, $color: $text-muted);
+}
+
+.title-category {
+  @include section-title;
+  margin: 0 0 28px;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(230px, 280px));
+  grid-template-areas:
+    "chocolate fruit fruit"
+    "chocolate kids custom";
+  gap: clamp(12px, 1.6vw, 18px);
+}
+
+.category-card {
+  @include position($position: relative);
+  @include container($border-r: $radius-xl, $border: 1px solid $border-dark, $background: $brand-white);
+  @include lift-hover;
+
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: $shadow-card;
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+  }
+
+  &::after {
+    content: "";
+    inset: 0;
+
+    @include position($position: absolute);
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.02) 0%,
+      rgba(0, 0, 0, 0.14) 48%,
+      rgba(0, 0, 0, 0.62) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+.category-image {
+  @include container($width: 100%, $height: 100%);
+
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.06);
+}
+
+.category-text {
+  @include position($position: absolute, $left: 18px, $right: 18px, $bottom: 18px, $z-index: 2);
+  @include container($width: min(82%, 320px), $border-r: $radius-md);
+  @include glass-panel;
+
+  padding: 16px;
+  color: $text-white;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22);
+}
+
+.category-subtitle {
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+
+  @include font($size: 12px);
+}
+
+.category-title {
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
+
+  @include font($size: clamp(17px, 1.3vw, 22px), $weight: 900, $height: 1.05);
+}
+
+.category-cta {
+  @include flex($gap: 10px, $align: center);
+  @include container($border-r: $radius-pill, $border: 1px solid rgba(255, 255, 255, 0.18), $background: rgba(0, 0, 0, 0.28));
+
+  width: fit-content;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  @include font($size: 12px, $weight: 800);
+}
+
+.category-chocolate {
+  grid-area: chocolate;
+}
+
+.category-fruit {
+  grid-area: fruit;
+}
+
+.category-kids {
+  grid-area: kids;
+}
+
+.category-custom {
+  grid-area: custom;
+}
+
+@include respond(lg) {
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 280px 230px 230px;
+    grid-template-areas:
+      "chocolate chocolate"
+      "fruit fruit"
+      "kids custom";
+  }
+}
+
+@include respond(sm) {
+  .category-section {
+    width: $container-width-small;
+    margin-top: 52px;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "chocolate"
+      "fruit"
+      "kids"
+      "custom";
+    gap: 14px;
+  }
+
+  .category-card {
+    min-height: 168px;
+    max-height: 190px;
+    border-radius: $radius-lg;
+  }
+
+  .category-text {
+    width: auto;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 12px;
+  }
+
+  .category-title {
+    font-size: 16px;
+    margin-bottom: 9px;
+  }
+
+  .category-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 10px;
+  }
+}
