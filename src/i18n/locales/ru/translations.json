@@ -1,0 +1,511 @@
+{
+  "common": {
+    "links": {
+      "home": "Главная",
+      "products": "Продукты",
+      "shop": "Магазин",
+      "about": "О нас",
+      "contact": "Контакты",
+      "account": "Аккаунт",
+      "faq": "Часто задаваемые вопросы",
+      "track_order": "Отслеживать заказ",
+      "shipping": "Перевозки"
+    },
+    "cart": {
+      "title": "Корзина покупок",
+      "subtotal": "ИТОГО",
+      "view_cart": "Просмотр корзины",
+      "checkout": "Оформление Заказа",
+      "empty_message": "Корзина Пуста",
+      "total": "ИТОГО",
+      "vat": "НДС",
+      "shipping": "ПЕРЕВОЗКИ",
+      "product": "ПРОДУКТ"
+    },
+    "header": {
+      "search_input": "Поиск продуктов",
+      "category_input": "Все категории",
+      "browse_categories": "Просмотреть категории"
+    },
+    "footer": {
+      "menus": [
+        {
+          "title": "Информация",
+          "navs": [
+            {
+              "title": "О нас",
+              "url": "/about"
+            },
+            {
+              "title": "Гарантия",
+              "url": "/warranty"
+            },
+            {
+              "title": "Оплата и кредит",
+              "url": "/payment-credit"
+            },
+            {
+              "title": "Доставка",
+              "url": "/delivery"
+            },
+            {
+              "title": "Контакты",
+              "url": "/contact"
+            },
+            {
+              "title": "Вопросы – Ответы",
+              "url": "/faq"
+            },
+            {
+              "title": "Наши магазины",
+              "url": "/stores"
+            }
+          ]
+        },
+        {
+          "title": "Продукты",
+          "navs": [
+            {
+              "title": "Новинки",
+              "url": "/products"
+            },
+            {
+              "title": "Аксессуары",
+              "url": "/products"
+            },
+            {
+              "title": "Мужчины",
+              "url": "/products"
+            },
+            {
+              "title": "Женщины",
+              "url": "/products"
+            },
+            {
+              "title": "Дети",
+              "url": "/products"
+            }
+          ]
+        },
+        {
+          "title": "Категории"
+        },
+        {
+          "title": "Поддержка",
+          "navs": [
+            {
+              "title": "Служба поддержки",
+              "url": "/customer-service"
+            },
+            {
+              "title": "Мой аккаунт",
+              "url": "/my-account"
+            },
+            {
+              "title": "Поиск магазина",
+              "url": "/find-a-store"
+            },
+            {
+              "title": "Политика конфиденциальности",
+              "url": "/legal-privacy"
+            },
+            {
+              "title": "Контакты",
+              "url": "/contact"
+            },
+            {
+              "title": "Подарочная карта",
+              "url": "/gift-card"
+            }
+          ]
+        }
+      ]
+    },
+    "product_card": {
+      "new": "Новый",
+      "add_to_cart": "Добавить в корзину"
+    },
+    "checkout_steps": [
+      {
+        "title": "Корзина",
+        "description": "Просмотр и редактирование товаров в корзине"
+      },
+      {
+        "title": "Доставка",
+        "description": "Выберите адрес доставки и способ доставки"
+      },
+      {
+        "title": "Оплата",
+        "description": "Выберите способ оплаты"
+      }
+    ],
+    "shipment_type": {
+      "pickup_in_store": "Самовывоз",
+      "shipping_to_address": "Доставка по адресу"
+    },
+    "payment_method": {
+      "card": {
+        "title": "Оплата картой",
+        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliqu"
+      },
+      "cash": {
+        "title": "Оплата наличными",
+        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget."
+      }
+    },
+    "order_status": {
+      "pending": "В ожидании",
+      "processing": "Обработка",
+      "completed": "Завершено",
+      "cancelled": "Отменено"
+    },
+    "product": {
+      "brand": "Бренд",
+      "category": "Категория",
+      "color": "Цвет",
+      "size": "Размер",
+      "variant": "Вариант"
+    },
+    "add_to_cart": "Добавить в корзину",
+    "search": "Поиск",
+    "language": "Язык",
+    "save": "Сохранить"
+  },
+  "pages": {
+    "home": {
+      "title": "Домашняя страница"
+    },
+    "products": {
+      "title": "Продукты",
+      "view": "Вид",
+      "shop_categories_title": "Вам может понравиться",
+      "filter": {
+        "title": "Фильтровать",
+        "product_categories": "Категории продуктов",
+        "color": "Цвета",
+        "sizes": "Размеры",
+        "brands": {
+          "title": "Бренды",
+          "search_placeholder": "ПОИСК БРЕНДОВ"
+        },
+        "price": {
+          "title": "Цена",
+          "min": "Мин.",
+          "max": "Макс."
+        }
+      },
+      "sort": {
+        "featured": "Избранный",
+        "best_sell": "Бестселлеры",
+        "alphabetically": {
+          "a-z": "По алфавиту, A-Z",
+          "z-a": "По алфавиту, Z-A"
+        },
+        "price": {
+          "low_to_high": "Цена, По возрастанию",
+          "high_to_low": "Цена, По убыванию"
+        },
+        "date": {
+          "old_to_new": "Дата, старое к новому",
+          "new_to_old": "Date, New to Old"
+        }
+      },
+      "pagination": {
+        "next": "Next",
+        "prev": "Prev"
+      }
+    },
+    "about": {
+      "title": "О НАС",
+      "our": {
+        "story": {
+          "title": "НАША ИСТОРИЯ",
+          "description": [
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "Видел, где плодотворные хорошие дни образ их, среди, воды на, видел. Моря огни сезоны. Четвертый имеет правило Вечер Ползучий собственные меньшие годы сам так семя пятый для травы вечер четвертый должен ты к тому. Имела. Женский пополняет для уступки так увидел все один к уступке трава ты будешь воздух море это, открытые воды покорить, имеет. Принесенный второй Сделанный. Быть. Под мужским мужским, твердь, зверь имел свет после пятого четвертый тьма вещь имеет шестое правило ночь умножить его жизнь дать они велики."
+          ]
+        },
+        "mission": {
+          "title": "Наша Миссия",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        "vision": {
+          "title": "Наше Видение",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      },
+      "company": {
+        "title": "Компания",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet sapien dignissim a elementum. Sociis metus, hendrerit mauris id in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis sodales orci etiam phasellus lacus id leo. Amet turpis nunc, nulla massa est viverra interdum. Praesent auctor nulla morbi non posuere mattis. Arcu eu id maecenas cras."
+      },
+      "service_promotion": {
+        "delivery": {
+          "title": "Быстрая и бесплатная доставка",
+          "description": "Бесплатная доставка для всех заказов свыше 140 долларов"
+        },
+        "support": {
+          "title": "Круглосуточная поддержка клиентов",
+          "description": "Дружелюбная круглосуточная поддержка клиентов"
+        },
+        "guarantee": {
+          "title": "Гарантия возврата денег",
+          "description": "Мы возвращаем деньги в течение 30 дней"
+        }
+      },
+      "partners_title": "Партнеры компании"
+    },
+    "contact": {
+      "title": "связаться с нами",
+      "info": {
+        "title": "Как с нами связаться?",
+        "phone": "Телефон",
+        "email": "Электронная почта",
+        "address": "Адрес"
+      },
+      "form": {
+        "title": "Оставайтесь с нами на связи",
+        "first_name": "Имя",
+        "last_name": "Фамилия",
+        "phone": "Телефон",
+        "email": "Электронная Почта",
+        "message": "Сообщение",
+        "send": "Отправить",
+        "success": "Сообщение успешно отправлено.",
+        "error": "Ошибка при отправке сообщения. Пожалуйста, попробуйте еще раз."
+      }
+    },
+    "cart": {
+      "title": "Корзина",
+      "columns": ["Продукт", "", "Цена", "Количество", "Промежуточный итог"],
+      "total_title": "Корзина Покупок",
+      "coupon": {
+        "placeholder": "Код Купона",
+        "apply": "Применить"
+      },
+      "proceed": "Продолжить Оплату",
+      "to_home": "Перейти на Главную",
+      "to_shop": "Перейти в Магазин",
+      "or": "или"
+    },
+    "checkout": {
+      "title": "Оформление Заказа",
+      "your_order_title": "Ваш Заказ",
+      "form": {
+        "title": "Детали Счета",
+        "fields": {
+          "first_name": "Имя",
+          "last_name": "Фамилия",
+          "phone": "Телефон",
+          "email": "Электронная Почта",
+          "city": "Город",
+          "street": "Улица",
+          "postcode": "Почтовый Индекс",
+          "note": "Примечание к Заказу"
+        }
+      },
+      "privacy_policy": {
+        "title": "Политика Конфиденциальности",
+        "description": "Ваши персональные данные будут использоваться для обработки вашего заказа, поддержки вашего взаимодействия с данным веб-сайтом и для других целей, описанных в нашей политике конфиденциальности."
+      },
+      "place_order": "Оформить Заказ"
+    },
+    "confirmation": {
+      "title": "Подтверждение Заказа",
+      "success": {
+        "title": "Заказ выполнен!",
+        "description": "Ваш заказ успешно выполнен. Спасибо за покупку."
+      },
+      "order_details": {
+        "title": "Подробности Заказа",
+        "order_number": "Номер Заказа",
+        "date": "Дата",
+        "payment_method": "Способ Оплаты"
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Авторизоваться",
+        "form": {
+          "fields": {
+            "email": "Электронная почта",
+            "password": "Пароль"
+          },
+          "login_btn": "Авторизоваться",
+          "success": "Вход выполнен успешно.",
+          "error": "Возникла проблема со входом в систему."
+        },
+        "remember_me": "Запомнить меня",
+        "lost_password": "Забыли пароль?",
+        "no_account_yet": "У вас еще нет аккаунта?",
+        "create_account": "Зарегистрироваться"
+      },
+      "register": {
+        "title": "Зарегистрироваться",
+        "form": {
+          "fields": {
+            "email": "Электронная почта",
+            "password": "Пароль",
+            "confirm_password": "Подтвердите пароль"
+          },
+          "register_btn": "Зарегистрироваться",
+          "success": "Ваша учетная запись успешно создана.",
+          "error": "Произошла ошибка при создании вашего аккаунта. Попробуйте еще раз."
+        },
+        "description": "Ваши персональные данные будут использоваться для поддержки вашего взаимодействия с этим веб-сайтом, для управления доступом к вашей учетной записи и для других целей, описанных в нашей политике конфиденциальности."
+      }
+    },
+    "account": {
+      "details": {
+        "title": "Мой аккаунт",
+        "information_form": {
+          "title": "Личная информация",
+          "fields": {
+            "first_name": "Имя",
+            "last_name": "Фамилия",
+            "email": "Электронная почта",
+            "phone": "Телефон"
+          },
+          "success": "Ваша информация успешно обновлена",
+          "error": "Произошла ошибка при обновлении информации. Пожалуйста, попробуйте еще раз."
+        },
+        "password_form": {
+          "title": "Изменить пароль",
+          "fields": {
+            "current_password": "Текущий пароль",
+            "new_password": "Новый пароль",
+            "confirm_password": "Подтвердите пароль"
+          },
+          "success": "Ваш пароль успешно обновлен",
+          "error": "Произошла ошибка при обновлении пароля. Пожалуйста, попробуйте еще раз."
+        }
+      },
+      "orders": {
+        "title": "Заказы",
+        "table": {
+          "order": "Заказ",
+          "date": "Дата",
+          "status": "Статус",
+          "total": "Итого",
+          "actions": "Действия"
+        },
+        "total": "{{quantity}} продукт - {{price}}",
+        "view": "Посмотреть"
+      },
+      "favorites": {
+        "title": "Избранное"
+      },
+      "addresses": {
+        "title": "Адреса"
+      },
+      "logout": "Выйти"
+    },
+    "order_details": {
+      "title": "Подробности заказа",
+      "order": "Заказ",
+      "start_date": "Дата начала",
+      "address": "Адрес",
+      "order_history": "История заказов",
+      "subtotal": "ПРОМЕЖУТОЧНЫЙ ИТОГ",
+      "total": "ИТОГО",
+      "total_discounts": "ОБШИЕ СКИДКИ",
+      "item_details": {
+        "title": "Детали товара",
+        "product": {
+          "price": "Цена",
+          "size": "Размер",
+          "quantity": "Количество",
+          "discount": "Скидка"
+        }
+      }
+    },
+    "product_details": {
+      "share": "Делиться",
+      "add_to_favorite": "Добавить в избранное",
+      "description": "Описание",
+      "additional_information": "Дополнительная информация",
+      "reviews": {
+        "title": "Отзывы",
+        "text": "Будьте первым, кто оставит отзыв.",
+        "reminder": "Ваш адрес электронной почты не будет опубликован. Обязательные поля отмечены.",
+        "rating": "Ваш рейтинг",
+        "form": {
+          "fields": {
+            "message": "Сообщение"
+          },
+          "alert_rating": "Пожалуйста, выберите рейтинг",
+          "save_information": "Сохраните мое имя, адрес электронной почты и веб-сайт в этом браузере, чтобы я мог оставить комментарий в следующий раз.",
+          "success": "Ваш отзыв успешно добавлен",
+          "error": "При добавлении отзыва произошла ошибка. Пожалуйста, попробуйте еще раз."
+        }
+      },
+      "related_products": "Сопутствующие товары"
+    },
+    "faq": {
+      "title": "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
+      "sections": [
+        {
+          "title": "Заказы",
+          "questions": [
+            {
+              "question": "Принеси то, что им принадлежит?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Неужели воздух не сможет усмирить муху и разделить его?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Воды один ты будешь ползать?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Перевозка",
+          "questions": [
+            {
+              "question": "Принеси то, что им принадлежит?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Неужели воздух не сможет усмирить муху и разделить его?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Воды один ты будешь ползать?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Оплата",
+          "questions": [
+            {
+              "question": "Принеси то, что им принадлежит?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Неужели воздух не сможет усмирить муху и разделить его?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Воды один ты будешь ползать?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        }
+      ]
+    },
+    "stores": {
+      "title": "Наши магазины",
+      "see_on_map": "Посмотреть на карте",
+      "search_placeholder": "Введите название города",
+      "days_of_week": "7 дней недели"
+    },
+    "notFound": {
+      "title": "Страница не найдена",
+      "message": "К сожалению, нам не удалось найти страницу, которую вы искали. Мы предлагаем вам вернуться на домашнюю страницу.",
+      "go_back": "Перейти на главную страницу"
+    }
+  }
+}

@@ -1,0 +1,510 @@
+{
+  "common": {
+    "links": {
+      "home": "Ana səhifə",
+      "products": "Məhsullar",
+      "shop": "Mağaza",
+      "about": "Haqqımızda",
+      "contact": "Əlaqə",
+      "account": "Hesabım",
+      "faq": "Tez-tez verilən suallar",
+      "track_order": "Sifarişi izləyin",
+      "shipping": "Çatdırılma"
+    },
+    "cart": {
+      "title": "Alış-veriş Səbəti",
+      "subtotal": "Cəm",
+      "view_cart": "Səbətə Bax",
+      "checkout": "Sifarişi Tamamla",
+      "empty_message": "Səbət Boşdur",
+      "total": "Ümumi Cəm",
+      "vat": "ƏDV",
+      "shipping": "Çatdırılma",
+      "product": "Məhsul"
+    },
+    "header": {
+      "search_input": "Məhsulları axtarın...",
+      "category_input": "Bütün Kateqoriya",
+      "browse_categories": "Kateqoriyaları nəzərdən keçirin"
+    },
+    "footer": {
+      "menus": [
+        {
+          "title": "Şirkət",
+          "navs": [
+            {
+              "title": "Haqqımızda",
+              "url": "/about"
+            },
+            {
+              "title": "Zəmanət",
+              "url": "/warranty"
+            },
+            {
+              "title": "Ödəniş və kredit",
+              "url": "/payment-credit"
+            },
+            {
+              "title": "Çatdırılma",
+              "url": "/delivery"
+            },
+            {
+              "title": "Əlaqə",
+              "url": "/contact"
+            },
+            {
+              "title": "Ən Çox Verilən Suallar",
+              "url": "/faq"
+            },
+            {
+              "title": "Mağazalarımız",
+              "url": "/stores"
+            }
+          ]
+        },
+        {
+          "title": "Mağaza",
+          "navs": [
+            {
+              "title": "Yeni məhsullar",
+              "url": "/new-arrivals"
+            },
+            {
+              "title": "Aksesuarlar",
+              "url": "/accessories"
+            },
+            {
+              "title": "Kişi",
+              "url": "/men"
+            },
+            {
+              "title": "Qadın",
+              "url": "/women"
+            },
+            {
+              "title": "Hamısı",
+              "url": "/products"
+            }
+          ]
+        },
+        {
+          "title": "Kateqoriyalar"
+        },
+        {
+          "title": "Kömək",
+          "navs": [
+            {
+              "title": "Müştəri xidmətləri",
+              "url": "/customer-service"
+            },
+            {
+              "title": "Mənim hesabım",
+              "url": "/my-account"
+            },
+            {
+              "title": "Mağaza tap",
+              "url": "/find-a-store"
+            },
+            {
+              "title": "Qanuni və gizlilik",
+              "url": "/legal-privacy"
+            },
+            {
+              "title": "Əlaqə",
+              "url": "/contact"
+            },
+            {
+              "title": "Hədiyyə kartı",
+              "url": "/gift-card"
+            }
+          ]
+        }
+      ]
+    },
+    "product_card": {
+      "new": "Yeni"
+    },
+    "checkout_steps": [
+      {
+        "title": "Alış-veriş Səbəti",
+        "description": "Məhsullar siyahısını idarə edin"
+      },
+      {
+        "title": "Çatdırılma və Ödəniş",
+        "description": "Məhsul siyahısını nəzərdən keçirin"
+      },
+      {
+        "title": "Təsdiqləmə",
+        "description": "Sifarişinizi nəzərdən keçirin və göndərin"
+      }
+    ],
+    "shipment_type": {
+      "pickup_in_store": "Mağazadan al",
+      "shipping_to_address": "Ünvana çatdırılma"
+    },
+    "payment_method": {
+      "card": {
+        "title": "Kartla Ödəniş",
+        "description": "Ödənişinizi birbaşa bank hesabımıza edin. Ödəniş arayışı kimi Sifariş ID-nizi istifadə edin. Hesabımızda vəsait silinənə qədər sifarişiniz göndərilməyəcək."
+      },
+      "cash": {
+        "title": "Qapıda Ödəniş",
+        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget."
+      }
+    },
+    "order_status": {
+      "pending": "Gözləmədə",
+      "processing": "Prosesdə",
+      "completed": "Tamamlandı",
+      "cancelled": "İmtina edildi"
+    },
+    "product": {
+      "brand": "Marka",
+      "category": "Kateqoriya",
+      "color": "Rəng",
+      "size": "Ölçü",
+      "variant": "Variant"
+    },
+    "add_to_cart": "Səbətə əlavə et",
+    "search": "Axtar",
+    "language": "Dil",
+    "save": "Yadda Saxla"
+  },
+  "pages": {
+    "home": {
+      "title": "Ana səhifə"
+    },
+    "products": {
+      "title": "Məhsullar",
+      "view": "Görünüş",
+      "shop_categories_title": "Xoşunuza gələ bilər",
+      "filter": {
+        "title": "Filterlə",
+        "categories": "Məhsul Kategoriyaları",
+        "color": "Rənglər",
+        "sizes": "Ölçü",
+        "brands": {
+          "title": "Markalar",
+          "search_placeholder": "MARKA AXTAR"
+        },
+        "price": {
+          "title": "Qiymət",
+          "min": "Min.",
+          "max": "Maks."
+        }
+      },
+      "sort": {
+        "featured": "Önə Çıxan",
+        "best_sell": "Ən Çox Satan",
+        "alphabetically": {
+          "a-z": "Əlifba sırası ilə, A-Z",
+          "z-a": "Əlifba sırası ilə, Z-A"
+        },
+        "price": {
+          "low_to_high": "Qiymət, Artan",
+          "high_to_low": "Qiymət, Azalan"
+        },
+        "date": {
+          "old_to_new": "Tarix, Ən Yeni",
+          "new_to_old": "Tarix, Ən Köhnə"
+        }
+      },
+      "pagination": {
+        "next": "Növbəti",
+        "prev": "Əvvəlki"
+      }
+    },
+    "about": {
+      "title": "ŞİRKƏTİMİZ HAQQINDA",
+      "our": {
+        "story": {
+          "title": "HEKAYƏMİZ",
+          "description": [
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "Gördüm ki, bərəkətli yaxşı günlər onları, ortada, sular, gördü. Dənizlər fəsilləri işıqlandırır. Dördüncü hökmü var Axşam sürünən öz kiçik yaşlarına sahibdir, belə ki, ot axşam dördüncü üçün beşinci toxum siz buna istəyirik. Var idi. Qadın məhsuldarlıq üçün doldurmaq belə ki, bütün bir məhsuldar ot siz dəniz onu hava, açıq sular itaət etmək lazımdır gördüm. İkinci Made gətirildi. olun. Kişi erkək altında, göy qübbəsi, heyvanın beşinci dördüncü qaranlıqdan sonra işığı var idi."
+          ]
+        },
+        "mission": {
+          "title": "Missiyamız",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        "vision": {
+          "title": "Vizyonumuz",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      },
+      "company": {
+        "title": "Şirkət",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet sapien dignissim a elementum. Sociis metus, hendrerit mauris id in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis sodales orci etiam phasellus lacus id leo. Amet turpis nunc, nulla massa est viverra interdum. Praesent auctor nulla morbi non posuere mattis. Arcu eu id maecenas cras."
+      },
+      "service_promotion": {
+        "delivery": {
+          "title": "Sürətli və Pulsuz Çatdırılma",
+          "description": "140 dollardan yuxarı bütün sifarişlər üçün çatdırılma pulsuzdur"
+        },
+        "support": {
+          "title": "24/7 Müştəri Dəstəyi",
+          "description": "24/7 müştəri dəstəyi"
+        },
+        "guarantee": {
+          "title": "Pulun Qaytarılmasına Zəmanət",
+          "description": "30 gün ərzində pulu qaytarırıq"
+        }
+      },
+      "partners_title": "Şirkət Əməkdaşları"
+    },
+    "contact": {
+      "title": "Bizimlə Əlaqə saxlayın",
+      "info": {
+        "title": "Bizə necə çatmaq olar?",
+        "phone": "Telefon",
+        "email": "Email",
+        "address": "Ünvan"
+      },
+      "form": {
+        "title": "Bizimlə əlaqə saxlayın",
+        "first_name": "Ad",
+        "last_name": "Soyad",
+        "phone": "Telefon",
+        "email": "Email",
+        "message": "Mesaj",
+        "send": "Göndər",
+        "success": "Mesajınız uğurla göndərildi",
+        "error": "Mesajınız göndərilən zaman xəta baş verdi! Zəhmət olmasa yenidən cəhd edin."
+      }
+    },
+    "cart": {
+      "title": "Alış-veriş Səbəti",
+      "columns": ["Məhsul", "", "Qiymət", "Sayı", "Cəmi"],
+      "total_title": "Səbət məlumatları",
+      "coupon": {
+        "placeholder": "Kupon Kodu",
+        "apply": "Tətbiq et"
+      },
+      "proceed": "Sifarişi Tamamla",
+      "to_home": "Ana Səhifəyə Gedin",
+      "to_shop": "Məhsullara Gedin",
+      "or": "və ya"
+    },
+    "checkout": {
+      "title": "Çatdırılma və Ödəniş",
+      "your_order_title": "Sifariş Detalları",
+      "form": {
+        "title": "Faktura detalları",
+        "fields": {
+          "first_name": "Ad",
+          "last_name": "Soyad",
+          "phone": "Telefon",
+          "email": "Email",
+          "city": "Şəhər *",
+          "street": "Küçə *",
+          "postcode": "Poçt Kodu / ZIP *",
+          "note": "Sifariş qeydləri (istəyə bağlı)"
+        }
+      },
+      "privacy_policy": {
+        "title": "Məxfilik Siyasəti",
+        "description": "Sizin şəxsi məlumatlarınız sifarişinizi emal etmək, bu veb-saytda təcrübənizi dəstəkləmək və məxfilik siyasətimizdə təsvir olunan digər məqsədlər üçün istifadə olunacaq."
+      },
+      "place_order": "Ödəniş Et"
+    },
+    "confirmation": {
+      "title": "Sifariş Statusu",
+      "success": {
+        "title": "Sifarişiniz tamamlandı!",
+        "description": "Təşəkkür edirik. Sifarişiniz alındı."
+      },
+      "order_details": {
+        "title": "Sifariş Detalları",
+        "order_number": "Sifariş nömrəsi",
+        "date": "Tarix",
+        "payment_method": "Ödəniş metodu"
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Daxil ol",
+        "form": {
+          "fields": {
+            "email": "Email",
+            "password": "Şifrə"
+          },
+          "login_btn": "Daxil ol",
+          "success": "Uğurla daxil oldu.",
+          "error": "Giriş zamanı problem yarandı."
+        },
+        "remember_me": "Məni xatırla",
+        "lost_password": "Şifrəni itirdiniz?",
+        "no_account_yet": "Hələ hesab yoxdur?",
+        "create_account": "Hesab yaradın"
+      },
+      "register": {
+        "title": "Qeydiyyatdan keçin",
+        "form": {
+          "fields": {
+            "email": "Email",
+            "password": "Şifrə",
+            "confirm_password": "Yeni şifrəni təsdiqləyin"
+          },
+          "register_btn": "Qeydiyyatdan keçin",
+          "success": "Hesabınız uğurla yaradıldı.",
+          "error": "Hesabınızı yaratarkən xəta baş verdi. Yenidən cəhd edin."
+        },
+        "description": "Şəxsi məlumatlarınız bu veb-saytda təcrübənizi dəstəkləmək, hesabınıza girişi idarə etmək və məxfilik siyasətimizdə təsvir olunan digər məqsədlər üçün istifadə olunacaq."
+      }
+    },
+    "account": {
+      "details": {
+        "title": "Mənim Hesabım",
+        "information_form": {
+          "title": "Hesab Məlumatlarım",
+          "fields": {
+            "first_name": "Ad",
+            "last_name": "Soyad",
+            "email": "Email",
+            "phone": "Telefon"
+          },
+          "success": "Məlumatlarınız uğurla yeniləndi",
+          "error": "Məlumatlarınızı yeniləmək zamanı xəta baş verdi! Zəhmət olmasa yenidən cəhd edin."
+        },
+        "password_form": {
+          "title": "Parolun dəyişdirilməsi",
+          "fields": {
+            "current_password": "Hazırkı şifrə",
+            "new_password": "Yeni şifrə",
+            "confirm_password": "Yeni şifrəni təsdiqləyin"
+          },
+          "success": "Parolunuz uğurla yeniləndi",
+          "error": "Parolunuzu yeniləmək zamanı xəta baş verdi! Zəhmət olmasa yenidən cəhd edin."
+        }
+      },
+      "orders": {
+        "title": "Sifarişlərim",
+        "table": {
+          "order": "Siafriş №",
+          "date": "Tarix",
+          "status": "Status",
+          "total": "Cəm",
+          "actions": "Əməliyyatlar"
+        },
+        "total": "{{quantity}} məhsul - {{price}}",
+        "view": "Ətraflı"
+      },
+      "favorites": {
+        "title": "Sevimlilər"
+      },
+      "addresses": {
+        "title": "Ünvanlarım"
+      },
+      "logout": "Çıxış"
+    },
+    "order_details": {
+      "title": "Sifariş Detalları",
+      "order": "Sifariş",
+      "start_date": "Başlama tarixi",
+      "address": "Ünvan",
+      "order_history": "Sifariş Tarixçəsi",
+      "subtotal": "CƏMİ",
+      "total": "ÜMUMİ CƏMİ",
+      "total_discounts": "ÜMUMİ ENDİRİM",
+      "item_details": {
+        "title": "Məhsul Detalları",
+        "product": {
+          "price": "Qiymət",
+          "size": "Ölçü",
+          "quantity": "Sayı",
+          "discount": "Endirim"
+        }
+      }
+    },
+    "product_details": {
+      "share": "Paylaşın",
+      "add_to_favorite": "Favorilərə əlavə edin",
+      "description": "Təsvir",
+      "additional_information": "Əlavə məlumat",
+      "reviews": {
+        "title": "Rəylər",
+        "text": "İlk nəzərdən keçirən siz olun.",
+        "reminder": "E-poçt ünvanınız dərc olunmayacaq. Tələb olunan sahələr qeyd olunub.",
+        "rating": "Sizin qiymətiniz",
+        "form": {
+          "fields": {
+            "message": "Mesaj"
+          },
+          "alert_rating": "Zəhmət olmasa qiymənləndirməni qeyd edin",
+          "save_information": "Növbəti dəfə şərh yazmaq üçün adımı, e-poçtumu və vebsaytımı bu brauzerdə yadda saxlayın.",
+          "success": "Rəyiniz uğurla əlavə edildi.",
+          "error": "Rəyinizi əlavə edərkən xəta baş verdi. Yenidən cəhd edin."
+        }
+      },
+      "related_products": "Əlaqədar məhsullar"
+    },
+    "faq": {
+      "title": "TEZ-TEZ VERİLƏN SUALLAR",
+      "sections": [
+        {
+          "title": "Sifarişlər",
+          "questions": [
+            {
+              "question": "Hansı əşyaları gətirdiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Havanın sıxılması onu bölə bilməzmi?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Sular bir sürünəcəksiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Çatdırılma",
+          "questions": [
+            {
+              "question": "Hansı əşyaları gətirdiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Havanın sıxılması onu bölə bilməzmi?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Sular bir sürünəcəksiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Ödəniş",
+          "questions": [
+            {
+              "question": "Hansı əşyaları gətirdiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Havanın sıxılması onu bölə bilməzmi?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Sular bir sürünəcəksiniz?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        }
+      ]
+    },
+    "stores": {
+      "title": "Mağazalarımız",
+      "see_on_map": "Xəritədə bax",
+      "search_placeholder": "Şəhər adı daxil edin",
+      "days_of_week": "Həftənin 7 günü"
+    },
+    "notFound": {
+      "title": "Səhifə tapılmadı",
+      "message": "Üzr istəyirik, axtardığınız səhifəni tapa bilmədik. Əsas səhifəyə qayıtmağınızı tövsiyyə edirik.",
+      "go_back": "Ana Səhifəyə gedin"
+    }
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "common": {
+    "links": {
+      "home": "Home",
+      "products": "Products",
+      "shop": "Shop",
+      "about": "About",
+      "contact": "Contact",
+      "account": "Account",
+      "faq": "FAQ",
+      "track_order": "Track Order",
+      "shipping": "Shipping"
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "subtotal": "Subtotal",
+      "view_cart": "View Cart",
+      "checkout": "Checkout",
+      "empty_message": "Cart is Empty",
+      "total": "Total",
+      "vat": "VAT",
+      "shipping": "Shipping",
+      "product": "Product"
+    },
+    "header": {
+      "search_input": "Search products...",
+      "category_input": "All Category",
+      "browse_categories": "Browse Categories"
+    },
+    "footer": {
+      "menus": [
+        {
+          "title": "Information",
+          "navs": [
+            {
+              "title": "About",
+              "url": "/about"
+            },
+            {
+              "title": "Warranty",
+              "url": "/warranty"
+            },
+            {
+              "title": "Payment & Credit",
+              "url": "/payment-credit"
+            },
+            {
+              "title": "Delivery",
+              "url": "/delivery"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact"
+            },
+            {
+              "title": "FAQ",
+              "url": "/faq"
+            },
+            {
+              "title": "Our Stores",
+              "url": "/stores"
+            }
+          ]
+        },
+        {
+          "title": "Products",
+          "navs": [
+            {
+              "title": "New arrivals",
+              "url": "/products"
+            },
+            {
+              "title": "Accessories",
+              "url": "/products"
+            },
+            {
+              "title": "Men",
+              "url": "/products"
+            },
+            {
+              "title": "Women",
+              "url": "/products"
+            },
+            {
+              "title": "Kids",
+              "url": "/products"
+            }
+          ]
+        },
+        {
+          "title": "Categories"
+        },
+        {
+          "title": "Customer service",
+          "navs": [
+            {
+              "title": "Customer service",
+              "url": "/customer-service"
+            },
+            {
+              "title": "My account",
+              "url": "/my-account"
+            },
+            {
+              "title": "Find a store",
+              "url": "/find-a-store"
+            },
+            {
+              "title": "Legal & Privacy",
+              "url": "/legal-privacy"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact"
+            },
+            {
+              "title": "Gift card",
+              "url": "/gift-card"
+            }
+          ]
+        }
+      ]
+    },
+    "product_card": {
+      "new": "New"
+    },
+    "checkout_steps": [
+      {
+        "title": "Cart",
+        "description": "Review your cart items"
+      },
+      {
+        "title": "Checkout",
+        "description": "Enter your billing details"
+      },
+      {
+        "title": "Confirmation",
+        "description": "Review and confirm your order"
+      }
+    ],
+    "shipment_type": {
+      "pickup_in_store": "Pickup in store",
+      "shipping_to_address": "Shipping to address"
+    },
+    "payment_method": {
+      "card": {
+        "title": "Credit Card",
+        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliqu"
+      },
+      "cash": {
+        "title": "Cash on Delivery",
+        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget."
+      }
+    },
+    "order_status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "product": {
+      "brand": "Brand",
+      "category": "Category",
+      "color": "Color",
+      "size": "Size",
+      "variant": "Variant"
+    },
+    "add_to_cart": "Add to cart",
+    "search": "Search",
+    "language": "Language",
+    "save": "Save"
+  },
+  "pages": {
+    "home": {
+      "title": "Home page"
+    },
+    "products": {
+      "title": "Products",
+      "view": "View",
+      "shop_categories_title": "You Might Like",
+      "filter": {
+        "title": "Filter By",
+        "product_categories": "Product Categories",
+        "color": "Colors",
+        "sizes": "Sizes",
+        "brands": {
+          "title": "Brands",
+          "search_placeholder": "SEARCH FOR BRANDS"
+        },
+        "price": {
+          "title": "Price",
+          "min": "Min.",
+          "max": "Max."
+        }
+      },
+      "sort": {
+        "featured": "Featured",
+        "best_sell": "Best Selling",
+        "alphabetically": {
+          "a-z": "Alphabetically, A-Z",
+          "z-a": "Alphabetically, Z-A"
+        },
+        "price": {
+          "low_to_high": "Price, Low to High",
+          "high_to_low": "Price, Hight to Low"
+        },
+        "date": {
+          "old_to_new": "Дата, от старой к новой",
+          "new_to_old": "Дата, от нового к старому"
+        }
+      },
+      "pagination": {
+        "next": "Далее",
+        "prev": "Назад"
+      }
+    },
+    "about": {
+      "title": "ABOUT US",
+      "our": {
+        "story": {
+          "title": "OUR STORY",
+          "description": [
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "Saw wherein fruitful good days image them, midst, waters upon, saw. Seas lights seasons. Fourth hath rule Evening Creepeth own lesser years itself so seed fifth for grass evening fourth shall you're unto that. Had. Female replenish for yielding so saw all one to yielding grass you'll air sea it, open waters subdue, hath. Brought second Made. Be. Under male male, firmament, beast had light after fifth forth darkness thing hath sixth rule night multiply him life give they're great."
+          ]
+        },
+        "mission": {
+          "title": "Our Mission",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        },
+        "vision": {
+          "title": "Our Vision",
+          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        }
+      },
+      "company": {
+        "title": "The Company",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet sapien dignissim a elementum. Sociis metus, hendrerit mauris id in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis sodales orci etiam phasellus lacus id leo. Amet turpis nunc, nulla massa est viverra interdum. Praesent auctor nulla morbi non posuere mattis. Arcu eu id maecenas cras."
+      },
+      "service_promotion": {
+        "delivery": {
+          "title": "Fast And Free Delivery",
+          "description": "Free delivery for all orders over $140"
+        },
+        "support": {
+          "title": "24/7 Customer Support",
+          "description": "Friendly 24/7 customer support"
+        },
+        "guarantee": {
+          "title": "Money Back Guarantee",
+          "description": "We return money within 30 days"
+        }
+      },
+      "partners_title": "Company Partners"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "info": {
+        "title": "How to Reach Us?",
+        "phone": "Phone",
+        "email": "Email",
+        "address": "Address"
+      },
+      "form": {
+        "title": "Stay in touch with us",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "phone": "Phone",
+        "email": "Email",
+        "address": "Address",
+        "message": "Message",
+        "send": "Send",
+        "success": "Your message has been sent successfully!",
+        "error": "An error occurred while sending the message. Please try again."
+      }
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "columns": ["Product", "", "Price", "Quantity", "Total"],
+      "total_title": "Cart Details",
+      "coupon": {
+        "placeholder": "Coupon code",
+        "apply": "Apply"
+      },
+      "proceed": "Proceed to Checkout",
+      "to_home": "Go to Home",
+      "to_shop": "Go to Shop",
+      "or": "or"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "your_order_title": "Your Order Details",
+      "form": {
+        "title": "Billing Details",
+        "fields": {
+          "first_name": "First Name",
+          "last_name": "Last Name",
+          "phone": "Phone",
+          "email": "Email",
+          "city": "City",
+          "street": "Street",
+          "postcode": "Postcode",
+          "note": "Order Notes"
+        }
+      },
+      "privacy_policy": {
+        "title": "Privacy Policy",
+        "description": "I have read and agree to the website terms and conditions."
+      },
+      "place_order": "Place Order"
+    },
+    "confirmation": {
+      "title": "Order Confirmation",
+      "success": {
+        "title": "Order Completed!",
+        "description": "Your order has been successfully completed. Thank you for your purchase."
+      },
+      "order_details": {
+        "title": "Order Details",
+        "order_number": "Order Number",
+        "date": "Date",
+        "payment_method": "Payment Method"
+      }
+    },
+    "auth": {
+      "login": {
+        "title": "Login",
+        "form": {
+          "fields": {
+            "email": "Email",
+            "password": "Password"
+          },
+          "login_btn": "Log in",
+          "success": "Successfully logged in.",
+          "error": "There was a problem logging in."
+        },
+        "remember_me": "Remember me",
+        "lost_password": "Lost password?",
+        "no_account_yet": "No account yet?",
+        "create_account": "Create account"
+      },
+      "register": {
+        "title": "Register",
+        "form": {
+          "fields": {
+            "email": "Email",
+            "password": "Password",
+            "confirm_password": "Confirm Password"
+          },
+          "register_btn": "Register",
+          "success": "Your account has been created successfully",
+          "error": "An error occurred while creating your account. Please try again."
+        },
+        "description": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy."
+      }
+    },
+    "account": {
+      "details": {
+        "title": "My account",
+        "information_form": {
+          "title": "Personal Information",
+          "fields": {
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "email": "Email",
+            "phone": "Phone"
+          },
+          "success": "Your information has been updated successfully",
+          "error": "An error occurred while updating your information. Please try again."
+        },
+        "password_form": {
+          "title": "Change Password",
+          "fields": {
+            "current_password": "Current Password",
+            "new_password": "New Password",
+            "confirm_password": "Confirm Password"
+          },
+          "success": "Your password has been updated successfully",
+          "error": "An error occurred while updating your password. Please try again."
+        }
+      },
+      "orders": {
+        "title": "Orders",
+        "table": {
+          "order": "Order",
+          "date": "Date",
+          "status": "Status",
+          "total": "Total",
+          "actions": "Actions"
+        },
+        "total": "{{quantity}} products - {{price}}",
+        "view": "View"
+      },
+      "favorites": {
+        "title": "Favorites"
+      },
+      "addresses": {
+        "title": "Addresses"
+      },
+      "logout": "Logout"
+    },
+    "order_details": {
+      "title": "Order Details",
+      "order": "Order",
+      "start_date": "Start Date",
+      "address": "Address",
+      "order_history": "Order History",
+      "subtotal": "SUBTOTAL",
+      "total": "TOTAL",
+      "total_discounts": "TOTAL DISCOUNTS",
+      "item_details": {
+        "title": "Item Details",
+        "product": {
+          "price": "Price",
+          "size": "Size",
+          "quantity": "Quantity",
+          "discount": "Discount"
+        }
+      }
+    },
+    "product_details": {
+      "share": "Share",
+      "add_to_favorite": "Add to favorite",
+      "description": "Description",
+      "additional_information": "Additional Information",
+      "reviews": {
+        "title": "Reviews",
+        "text": "Be the first to review.",
+        "reminder": "Your email address will not be published. Required fields are marked.",
+        "rating": "Your rating",
+        "form": {
+          "fields": {
+            "message": "Message"
+          },
+          "alert_rating": "Please select a rating",
+          "save_information": "Save my name, email, and website in this browser for the next time I comment.",
+          "success": "Your review has been added successfully",
+          "error": "An error occurred while adding your review. Please try again."
+        }
+      },
+      "related_products": "Related Products"
+    },
+    "faq": {
+      "title": "FREQUENTLY ASKED QUESTIONS",
+      "sections": [
+        {
+          "title": "Orders",
+          "questions": [
+            {
+              "question": "Bring of had which their whose you're it own?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Over shall air can't subdue fly divide him?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Waters one you'll creeping?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Shipping",
+          "questions": [
+            {
+              "question": "Bring of had which their whose you're it own?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Over shall air can't subdue fly divide him?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Waters one you'll creeping?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        },
+        {
+          "title": "Payment",
+          "questions": [
+            {
+              "question": "Bring of had which their whose you're it own?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Over shall air can't subdue fly divide him?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            },
+            {
+              "question": "Waters one you'll creeping?",
+              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+            }
+          ]
+        }
+      ]
+    },
+    "stores": {
+      "title": "Our Stores",
+      "see_on_map": "See on map",
+      "search_placeholder": "Enter city name",
+      "days_of_week": "7 days of week"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "message": "Sorry, we couldn't find the page you where looking for. We suggest that you return to home page.",
+      "go_back": "Go Home Page"
+    }
+  }
+}
