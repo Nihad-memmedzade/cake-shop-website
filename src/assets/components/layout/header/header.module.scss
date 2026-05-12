@@ -1,0 +1,283 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.headerWrap {
+  @include position($position: sticky, $top: 0, $z-index: map-get($z-indexes, header));
+  @include container($width: 100%, $background: rgba(255, 250, 252, 0.96));
+
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $border-soft;
+  box-shadow: $shadow-soft;
+}
+
+.header_main {
+  @include page-container($container-width);
+  @include flex($gap: 24px, $align: center, $justify: space-between);
+
+  padding: $header-padding-desktop;
+}
+
+.headerLeft {
+  @include flex($gap: 44px, $align: center);
+}
+
+.burger {
+  width: 42px;
+  height: 42px;
+
+  display: none;
+  place-items: center;
+
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: $brand-dark;
+
+  cursor: pointer;
+  transition: $transition-fast;
+
+  span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    margin: 6px auto;
+    border-radius: $radius-pill;
+    background: $brand-dark;
+  }
+}
+
+
+.headerLogo {
+  cursor: pointer;
+
+  @include container($width: 112px, $height: 62px);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.desktopNav {
+  display: block;
+}
+
+.pageList {
+  @include flex($gap: 22px, $align: center);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navItem {
+  @include position($position: relative);
+  @include font($size: 14px, $weight: 900, $color: $brand-primary);
+
+  padding: 10px 4px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+
+  text-shadow:
+    0 2px 6px rgba(185, 72, 103, 0.25),
+    0 6px 18px rgba(185, 72, 103, 0.18);
+
+  transition:
+    transform $transition-normal,
+    text-shadow $transition-normal;
+
+  &::after {
+    content: "";
+
+    @include position($position: absolute, $left: 0, $bottom: 0);
+    @include container(
+      $width: 0,
+      $height: 4px,
+      $border-r: $radius-pill,
+      $background: $brand-primary
+    );
+
+    box-shadow: 0 8px 18px rgba(185, 72, 103, 0.28);
+    transition: width $transition-normal;
+  }
+
+  &:hover,
+  &.active {
+    color: $brand-primary;
+    transform: translateY(-1px);
+
+    text-shadow:
+      0 3px 8px rgba(185, 72, 103, 0.32),
+      0 8px 22px rgba(185, 72, 103, 0.22);
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+
+
+.headerRight {
+  @include flex($gap: 14px, $align: center);
+}
+
+.searchBox {
+  width: clamp(180px, 26vw, 360px);
+
+  form {
+    @include position($position: relative);
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.searchInput {
+  @include container(
+    $width: 100%,
+    $height: 44px,
+    $border-r: $radius-pill,
+    $border: 1px solid $border-soft,
+    $background: $brand-white
+  );
+
+  @include font($size: 14px, $color: $brand-dark);
+
+  padding: 0 46px 0 18px;
+  outline: none;
+  transition: $transition-normal;
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: $border-medium;
+    box-shadow: 0 12px 30px rgba(185, 72, 103, 0.16);
+  }
+}
+
+.searchIcon {
+  @include position($position: absolute, $top: 50%, $right: 16px);
+  @include container($width: 18px, $height: 18px);
+
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.iconBtn {
+  @include position($position: relative);
+  @include icon-button($size: 42px, $background: $brand-white, $color: $brand-dark);
+
+  border: 1px solid $border-soft;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(185, 72, 103, 0.18);
+  }
+}
+
+.cartIconBtn {
+  overflow: visible;
+}
+
+.cartBadge {
+  @include position($position: absolute, $top: 18px, $right: -5px);
+  @include container(
+    $width: 18px,
+    $height: 18px,
+    $border-r: 50%,
+    $background: $brand-gold,
+    $min-width: 18px
+  );
+
+  display: grid;
+  place-items: center;
+
+  @include font($size: 11px, $weight: 700, $color: $text-white);
+}
+
+@include respond(lg) {
+  .headerWrap {
+    background: $brand-white;
+    box-shadow: none;
+    border-bottom: 1px solid $border-dark;
+  }
+
+  .header_main {
+    width: 100%;
+    height: $header-height;
+    padding: 0 60px;
+
+    display: grid;
+    grid-template-columns: 42px 1fr 42px;
+    align-items: center;
+  }
+
+  .headerLeft {
+    display: contents;
+  }
+
+  .burger {
+    display: block;
+    grid-column: 1;
+  }
+
+  .headerLogo {
+    grid-column: 2;
+    justify-self: center;
+
+    @include container($width: 140px, $height: 58px);
+  }
+
+  .desktopNav,
+  .searchBox,
+  .headerRight .iconBtn:not(:last-child) {
+    display: none;
+  }
+
+  .headerRight {
+    grid-column: 3;
+    justify-self: end;
+    display: block;
+  }
+
+  .iconBtn {
+    border: none;
+    background: transparent;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@include respond(md) {
+  .header_main {
+    padding: 0 34px;
+  }
+}
+
+@include respond(sm) {
+  .header_main {
+    height: $header-height-mobile;
+    padding: $header-padding-mobile;
+  }
+
+  .headerLogo {
+    width: 120px;
+  }
+}
