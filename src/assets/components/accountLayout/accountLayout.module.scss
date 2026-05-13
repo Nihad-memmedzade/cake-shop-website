@@ -1,0 +1,91 @@
+.myAccount {
+  padding: 48px 0 100px;
+width: min(92%, 1400px);
+  margin: 0 auto 0 auto;
+}
+
+.pageTitle {
+  margin: 0 0 54px;
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #111;
+  letter-spacing: 3px;
+}
+
+.accountWrapper {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.accountSidebar {
+  width: 100%;
+}
+
+.accountNav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.accountNav li {
+  margin-bottom: 34px;
+}
+
+.menuLink {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111;
+  padding-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.menuLink:hover {
+  color: #e53935;
+}
+
+.menuLinkActive {
+  color: #e53935;
+}
+
+.menuLinkActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background: #e53935;
+}
+
+.accountContent {
+  min-width: 0;
+}
+
+@media (max-width: 992px) {
+  .pageTitle {
+    font-size: 42px;
+    margin-bottom: 40px;
+  }
+
+  .accountWrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .accountNav li {
+    margin-bottom: 24px;
+  }
+
+  .menuLink {
+    font-size: 15px;
+  }
+}
