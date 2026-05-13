@@ -1,0 +1,130 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.limitedEdition {
+  @include page-container($container-width);
+
+  margin-top: 95px;
+  margin-bottom: 120px;
+}
+
+.limitedEdition__head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.limited-kicker {
+  margin-bottom: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+
+  @include font($size: 12px, $weight: 900, $color: $text-muted);
+}
+
+.limited-title {
+  @include section-title;
+
+  margin-bottom: 22px;
+}
+
+.limited-subtitle {
+  margin-top: 8px;
+
+  @include font($size: 14px, $color: $text-muted);
+}
+
+.limitedSwiper {
+  padding: 18px 6px 44px;
+}
+
+.limitedSwiper .swiper-slide {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  background: transparent !important;
+}
+
+.limitedSwiper .swiper-slide::before,
+.limitedSwiper .swiper-slide::after {
+  content: none !important;
+  display: none !important;
+}
+
+.limitedSwiper .swiper-pagination {
+  bottom: 8px !important;
+}
+
+.limitedSwiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  opacity: 1;
+  border-radius: $radius-pill;
+  background: rgba(81, 49, 58, 0.25);
+  transition: $transition-normal;
+}
+
+.limitedSwiper .swiper-pagination-bullet-active {
+  width: 26px;
+  background: rgba(81, 49, 58, 0.65);
+}
+
+.limitedSwiper .swiper-button-next,
+.limitedSwiper .swiper-button-prev {
+  width: 62px !important;
+  height: 62px !important;
+  padding: 10px;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16) !important;
+  color: $brand-dark !important;
+  top: 50% !important;
+  transform: translateY(-50%) scale(0.96) !important;
+  z-index: 20 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: $transition-fast !important;
+}
+
+.limitedSwiper:hover .swiper-button-next,
+.limitedSwiper:hover .swiper-button-prev {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(-50%) scale(1) !important;
+}
+
+.limitedSwiper .swiper-button-next::after,
+.limitedSwiper .swiper-button-prev::after {
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  color: $text-main !important;
+}
+
+.limitedSwiper .swiper-button-next:hover,
+.limitedSwiper .swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.92) !important;
+  transform: translateY(-50%) scale(1.06) !important;
+}
+
+.limitedSwiper .swiper-button-prev {
+  left: 10px !important;
+}
+
+.limitedSwiper .swiper-button-next {
+  right: 10px !important;
+}
+
+@include respond(md) {
+  .limitedEdition {
+    margin-top: 72px;
+    margin-bottom: 92px;
+  }
+
+  .limitedSwiper .swiper-button-next,
+  .limitedSwiper .swiper-button-prev {
+    display: none !important;
+  }
+}

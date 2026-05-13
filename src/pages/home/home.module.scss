@@ -1,0 +1,13 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.homePage {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainSliderContainer {
+  @include page-container($container-width);
+  @include flex($align: center, $justify: center);
+}
