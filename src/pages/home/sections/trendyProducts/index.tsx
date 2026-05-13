@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "@/assets/components/productCard/productCard";
-import style from "./trendyProducts.module.scss";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 import {
   fetchAllProducts,
@@ -8,31 +8,38 @@ import {
   fetchNewArrivalsProduct,
   fetchTopRatedProducts,
 } from "@/store/productSlice";
-import { useNavigate } from "react-router-dom";
+import style from "./trendyProducts.module.scss";
 
 const TABS = ["all", "new arrivals", "best seller", "top rated"];
+const PRODUCT_LIMIT = 8;
 
 export default function TrendyProducts() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [activeTab, setActiveTab] = useState<number>(0);
 
-  const dispatch = useAppDispatch();
-  const { items, loading, error } = useAppSelector(
-    (state: RootState) => state.products,
-  );
+  const { items } = useAppSelector((state: RootState) => state.products);
+
+  const visibleProducts = useMemo(() => {
+    return items.slice(0, PRODUCT_LIMIT);
+  }, [items]);
 
   useEffect(() => {
     const currentTab = TABS[activeTab];
+
     if (currentTab === "all") {
       dispatch(fetchAllProducts());
     }
+
     if (currentTab === "new arrivals") {
       dispatch(fetchNewArrivalsProduct());
     }
+
     if (currentTab === "best seller") {
       dispatch(fetchBestSellerProducts());
     }
+
     if (currentTab === "top rated") {
       dispatch(fetchTopRatedProducts());
     }
@@ -63,7 +70,7 @@ export default function TrendyProducts() {
           key={activeTab}
           className={`${style.all_products_container} ${style.animate}`}
         >
-          {items?.map((item) => (
+          {visibleProducts.map((item) => (
             <ProductCard key={item.id} card={item} />
           ))}
         </div>
