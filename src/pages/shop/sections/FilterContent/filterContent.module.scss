@@ -1,0 +1,209 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.block {
+  padding: 20px 0;
+  border-top: 1px solid $border-soft;
+}
+
+.blockHead {
+  margin-bottom: 14px;
+
+  h3 {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    @include font(
+      12px,
+      $weight: map-get($font-weights, black),
+      $height: 1.4,
+      $color: $text-main
+    );
+  }
+}
+
+.categoryList,
+.checkList {
+  display: grid;
+  gap: 10px;
+}
+
+.categoryBtn {
+  @include container(
+    100%,
+    null,
+    $radius-md,
+    1px solid $border-soft,
+    $brand-cream
+  );
+  min-height: 42px;
+  padding: 10px 13px;
+  color: $text-muted;
+  cursor: pointer;
+  text-align: left;
+  transition: $transition-fast;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, semibold),
+    $height: 1.4
+  );
+
+  &:hover {
+    border-color: $border-medium;
+    color: $brand-primary;
+    transform: translateY(-1px);
+  }
+}
+
+.categoryBtnActive {
+  border-color: $brand-primary;
+  background: $brand-primary-light;
+  color: $brand-primary;
+  box-shadow: 0 10px 24px $brand-primary-soft;
+}
+
+.checkItem {
+  @include flex($align: center, $gap: 10px);
+  cursor: pointer;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.35,
+    $color: $text-muted
+  );
+
+  input {
+    @include container(16px, 16px);
+    accent-color: $brand-primary;
+  }
+}
+
+.pills {
+  @include flex($gap: 10px);
+  flex-wrap: wrap;
+}
+
+.pill {
+  @include container(
+    null,
+    36px,
+    $radius-pill,
+    1px solid $border-soft,
+    $brand-white
+  );
+  padding: 0 14px;
+  color: $text-muted;
+  cursor: pointer;
+  transition: $transition-fast;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1
+  );
+
+  &:hover {
+    border-color: $brand-primary;
+    color: $brand-primary;
+  }
+}
+
+.activeFilter {
+  border-color: $brand-primary;
+  background: $brand-primary;
+  color: $text-white;
+}
+
+.priceRangeCard {
+  padding: 16px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, $brand-cream, $brand-white);
+}
+
+.priceHeader,
+.priceLabels {
+  @include flex($align: center, $justify: space-between);
+}
+
+.priceHeader {
+  margin-bottom: 18px;
+
+  span {
+    min-width: 54px;
+    padding: 7px 10px;
+    border-radius: $radius-pill;
+    background: $brand-white;
+    color: $brand-primary;
+    text-align: center;
+    box-shadow: 0 8px 20px $brand-primary-soft;
+    @include font(
+      13px,
+      $weight: map-get($font-weights, extra-bold),
+      $height: 1
+    );
+  }
+}
+
+.rangeSlider {
+  position: relative;
+  height: 30px;
+
+  input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    pointer-events: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @include container(18px, 18px, 50%, 4px solid $brand-primary, $brand-white);
+    cursor: pointer;
+    pointer-events: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: 0 5px 14px $brand-primary-soft;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    @include container(18px, 18px, 50%, 4px solid $brand-primary, $brand-white);
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 5px 14px $brand-primary-soft;
+  }
+}
+
+.sliderTrack,
+.sliderRange {
+  position: absolute;
+  top: 13px;
+  height: 5px;
+  border-radius: $radius-pill;
+}
+
+.sliderTrack {
+  width: 100%;
+  background: $brand-primary-soft;
+}
+
+.sliderRange {
+  left: var(--min-percent);
+  right: calc(100% - var(--max-percent));
+  background: linear-gradient(90deg, $brand-primary, $brand-gold);
+}
+
+.priceLabels {
+  margin-top: 8px;
+
+  span {
+    @include font(
+      11px,
+      $weight: map-get($font-weights, semibold),
+      $height: 1.4,
+      $color: $text-soft
+    );
+  }
+}

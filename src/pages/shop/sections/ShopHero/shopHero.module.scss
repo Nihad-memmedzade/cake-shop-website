@@ -1,0 +1,61 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.hero {
+  margin-bottom: 42px;
+  padding: clamp(34px, 5vw, 62px);
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background:
+    radial-gradient(circle at 12% 20%, $brand-primary-soft, transparent 28%),
+    linear-gradient(
+      135deg,
+      $brand-cream 0%,
+      $brand-white 58%,
+      $brand-primary-light 100%
+    );
+  box-shadow: $shadow-soft;
+
+  h1 {
+    margin: 4px 0 10px;
+    text-transform: uppercase;
+    @include font(
+      clamp(38px, 6vw, 74px),
+      $weight: map-get($font-weights, black),
+      $height: 0.95,
+      $color: $text-main
+    );
+  }
+}
+
+.kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.heroText {
+  max-width: 520px;
+  margin: 0;
+  @include font(
+    15px,
+    $weight: map-get($font-weights, regular),
+    $height: 1.7,
+    $color: $text-muted
+  );
+}
+
+@include respond(sm) {
+  .hero {
+    margin-bottom: 28px;
+    padding: 30px 22px;
+    border-radius: $radius-lg;
+  }
+}

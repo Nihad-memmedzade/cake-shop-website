@@ -1,0 +1,96 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.overlay {
+  @include position(fixed, $z-index: map-get($z-indexes, overlay));
+  inset: 0;
+  background: rgba(29, 19, 22, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition-normal;
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  @include position(fixed, 0, $right: 0, $z-index: map-get($z-indexes, drawer));
+  @include container(min(420px, 92vw), 100vh, 0, null, $brand-white);
+  box-shadow: $shadow-drawer;
+  transform: translateX(110%);
+  transition: transform $transition-normal;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerHead {
+  @include flex($align: center, $justify: space-between);
+  min-height: 76px;
+  padding: 0 20px;
+  border-bottom: 1px solid $border-soft;
+
+  span {
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    @include font(
+      11px,
+      $weight: map-get($font-weights, bold),
+      $height: 1.4,
+      $color: $text-soft
+    );
+  }
+
+  h3 {
+    margin: 0;
+    @include font(
+      18px,
+      $weight: map-get($font-weights, black),
+      $height: 1.2,
+      $color: $text-main
+    );
+  }
+}
+
+.drawerClose {
+  @include icon-button(40px, $brand-primary-light, $brand-primary);
+  border: 1px solid $border-medium;
+  font-size: 16px;
+  font-weight: map-get($font-weights, black);
+
+  &:hover {
+    background: $brand-primary;
+    color: $text-white;
+  }
+}
+
+.drawerBody {
+  height: calc(100vh - 76px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.drawerClearBtn {
+  @include container(
+    100%,
+    44px,
+    $radius-md,
+    1px solid $border-medium,
+    $brand-primary
+  );
+  margin-top: 18px;
+  color: $text-white;
+  cursor: pointer;
+  font-weight: map-get($font-weights, extra-bold);
+  transition: $transition-fast;
+
+  &:hover {
+    background: $brand-dark;
+  }
+}
