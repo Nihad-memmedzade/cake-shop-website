@@ -1,0 +1,111 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.toolbar {
+  @include flex($align: center, $justify: space-between, $gap: 18px);
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-lg;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.breadcrumbs {
+  @include flex($align: center, $gap: 8px);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $text-soft
+  );
+}
+
+.sep {
+  opacity: 0.55;
+}
+
+.resultCount {
+  margin: 0;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, semibold),
+    $height: 1.5,
+    $color: $text-muted
+  );
+}
+
+.mobileControls {
+  @include flex($align: center, $gap: 10px);
+}
+
+.select,
+.filterBtn {
+  @include container(
+    $height: 42px,
+    $border-r: $radius-md,
+    $border: 1px solid $border-soft,
+    $background: $brand-white
+  );
+  @include font(
+    13px,
+    $weight: map-get($font-weights, semibold),
+    $color: $text-main
+  );
+}
+
+.select {
+  min-width: 190px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.filterBtn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  cursor: pointer;
+  color: $brand-primary;
+  font-weight: map-get($font-weights, extra-bold);
+  text-transform: uppercase;
+
+  span {
+    @include container(21px, 21px, 50%, null, $brand-primary);
+    display: grid;
+    place-items: center;
+    color: $text-white;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 860px) {
+  .toolbar {
+    align-items: flex-start;
+  }
+
+  .filterBtn {
+    display: inline-flex;
+  }
+}
+
+@include respond(sm) {
+  .toolbar {
+    flex-direction: column;
+    border-radius: $radius-md;
+  }
+
+  .mobileControls {
+    width: 100%;
+  }
+
+  .select,
+  .filterBtn {
+    flex: 1;
+    min-width: 0;
+  }
+}
