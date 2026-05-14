@@ -1,0 +1,31 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.emptyState {
+  padding: 54px 20px;
+  border: 1px dashed $border-medium;
+  border-radius: $radius-xl;
+  background: $brand-cream;
+  text-align: center;
+
+  h3 {
+    margin: 0 0 8px;
+    @include font(
+      24px,
+      $weight: map-get($font-weights, black),
+      $height: 1.2,
+      $color: $text-main
+    );
+  }
+
+  p {
+    margin: 0;
+    @include font(
+      14px,
+      $weight: map-get($font-weights, regular),
+      $height: 1.6,
+      $color: $text-muted
+    );
+  }
+}
