@@ -1,0 +1,82 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.pagination {
+  @include flex($align: center, $justify: center, $gap: 18px);
+  margin-top: 42px;
+}
+
+.pageNumbers {
+  @include flex($align: center, $gap: 10px);
+}
+
+.pageBtn,
+.navBtn {
+  @include container(
+    $height: 40px,
+    $border-r: $radius-pill,
+    $border: 1px solid $border-soft,
+    $background: $brand-white
+  );
+  cursor: pointer;
+  transition: $transition-fast;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1,
+    $color: $text-muted
+  );
+
+  &:hover:not(:disabled) {
+    border-color: $brand-primary;
+    color: $brand-primary;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+.pageBtn {
+  width: 40px;
+  padding: 0;
+}
+
+.navBtn {
+  padding: 0 18px;
+}
+
+.activePage {
+  border-color: $brand-primary;
+  background: $brand-primary;
+  color: $text-white;
+
+  &:hover {
+    color: $text-white;
+  }
+}
+
+@include respond(sm) {
+  .pagination {
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .pageNumbers {
+    gap: 8px;
+  }
+
+  .pageBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navBtn {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+}
