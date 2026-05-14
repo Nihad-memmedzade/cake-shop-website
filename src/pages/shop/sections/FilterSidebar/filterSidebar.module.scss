@@ -1,0 +1,66 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.sidebar {
+  @include position(sticky, 18px);
+  align-self: start;
+  padding: 20px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.sidebarTop {
+  @include flex($align: center, $justify: space-between, $gap: 14px);
+  padding-bottom: 18px;
+}
+
+.sidebarKicker {
+  margin: 0 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  @include font(
+    11px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.sideTitle {
+  margin: 0;
+  @include font(
+    20px,
+    $weight: map-get($font-weights, black),
+    $height: 1.1,
+    $color: $text-main
+  );
+}
+
+.clearBtn {
+  @include container(
+    $height: 36px,
+    $border-r: $radius-pill,
+    $border: 1px solid $border-medium,
+    $background: $brand-primary-light
+  );
+  padding: 0 13px;
+  color: $brand-primary;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: map-get($font-weights, extra-bold);
+  transition: $transition-fast;
+
+  &:hover {
+    background: $brand-primary;
+    color: $text-white;
+  }
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    display: none;
+  }
+}
