@@ -1,0 +1,290 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.productDetails {
+  width: 100%;
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.breadcrumb {
+  @include flex($align: center, $gap: 8px);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $text-soft
+  );
+}
+
+.category {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  border-radius: $radius-pill;
+  background: $brand-primary-light;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.title {
+  margin: 0 0 16px;
+  overflow-wrap: anywhere;
+  @include font(
+    clamp(30px, 4vw, 48px),
+    $weight: map-get($font-weights, black),
+    $height: 1.05,
+    $color: $text-main
+  );
+}
+
+.ratingRow,
+.stars,
+.prices,
+.sizes,
+.cartRow,
+.wishlistBtn {
+  @include flex($align: center);
+}
+
+.ratingRow {
+  gap: 12px;
+  margin-bottom: 20px;
+  color: $text-muted;
+}
+
+.stars {
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.prices {
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.price {
+  @include font(
+    28px,
+    $weight: map-get($font-weights, black),
+    $height: 1.1,
+    $color: $brand-primary
+  );
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  @include font(
+    18px,
+    $weight: map-get($font-weights, bold),
+    $height: 1.2,
+    $color: $text-soft
+  );
+}
+
+.description {
+  margin: 0 0 28px;
+  overflow-wrap: anywhere;
+  @include font(15px, $height: 1.8, $color: $text-muted);
+}
+
+.optionRow {
+  margin-bottom: 26px;
+}
+
+.optionLabel {
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1.4,
+    $color: $text-main
+  );
+}
+
+.sizes {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sizeBtn {
+  @include container(null, 40px, $radius-pill, 1px solid $border-soft, $brand-white);
+  min-width: 58px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: $transition-fast;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1,
+    $color: $text-muted
+  );
+
+  &:hover {
+    border-color: $brand-primary;
+    color: $brand-primary;
+  }
+}
+
+.activeSize {
+  border-color: $brand-primary;
+  background: $brand-primary;
+  color: $text-white;
+}
+
+.cartRow {
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.quantityBox {
+  @include container(126px, 52px, $radius-pill, 1px solid $border-soft, $brand-cream);
+  @include flex($align: center, $justify: space-between);
+  flex: 0 0 126px;
+  padding: 0 16px;
+
+  button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: $text-main;
+    font-size: 22px;
+  }
+
+  span {
+    font-weight: map-get($font-weights, extra-bold);
+  }
+}
+
+.addToCart {
+  @include container(null, 52px, $radius-pill, 1px solid $brand-dark, $brand-dark);
+  flex: 1;
+  min-width: 0;
+  padding: 0 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: $transition-fast;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-white
+  );
+
+  &:hover {
+    background: $brand-primary;
+    border-color: $brand-primary;
+    transform: translateY(-2px);
+  }
+}
+
+.wishlistBtn {
+  gap: 9px;
+  margin-bottom: 26px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $text-main
+  );
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+.meta {
+  display: grid;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid $border-soft;
+
+  p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    @include font(14px, $height: 1.5, $color: $text-muted);
+  }
+
+  span {
+    color: $text-main;
+    font-weight: map-get($font-weights, extra-bold);
+  }
+}
+
+@include respond(md) {
+  .productDetails {
+    padding: 24px;
+    border-radius: $radius-lg;
+  }
+}
+
+@include respond(sm) {
+  .productDetails {
+    padding: 20px;
+    border-radius: $radius-md;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .ratingRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .cartRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quantityBox {
+    width: 100%;
+    flex: none;
+  }
+
+  .addToCart {
+    width: 100%;
+    flex: none;
+  }
+
+  .wishlistBtn {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

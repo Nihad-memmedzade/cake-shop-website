@@ -1,15 +1,18 @@
 import api from "@/api";
-
-
-type Filters = {
-  category?: string;
-  flavors?: string[];
-  tags?: string[];
-  sizes?: string[];
-  minPrice?: number;
-  maxPrice?: number;
-  sort?: string;
-};
+import type {
+  CreateProductReviewPayload,
+  ProductReview,
+} from "@/types/review";
+import type { Product } from "@/types/product";
+// type Filters = {
+//   category?: string;
+//   flavors?: string[];
+//   tags?: string[];
+//   sizes?: string[];
+//   minPrice?: number;
+//   maxPrice?: number;
+//   sort?: string;
+// };
 
 export const getProducts = async () => {
   // try {
@@ -22,6 +25,8 @@ export const getProducts = async () => {
   const response = await api.get("/products");
   return response.data;
 };
+
+
 
 // Arrival Products
 export const getNewArrivalProducts = async () => {
@@ -45,6 +50,34 @@ export const getLimitedEditionProducts = async () => {
   return response.data;
 };
 
+// Get reviews of product
+export const getProductReviews = async (
+  productId: number
+): Promise<ProductReview[]> => {
+  const response = await api.get(`/products/${productId}/reviews`);
+  return response.data;
+};
+
+// Create review of product
+export const createProductReview = async (
+  productId: number,
+  payload: CreateProductReviewPayload
+): Promise<ProductReview> => {
+  const response = await api.post(`/products/${productId}/reviews`, payload);
+  return response.data;
+};
+
+// Related Products
+export const getRelatedProducts = async (
+  productId: number,
+  limit = 8
+): Promise<Product[]> => {
+  const response = await api.get(`/products/${productId}/related`, {
+    params: { limit },
+  });
+
+  return response.data;
+};
 
 // Product By ID
 export const getProductById = async (id: number) => {

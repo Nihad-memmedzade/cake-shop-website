@@ -1,0 +1,330 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.reviewsSection {
+  margin-top: 82px;
+}
+
+.tabs {
+  @include flex($align: center);
+  margin-bottom: 30px;
+  border-bottom: 1px solid $border-soft;
+}
+
+.tab {
+  @include position(relative);
+  padding: 0 0 14px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, black),
+    $height: 1.4,
+    $color: $text-soft
+  );
+}
+
+.activeTab {
+  color: $brand-primary;
+
+  &::after {
+    content: "";
+    @include position(absolute, $left: 0, $bottom: -1px);
+    @include container(100%, 2px, $radius-pill, null, $brand-primary);
+  }
+}
+
+.reviewsBlock {
+  display: grid;
+  gap: 34px;
+}
+
+.sectionHead {
+  margin-bottom: 20px;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  @include font(
+    11px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.heading,
+.formTitle {
+  margin: 0;
+  @include font(
+    clamp(24px, 2.6vw, 34px),
+    $weight: map-get($font-weights, black),
+    $height: 1.15,
+    $color: $text-main
+  );
+}
+
+.reviewList {
+  display: grid;
+  gap: 18px;
+}
+
+.reviewItem {
+  @include flex($align: flex-start, $gap: 18px);
+  padding: 22px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.avatar {
+  @include container(58px, 58px, 50%, 1px solid $border-soft, $brand-primary-light);
+  display: grid;
+  place-items: center;
+  flex: 0 0 58px;
+  @include font(
+    15px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $brand-primary
+  );
+}
+
+.reviewContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.reviewTop {
+  @include flex($align: flex-start, $justify: space-between, $gap: 18px);
+  margin-bottom: 12px;
+}
+
+.reviewerName {
+  margin: 0 0 5px;
+  @include font(
+    17px,
+    $weight: map-get($font-weights, black),
+    $height: 1.2,
+    $color: $text-main
+  );
+}
+
+.reviewDate {
+  margin: 0;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.4,
+    $color: $text-soft
+  );
+}
+
+.stars {
+  @include flex($align: center, $gap: 3px);
+  color: $brand-gold;
+}
+
+.reviewText {
+  max-width: 900px;
+  margin: 0;
+  @include font(
+    15px,
+    $weight: map-get($font-weights, regular),
+    $height: 1.8,
+    $color: $text-muted
+  );
+}
+
+.formBlock {
+  padding: 26px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background:
+    radial-gradient(circle at 10% 0%, $brand-primary-soft, transparent 32%),
+    $brand-cream;
+}
+
+.formNote {
+  margin: -8px 0 24px;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, regular),
+    $height: 1.6,
+    $color: $text-muted
+  );
+}
+
+.ratingInputRow {
+  @include flex($align: center, $gap: 14px);
+  margin-bottom: 22px;
+}
+
+.ratingLabel {
+  @include font(
+    14px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $text-main
+  );
+}
+
+.interactiveStars {
+  @include flex($align: center, $gap: 4px);
+}
+
+.ratingStar {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $text-soft;
+  cursor: pointer;
+  line-height: 1;
+  transition: $transition-fast;
+
+  svg {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  &:hover {
+    color: $brand-gold;
+  }
+}
+
+.activeRatingStar {
+  color: $brand-gold;
+
+  svg {
+    fill: $brand-gold;
+  }
+}
+
+.reviewForm {
+  display: grid;
+  gap: 16px;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.textarea,
+.input {
+  @include container(
+    100%,
+    null,
+    $radius-md,
+    1px solid $border-soft,
+    $brand-white
+  );
+  padding: 15px 16px;
+  outline: none;
+  resize: none;
+  transition: $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.5,
+    $color: $text-main
+  );
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 12px 26px $brand-primary-soft;
+  }
+}
+
+.input {
+  height: 48px;
+}
+
+.checkboxRow {
+  @include flex($align: flex-start, $gap: 10px);
+  cursor: pointer;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.5,
+    $color: $text-muted
+  );
+
+  input {
+    margin-top: 3px;
+    accent-color: $brand-primary;
+  }
+}
+
+.submitBtn {
+  @include container(
+    fit-content,
+    48px,
+    $radius-pill,
+    1px solid $brand-dark,
+    $brand-dark
+  );
+  padding: 0 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: $transition-fast;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-white
+  );
+
+  &:hover {
+    background: $brand-primary;
+    border-color: $brand-primary;
+    transform: translateY(-2px);
+  }
+}
+
+@include respond(md) {
+  .reviewsSection {
+    margin-top: 64px;
+  }
+
+  .reviewTop {
+    flex-direction: column;
+  }
+}
+
+@include respond(sm) {
+  .reviewItem {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .formBlock {
+    padding: 20px;
+  }
+
+  .ratingInputRow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inputGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .submitBtn {
+    width: 100%;
+  }
+}
