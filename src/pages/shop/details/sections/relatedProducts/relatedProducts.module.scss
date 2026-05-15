@@ -1,0 +1,186 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.relatedProducts {
+  margin-top: 88px;
+}
+
+.sectionHead {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  @include font(
+    11px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.title {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  @include font(
+    clamp(24px, 2.8vw, 38px),
+    $weight: map-get($font-weights, black),
+    $height: 1.1,
+    $color: $text-main
+  );
+}
+
+.subtitle {
+  max-width: 520px;
+  margin: 0 auto;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, regular),
+    $height: 1.7,
+    $color: $text-muted
+  );
+}
+
+.relatedSwiper {
+  padding: 16px 6px 48px;
+}
+
+.slide {
+  height: auto;
+  background: $brand-cream;
+}
+
+:global(.relatedProductsSwiper .swiper-pagination) {
+  bottom: 8px !important;
+}
+
+:global(.relatedProductsSwiper .swiper-pagination-bullet) {
+  @include container(8px, 8px, $radius-pill, null, $text-soft);
+  opacity: 1;
+  transition: $transition-fast;
+}
+
+:global(.relatedProductsSwiper .swiper-pagination-bullet-active) {
+  width: 28px;
+  background: $brand-primary;
+}
+
+:global(.relatedProductsSwiper) {
+  --swiper-navigation-size: 8px !important;
+}
+
+:global(.relatedProductsSwiper .swiper-button-next),
+:global(.relatedProductsSwiper .swiper-button-prev) {
+  @include container(
+    64px,
+    64px,
+    50%,
+    1px solid $border-soft,
+    rgba(255, 255, 255, 0.86)
+  );
+  color: $brand-primary;
+  box-shadow: $shadow-soft;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.96);
+  transition: $transition-fast;
+}
+
+:global(.relatedProductsSwiper:hover .swiper-button-next),
+:global(.relatedProductsSwiper:hover .swiper-button-prev) {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
+:global(.relatedProductsSwiper .swiper-button-next::after),
+:global(.relatedProductsSwiper .swiper-button-prev::after) {
+  font-size: 8px !important;
+  width: 8px !important;
+  height: 8px !important;
+  line-height: 1 !important;
+}
+
+:global(.relatedProductsSwiper .swiper-button-next svg),
+:global(.relatedProductsSwiper .swiper-button-prev svg) {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+:global(.relatedProductsSwiper .swiper-button-next svg path),
+:global(.relatedProductsSwiper .swiper-button-prev svg path) {
+  stroke-width: 1.6px !important;
+}
+
+:global(.relatedProductsSwiper .swiper-button-prev) {
+  left: 12px;
+}
+
+:global(.relatedProductsSwiper .swiper-button-next) {
+  right: 12px;
+}
+
+@include respond(md) {
+  .relatedProducts {
+    margin-top: 66px;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next),
+  :global(.relatedProductsSwiper .swiper-button-prev) {
+    display: none;
+  }
+}
+
+@include respond(sm) {
+  .relatedProducts {
+    margin-top: 54px;
+  }
+
+  .sectionHead {
+    margin-bottom: 18px;
+  }
+
+  .relatedSwiper {
+    padding: 12px 2px 42px;
+  }
+
+  :global(.relatedProductsSwiper) {
+    --swiper-navigation-size: 7px !important;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next),
+  :global(.relatedProductsSwiper .swiper-button-prev) {
+    width: 30px;
+    height: 30px;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next::after),
+  :global(.relatedProductsSwiper .swiper-button-prev::after) {
+    font-size: 7px !important;
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next svg),
+  :global(.relatedProductsSwiper .swiper-button-prev svg) {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next svg path),
+  :global(.relatedProductsSwiper .swiper-button-prev svg path) {
+    stroke-width: 1.5px !important;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-prev) {
+    left: 8px;
+  }
+
+  :global(.relatedProductsSwiper .swiper-button-next) {
+    right: 8px;
+  }
+}
