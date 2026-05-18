@@ -9,6 +9,7 @@ import {
   fetchTopRatedProducts,
 } from "@/store/productSlice";
 import style from "./trendyProducts.module.scss";
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 const TABS = ["all", "new arrivals", "best seller", "top rated"];
 const PRODUCT_LIMIT = 8;
@@ -19,8 +20,9 @@ export default function TrendyProducts() {
 
   const [activeTab, setActiveTab] = useState<number>(0);
 
-  const { items } = useAppSelector((state: RootState) => state.products);
-
+  const { items, loading } = useAppSelector(
+    (state: RootState) => state.products,
+  );
   const visibleProducts = useMemo(() => {
     return items.slice(0, PRODUCT_LIMIT);
   }, [items]);
@@ -65,17 +67,26 @@ export default function TrendyProducts() {
             </p>
           ))}
         </div>
+        {loading ? (
+          <PageLoader
+            title="Loading trendy cakes"
+            text="Fresh products are coming soon."
+          />
+        ) : (
+          <div
+            key={activeTab}
+            className={`${style.all_products_container} ${style.animate}`}
+          >
+            {visibleProducts.map((item) => (
+              <ProductCard key={item.id} card={item} />
+            ))}
+          </div>
+        )}
 
         <div
-          key={activeTab}
-          className={`${style.all_products_container} ${style.animate}`}
+          className={style.discoverMore}
+          onClick={() => navigate("/products")}
         >
-          {visibleProducts.map((item) => (
-            <ProductCard key={item.id} card={item} />
-          ))}
-        </div>
-
-        <div className={style.discoverMore} onClick={() => navigate("/products")}>
           <p>discover more</p>
         </div>
       </div>
