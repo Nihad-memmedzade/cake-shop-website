@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 type RelatedProductsProps = {
   currentProductId: number;
@@ -37,17 +38,15 @@ export default function RelatedProducts({
     };
   }, [dispatch, currentProductId]);
 
-  if (relatedProductsLoading) {
-    return (
-      <section className={styles.relatedProducts}>
-        <div className={styles.sectionHead}>
-          <p className={styles.kicker}>You may also like</p>
-          <h2 className={styles.title}>Related products</h2>
-          <p className={styles.subtitle}>Loading related cakes...</p>
-        </div>
-      </section>
-    );
-  }
+if (relatedProductsLoading) {
+  return (
+    <PageLoader
+      title="Loading related cakes"
+      text="Finding similar cakes for you."
+    />
+  );
+}
+
 
   if (relatedProductsError) {
     return (

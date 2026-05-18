@@ -8,6 +8,7 @@ import ProductDetails from "./sections/productDetails";
 import ProductReviews from "./sections/productReviews";
 import RelatedProducts from "./sections/relatedProducts";
 import style from "./detail.module.scss";
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 export default function Details() {
   const { id } = useParams();
@@ -27,13 +28,25 @@ export default function Details() {
     };
   }, [dispatch, id]);
 
+  if (loading) {
+  return (
+    <PageLoader
+      fullPage
+      title="Preparing product"
+      text="We are loading fresh cake details for you."
+    />
+  );
+}
+
+
   return (
     <Layout>
       <main className={style.detail}>
         {loading && (
-          <div className={style.stateBox}>
-            <p>Loading product...</p>
-          </div>
+          <PageLoader
+            title="Preparing product"
+            text="We are loading fresh cake details for you."
+          />
         )}
 
         {error && (
