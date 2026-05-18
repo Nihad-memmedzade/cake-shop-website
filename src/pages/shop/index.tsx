@@ -16,6 +16,7 @@ import ShopHero from "./sections/ShopHero";
 import ShopPagination from "./sections/ShopPagination";
 import ShopToolbar from "./sections/ShopToolbar";
 import style from "./shop.module.scss";
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 const PRODUCTS_PER_PAGE = 6;
 
@@ -273,6 +274,17 @@ export default function Shop() {
       handlePageChange(totalPages);
     }
   }, [loading, currentPage, totalPages]);
+
+  if (loading) {
+  return (
+    <PageLoader
+      fullPage
+      title="Loading cakes"
+      text="Fresh products are coming in a moment."
+    />
+  );
+}
+
 
   return (
     <Layout>
