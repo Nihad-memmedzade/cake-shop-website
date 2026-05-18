@@ -1,5 +1,6 @@
 import Footer from "./footer/footer";
 import Header from "./header/Header";
+import BackToTop from "./backToTop/backToTop";
 
 interface Props {
   children: React.ReactNode;
@@ -7,10 +8,11 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <div >
+    <div>
       <Header />
       <main>{children}</main>
-      <Footer/>
+      <Footer />
+      <BackToTop />
     </div>
   );
 }
