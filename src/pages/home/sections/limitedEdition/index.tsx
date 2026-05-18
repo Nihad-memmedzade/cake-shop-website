@@ -11,6 +11,7 @@ import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import ProductCard from "@/assets/components/productCard/productCard";
 import { fetchLimitedEditionProducts } from "@/store/productSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 export default function LimitedEdition() {
   const dispatch = useAppDispatch();
@@ -23,20 +24,21 @@ export default function LimitedEdition() {
     dispatch(fetchLimitedEditionProducts());
   }, [dispatch]);
 
-  if (limitedEditionLoading) {
-    return (
-      <section className="limitedEdition">
-        <div className="limitedEdition__head">
-          <h1 className="limited-title">Limited Edition</h1>
-          <p className="limited-subtitle">Loading special cakes...</p>
-        </div>
-      </section>
-    );
-  }
+if (limitedEditionLoading) {
+  return (
+    <PageLoader
+      title="Loading limited cakes"
+      text="Special cakes are being prepared."
+    />
+  );
+}
+
 
   if (!limitedEditionItems.length) {
     return null;
   }
+
+  
 
   return (
     <section className="limitedEdition">
