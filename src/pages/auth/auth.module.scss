@@ -1,0 +1,265 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.pageCenter {
+  width: 100%;
+  min-height: calc(100vh - 170px);
+  display: grid;
+  place-items: center;
+  padding: 58px 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 14% 16%, $brand-primary-soft, transparent 30%),
+    radial-gradient(circle at 86% 80%, rgba(197, 155, 95, 0.16), transparent 28%),
+    linear-gradient(
+      135deg,
+      $brand-cream 0%,
+      $brand-white 54%,
+      $brand-primary-light 100%
+    );
+}
+
+.card {
+  width: min(94%, 620px);
+  padding: clamp(30px, 5vw, 48px);
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: $shadow-card;
+  backdrop-filter: blur(12px);
+}
+
+.header {
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  @include font(
+    clamp(30px, 4vw, 46px),
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-main
+  );
+}
+
+.subtitle {
+  max-width: 390px;
+  margin: 12px auto 0;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, regular),
+    $height: 1.7,
+    $color: $text-muted
+  );
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}
+
+.field {
+  min-width: 0;
+}
+
+.input {
+  @include container(
+    100%,
+    52px,
+    $radius-md,
+    1px solid $border-soft,
+    $brand-cream
+  );
+  padding: 0 16px;
+  outline: none;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast,
+    box-shadow $transition-fast,
+    transform $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, medium),
+    $height: 1,
+    $color: $text-main
+  );
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: $brand-primary;
+    background: $brand-white;
+    box-shadow: 0 14px 32px $brand-primary-soft;
+    transform: translateY(-1px);
+  }
+}
+
+.errorText {
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid $border-medium;
+  border-radius: $radius-md;
+  background: $brand-primary-light;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.45,
+    $color: $brand-primary
+  );
+}
+
+.row {
+  @include flex($align: center, $justify: space-between, $gap: 14px);
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.remember {
+  @include flex($align: center, $gap: 10px);
+  cursor: pointer;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.45,
+    $color: $text-muted
+  );
+
+  input {
+    width: 16px;
+    height: 16px;
+    accent-color: $brand-primary;
+  }
+}
+
+.link {
+  width: fit-content;
+  text-decoration: none;
+  transition: $transition-fast;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.45,
+    $color: $brand-primary
+  );
+
+  &:hover {
+    color: $brand-dark;
+  }
+}
+
+.submitBtn {
+  @include container(
+    100%,
+    54px,
+    $radius-pill,
+    1px solid $brand-dark,
+    $brand-dark
+  );
+  margin-top: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 16px 38px rgba(81, 49, 58, 0.2);
+  transition:
+    transform $transition-fast,
+    background $transition-fast,
+    border-color $transition-fast,
+    box-shadow $transition-fast;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-white
+  );
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: $brand-primary;
+    border-color: $brand-primary;
+    box-shadow: 0 20px 46px rgba(185, 72, 103, 0.24);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
+
+.bottomText {
+  @include flex($align: center, $justify: center, $gap: 6px);
+  flex-wrap: wrap;
+  margin: 6px 0 0;
+  text-align: center;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.5,
+    $color: $text-muted
+  );
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.inlineBtn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.5,
+    $color: $brand-primary
+  );
+
+  &:hover {
+    color: $brand-dark;
+  }
+}
+
+@include respond(sm) {
+  .pageCenter {
+    min-height: calc(100vh - 120px);
+    padding: 34px 14px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 26px 18px;
+    border-radius: $radius-lg;
+  }
+
+  .header {
+    margin-bottom: 22px;
+  }
+
+  .title {
+    letter-spacing: 0.08em;
+  }
+
+  .input {
+    height: 50px;
+  }
+
+  .row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .submitBtn {
+    height: 52px;
+  }
+}

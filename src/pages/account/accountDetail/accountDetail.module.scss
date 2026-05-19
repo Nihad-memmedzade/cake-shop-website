@@ -1,0 +1,167 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.formSection {
+  padding: 28px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.sectionHead {
+  margin-bottom: 22px;
+
+  h2 {
+    margin: 0;
+    @include font(
+      28px,
+      $weight: map-get($font-weights, black),
+      $height: 1.15,
+      $color: $text-main
+    );
+  }
+}
+
+.kicker {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  @include font(
+    11px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.rowTwo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.input {
+  @include container(
+    100%,
+    50px,
+    $radius-md,
+    1px solid $border-soft,
+    $brand-cream
+  );
+  padding: 0 16px;
+  outline: none;
+  transition: $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, medium),
+    $color: $text-main
+  );
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: $brand-primary;
+    background: $brand-white;
+    box-shadow: 0 12px 28px $brand-primary-soft;
+  }
+}
+
+.passwordBlock {
+  display: grid;
+  gap: 16px;
+  margin-top: 12px;
+  padding-top: 22px;
+  border-top: 1px solid $border-soft;
+}
+
+.formTitle {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1.4,
+    $color: $text-main
+  );
+}
+
+.submitBtn {
+  @include container(
+    fit-content,
+    50px,
+    $radius-pill,
+    1px solid $brand-dark,
+    $brand-dark
+  );
+  margin-top: 8px;
+  padding: 0 28px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: $transition-fast;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-white
+  );
+
+  &:hover {
+    background: $brand-primary;
+    border-color: $brand-primary;
+    transform: translateY(-2px);
+  }
+}
+
+@include respond(sm) {
+  .formSection {
+    padding: 22px;
+    border-radius: $radius-lg;
+  }
+
+  .rowTwo {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHead h2 {
+    font-size: 24px;
+  }
+
+  .submitBtn {
+    width: 100%;
+  }
+}
+
+.messageError,
+.messageSuccess {
+  margin: 0;
+  padding: 11px 13px;
+  border-radius: $radius-md;
+  @include font(
+    13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.45
+  );
+}
+
+.messageError {
+  border: 1px solid $border-medium;
+  background: $brand-primary-light;
+  color: $brand-primary;
+}
+
+.messageSuccess {
+  border: 1px solid rgba(54, 140, 92, 0.2);
+  background: rgba(54, 140, 92, 0.1);
+  color: #26734d;
+}
