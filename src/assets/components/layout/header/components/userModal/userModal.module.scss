@@ -35,7 +35,11 @@
   animation: drawerIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
   background:
-    radial-gradient(circle at top left, rgba(248, 228, 235, 0.9), transparent 34%),
+    radial-gradient(
+      circle at top left,
+      rgba(248, 228, 235, 0.9),
+      transparent 34%
+    ),
     $brand-cream;
 }
 
@@ -71,7 +75,7 @@
     $background: $brand-primary-soft,
     $color: $brand-dark
   );
-
+  padding-bottom: 4px;
   @include font($size: 18px, $weight: 900);
 
   &:hover {
@@ -167,7 +171,11 @@
   @include container(
     $border-r: 20px,
     $border: 1px solid $border-soft,
-    $background: linear-gradient(135deg, $brand-white 0%, $brand-primary-light 100%)
+    $background: linear-gradient(
+        135deg,
+        $brand-white 0%,
+        $brand-primary-light 100%
+      )
   );
 
   @include flex($gap: 14px, $align: center);
