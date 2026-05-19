@@ -68,7 +68,7 @@
     $background: $brand-primary-soft,
     $color: $brand-dark
   );
-
+  padding-bottom: 4px;  
   &:hover {
     background: rgba(185, 72, 103, 0.16);
     transform: translateY(-1px);
@@ -93,7 +93,11 @@
   padding: 14px 16px;
   border-radius: $radius-md;
   border: 1px solid $border-soft;
-  background: linear-gradient(135deg, $brand-white 0%, $brand-primary-light 100%);
+  background: linear-gradient(
+    135deg,
+    $brand-white 0%,
+    $brand-primary-light 100%
+  );
 
   span:first-child {
     text-transform: uppercase;
@@ -213,7 +217,11 @@
 }
 
 .cartQtyBtn {
-  @include icon-button($size: 28px, $background: $brand-white, $color: $text-main);
+  @include icon-button(
+    $size: 28px,
+    $background: $brand-white,
+    $color: $text-main
+  );
 
   box-shadow: 0 6px 16px rgba(81, 32, 46, 0.08);
 
