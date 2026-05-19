@@ -1,0 +1,116 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.formSection {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  @include font(
+    11px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.4,
+    $color: $brand-primary
+  );
+}
+
+.formTitle {
+  margin: 0 0 20px;
+  @include font(
+    28px,
+    $weight: map-get($font-weights, black),
+    $height: 1.15,
+    $color: $text-main
+  );
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.input,
+.textarea {
+  @include container(
+    100%,
+    null,
+    $radius-md,
+    1px solid $border-soft,
+    $brand-cream
+  );
+  padding: 15px 16px;
+  outline: none;
+  transition: $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, medium),
+    $height: 1.5,
+    $color: $text-main
+  );
+
+  &::placeholder {
+    color: $text-soft;
+  }
+
+  &:focus {
+    border-color: $brand-primary;
+    background: $brand-white;
+    box-shadow: 0 12px 28px $brand-primary-soft;
+  }
+}
+
+.input {
+  height: 48px;
+}
+
+.textarea {
+  min-height: 210px;
+  resize: vertical;
+}
+
+.submitBtn {
+  @include container(
+    fit-content,
+    50px,
+    $radius-pill,
+    1px solid $brand-dark,
+    $brand-dark
+  );
+  padding: 0 28px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: $transition-fast;
+  @include font(
+    12px,
+    $weight: map-get($font-weights, black),
+    $height: 1,
+    $color: $text-white
+  );
+
+  &:hover {
+    background: $brand-primary;
+    border-color: $brand-primary;
+    transform: translateY(-2px);
+  }
+}
+
+@include respond(sm) {
+  .formSection {
+    padding: 22px;
+    border-radius: $radius-lg;
+  }
+
+  .submitBtn {
+    width: 100%;
+  }
+}
