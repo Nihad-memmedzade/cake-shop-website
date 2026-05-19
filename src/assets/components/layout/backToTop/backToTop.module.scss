@@ -1,0 +1,75 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.backToTop {
+  @include container(
+    76px,
+    76px,
+    50%,
+    1px solid $border-medium,
+    rgba(255, 255, 255, 0.9)
+  );
+  @include position(fixed, null, null, 28px, 28px, map-get($z-indexes, header));
+  display: grid;
+  place-items: center;
+  color: $brand-primary;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 18px 42px rgba(81, 49, 58, 0.18),
+    0 0 0 6px $brand-primary-soft;
+  transition:
+    opacity $transition-normal,
+    visibility $transition-normal,
+    transform $transition-normal,
+    background $transition-fast,
+    color $transition-fast,
+    box-shadow $transition-fast;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    background: $brand-primary;
+    color: $text-white;
+    transform: translateY(0) scale(1.04);
+    box-shadow:
+      0 22px 52px rgba(185, 72, 103, 0.28),
+      0 0 0 8px rgba(185, 72, 103, 0.12);
+
+    svg {
+      transform: translateY(-2px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+@include respond(sm) {
+  .backToTop {
+    width: 48px;
+    height: 48px;
+    right: 18px;
+    bottom: 18px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
