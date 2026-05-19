@@ -21,11 +21,12 @@ export interface ChangePasswordPayload {
   newPassword: string;
 }
 
+//Register User
 export const registerUser = async (data: RegisterPayload) => {
   const response = await api.post("/auth/register", data);
   return response.data;
 };
-
+//Login User
 export const loginUser = async (data: LoginPayload) => {
   const response = await api.post("/auth/login", data);
   return response.data;
