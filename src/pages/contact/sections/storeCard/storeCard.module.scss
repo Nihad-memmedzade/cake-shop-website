@@ -1,0 +1,59 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.topGrid {
+  min-width: 0;
+}
+
+.storeCard {
+  padding: 26px;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  background: $brand-white;
+  box-shadow: $shadow-soft;
+}
+
+.storeTitle {
+  margin: 0 0 18px;
+  @include font(
+    24px,
+    $weight: map-get($font-weights, black),
+    $height: 1.15,
+    $color: $text-main
+  );
+}
+
+.storeBlock {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 18px;
+
+  p {
+    margin: 0;
+    @include font(14px, $height: 1.6, $color: $text-muted);
+  }
+}
+
+.storeLink {
+  width: fit-content;
+  text-decoration: none;
+  transition: $transition-fast;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.7,
+    $color: $text-main
+  );
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+@include respond(sm) {
+  .storeCard {
+    padding: 22px;
+    border-radius: $radius-lg;
+  }
+}

@@ -1,0 +1,45 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.mapCard {
+  height: 520px;
+  width: 100%;
+  border: 1px solid $border-soft;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $brand-cream;
+  box-shadow: $shadow-soft;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.popup {
+  min-width: 190px;
+}
+
+.popupTitle {
+  margin: 0 0 4px;
+  @include font(
+    14px,
+    $weight: map-get($font-weights, black),
+    $height: 1.3,
+    $color: $text-main
+  );
+}
+
+.popupText {
+  margin: 0;
+  @include font(12px, $height: 1.4, $color: $text-muted);
+}
+
+@include respond(sm) {
+  .mapCard {
+    height: 380px;
+    border-radius: $radius-lg;
+  }
+}
