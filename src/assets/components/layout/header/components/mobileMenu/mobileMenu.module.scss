@@ -10,7 +10,11 @@
   @include flex($direction: column);
 
   background:
-    radial-gradient(circle at top left, rgba(248, 228, 235, 0.85), transparent 32%),
+    radial-gradient(
+      circle at top left,
+      rgba(248, 228, 235, 0.85),
+      transparent 32%
+    ),
     $brand-cream;
 
   animation: menuIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -21,118 +25,124 @@
 }
 
 .mobileMenuHeader {
-  height: $header-height;
-  padding: 0 28px;
+  height: $header-height-mobile;
+  padding: 0 12px;
 
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: 34px auto 1fr auto;
+  gap: 7px;
   align-items: center;
 
   border-bottom: 1px solid $border-soft;
+  background: rgba(255, 255, 255, 0.78);
 }
 
-.mobileCloseBtn,
-.mobileCartBtn {
-  @include position($position: relative);
-  @include icon-button(
-    $size: 44px,
-    $background: $brand-primary-soft,
-    $color: $brand-dark
-  );
+.mobileCloseBtn {
+  grid-column: 1;
+  position: relative;
 
-  @include font($size: 18px, $weight: 900);
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
 
-  &:hover {
-    background: rgba(185, 72, 103, 0.16);
-    transform: translateY(-1px);
+  span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 20px;
+    height: 2px;
+    border-radius: $radius-pill;
+    background: $brand-dark;
+    transform-origin: center;
   }
 
-  img {
-    width: 22px;
-    height: 22px;
+  span:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
   }
-}
 
-.cartBadge {
-  @include position($position: absolute, $top: 5px, $right: 2px);
-  @include container(
-    $height: 18px,
-    $border-r: $radius-pill,
-    $background: $brand-primary,
-    $min-width: 18px
-  );
-
-  display: grid;
-  place-items: center;
-  padding: 0 5px;
-
-  @include font($size: 10px, $weight: 900, $color: $text-white);
+  span:last-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 }
 
 .mobileLogo {
-  height: 52px;
+  grid-column: 2;
+  height: 38px;
   display: grid;
   place-items: center;
   cursor: pointer;
 
   img {
-    height: 48px;
-    max-width: 138px;
+    width: 92px;
+    height: 36px;
     object-fit: contain;
   }
 }
 
-.mobileMenuBody {
-  flex: 1;
-  padding: 28px;
-  overflow-y: auto;
+.mobileHeaderActions {
+  grid-column: 4;
+
+  @include flex($align: center, $justify: flex-end, $gap: 2px);
 }
 
-.mobileSearch {
-  @include position($position: relative);
+.mobileActionBtn {
+  position: relative;
 
-  margin-bottom: 26px;
+  width: 29px;
+  height: 29px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
 
-  input {
-    @include container(
-      $width: 100%,
-      $height: 52px,
-      $border-r: $radius-pill,
-      $border: 1px solid $border-medium,
-      $background: $brand-white
-    );
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    padding: 0 54px 0 18px;
-    outline: none;
-    transition: $transition-fast;
-    box-shadow: $shadow-soft;
-
-    @include font($size: 15px, $weight: 700, $color: $brand-dark);
-
-    &::placeholder {
-      color: $text-soft;
-    }
-
-    &:focus {
-      border-color: rgba(185, 72, 103, 0.58);
-      box-shadow: 0 14px 34px rgba(185, 72, 103, 0.12);
-    }
+  img {
+    width: 16px;
+    height: 16px;
   }
+}
 
-  button {
-    @include position($position: absolute, $top: 50%, $right: 16px);
+.mobileIconWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-
-    img {
-      width: 22px;
-      height: 22px;
-      opacity: 0.75;
-    }
+  img {
+    width: 18px;
+    height: 18px;
   }
+}
+
+.cartBadge,
+.wishlistBadge {
+  @include position($position: absolute, $top: -7px, $right: -8px);
+  @include container(
+    $height: 15px,
+    $border-r: $radius-pill,
+    $background: #f58220,
+    $min-width: 15px
+  );
+
+  display: grid;
+  place-items: center;
+  padding: 0 3px;
+  border: 1px solid $brand-white;
+
+  @include font($size: 8px, $weight: 900, $color: $text-white);
+}
+
+.mobileMenuBody {
+  flex: 1;
+  padding: 24px 28px;
+  overflow-y: auto;
 }
 
 .mobileLinks {
@@ -175,7 +185,7 @@
 .mobileMenuFooter {
   padding: 20px 28px 28px;
   border-top: 1px solid $border-dark;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.82);
   box-shadow: 0 -14px 34px rgba(81, 32, 46, 0.06);
 }
 
@@ -184,7 +194,11 @@
     $width: 100%,
     $border-r: $radius-lg,
     $border: 1px solid $border-soft,
-    $background: linear-gradient(135deg, $brand-white 0%, $brand-primary-light 100%)
+    $background: linear-gradient(
+        135deg,
+        $brand-white 0%,
+        $brand-primary-light 100%
+      )
   );
 
   @include flex($gap: 12px, $align: center);
@@ -260,6 +274,7 @@
 
   min-height: 58px;
   padding: 12px;
+  position: relative;
 
   @include flex($direction: column, $gap: 4px);
 
@@ -278,18 +293,52 @@
 @include respond(sm) {
   .mobileMenuHeader {
     height: $header-height-mobile;
-    padding: $header-padding-mobile;
-    grid-template-columns: 42px 1fr 42px;
+    padding: 0 12px;
+    grid-template-columns: 34px auto 1fr auto;
+    gap: 6px;
   }
 
-  .mobileCloseBtn,
-  .mobileCartBtn {
-    width: 42px;
-    height: 42px;
+  .mobileCloseBtn {
+    width: 32px;
+    height: 32px;
+
+    span {
+      width: 20px;
+    }
   }
 
   .mobileLogo img {
-    max-width: 120px;
+    width: 62px;
+    height: 36px;
+  }
+
+  .mobileActionBtn {
+    width: 29px;
+    height: 29px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .mobileIconWrap img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobileHeaderActions {
+    gap: 2px;
+  }
+
+  .cartBadge,
+  .wishlistBadge {
+    top: 8px;
+    right: -8px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3px;
+    font-size: 8px;
   }
 
   .mobileMenuBody {
@@ -305,9 +354,7 @@
 
     @include font($size: 15px);
   }
-}
 
-@include respond(xs) {
   .mobileOptionGrid {
     grid-template-columns: 1fr;
   }
