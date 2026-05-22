@@ -1,11 +1,9 @@
 import type { MenuItem } from "@/types/navigation";
 
 export const HEADER_MENU: MenuItem[] = [
-  { label: "HOME", path: "/" },
-  { label: "SHOP", path: "/products" },
-  { label: "CONTACT", path: "/contact" },
-  { label: "PAGES", path: "/pages" },
-  { label: "ABOUT", path: "/about" },
+  { label: "common.links.home", path: "/" },
+  { label: "common.links.shop", path: "/products" },
+  { label: "common.links.contact", path: "/contact" },
 ];
 
 export const CLOSE_ANIMATION_TIME = 280;
