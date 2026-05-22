@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+
+import { getLocalizedPath } from "@/helpers/languagePath";
 
 import style from "./userModal.module.scss";
 
@@ -29,12 +32,20 @@ export default function UserModal({
   onLogin,
   onLogout,
 }: UserModalProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const handleAccountNavigate = () => {
+    onClose();
+    navigate(getLocalizedPath("/account/details"));
+  };
 
   return (
     <>
       <div
-        className={`${style.backWall} ${isClosing ? style.backWallClosing : ""}`}
+        className={`${style.backWall} ${
+          isClosing ? style.backWallClosing : ""
+        }`}
         onClick={onClose}
       />
 
@@ -46,9 +57,16 @@ export default function UserModal({
         <div className={style.modalTop}>
           <div>
             <p className={style.modalKicker}>
-              {user ? "Welcome back" : "Account"}
+              {user
+                ? t("common.header.welcome_back")
+                : t("common.links.account")}
             </p>
-            <h3>{user ? "My account" : "Login"}</h3>
+
+            <h3>
+              {user
+                ? t("common.header.my_account")
+                : t("common.header.login")}
+            </h3>
           </div>
 
           <button type="button" className={style.closeIcon} onClick={onClose}>
@@ -65,7 +83,8 @@ export default function UserModal({
 
               <div>
                 <p>
-                  Welcome, <strong>{user.fullName}</strong>
+                  {t("common.header.welcome_back")},{" "}
+                  <strong>{user.fullName}</strong>
                 </p>
                 <span>{user.email}</span>
               </div>
@@ -74,12 +93,9 @@ export default function UserModal({
             <button
               type="button"
               className={style.loginBtn}
-              onClick={() => {
-                onClose();
-                navigate("/account/details");
-              }}
+              onClick={handleAccountNavigate}
             >
-              MY ACCOUNT
+              {t("common.header.my_account")}
             </button>
 
             <button
@@ -87,13 +103,13 @@ export default function UserModal({
               className={style.logoutBtn}
               onClick={onLogout}
             >
-              LOG OUT
+              {t("common.header.logout")}
             </button>
           </div>
         ) : (
           <form className={style.formModal} onSubmit={onLogin}>
             <div className={style.inputGroup}>
-              <label>Email address</label>
+              <label>{t("common.header.email")}</label>
               <input
                 className={style.modalInput}
                 type="email"
@@ -105,11 +121,11 @@ export default function UserModal({
             </div>
 
             <div className={style.inputGroup}>
-              <label>Password</label>
+              <label>{t("common.header.password")}</label>
               <input
                 className={style.modalInput}
                 type="password"
-                placeholder="Enter your password"
+                placeholder={t("common.header.password_placeholder")}
                 value={modalPassword}
                 onChange={(e) => setModalPassword(e.target.value)}
                 required
@@ -119,13 +135,15 @@ export default function UserModal({
             {error && <p className={style.errorText}>{error}</p>}
 
             <button type="submit" className={style.loginBtn} disabled={loading}>
-              {loading ? "LOGGING..." : "LOG IN"}
+              {loading
+                ? t("common.header.logging")
+                : t("common.header.login")}
             </button>
 
             <p className={style.createAcc}>
-              No account yet?{" "}
-              <Link to="/auth/register" onClick={onClose}>
-                Create Account
+              {t("common.header.no_account")}{" "}
+              <Link to={getLocalizedPath("/auth/register")} onClick={onClose}>
+                {t("common.header.create_account")}
               </Link>
             </p>
           </form>
