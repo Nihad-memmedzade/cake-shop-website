@@ -1,7 +1,7 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import style from "./cartDrawer.module.scss";
-
+import { getLocalizedPath } from "@/helpers/languagePath";
 import { useAppDispatch } from "@/store/store";
 
 import {
@@ -10,6 +10,8 @@ import {
   removeFromCart,
 } from "@/store/cartSlice";
 
+import style from "./cartDrawer.module.scss";
+
 type CartDrawerProps = {
   isClosing?: boolean;
   shoppingList: any[];
@@ -17,34 +19,38 @@ type CartDrawerProps = {
   onClose: () => void;
 };
 
-
 export default function CartDrawer({
   isClosing = false,
   shoppingList,
   subtotal,
   onClose,
 }: CartDrawerProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const cartCount = shoppingList.length;
+  const itemText =
+    cartCount === 1 ? t("common.cart.item") : t("common.cart.items");
 
   return (
     <>
-     <div
-  className={`${style.backWall} ${isClosing ? style.backWallClosing : ""}`}
-  onClick={onClose}
-/>
+      <div
+        className={`${style.backWall} ${
+          isClosing ? style.backWallClosing : ""
+        }`}
+        onClick={onClose}
+      />
 
       <aside
-  className={`${style.cartDrawer} ${
-    isClosing ? style.cartDrawerClosing : ""
-  }`}
->
+        className={`${style.cartDrawer} ${
+          isClosing ? style.cartDrawerClosing : ""
+        }`}
+      >
         <div className={style.cartHeader}>
           <div>
-            <p className={style.cartKicker}>Your cart</p>
-            <h3 className={style.cartTitle}>Shopping Bag</h3>
+            <p className={style.cartKicker}>{t("common.cart.kicker")}</p>
+            <h3 className={style.cartTitle}>{t("common.cart.title")}</h3>
           </div>
 
           <button type="button" className={style.cartClose} onClick={onClose}>
@@ -53,24 +59,26 @@ export default function CartDrawer({
         </div>
 
         <div className={style.cartCount}>
-          <span>{cartCount} item{cartCount !== 1 ? "s" : ""}</span>
-          <span>Fresh cakes, ready to order</span>
+          <span>
+            {cartCount} {itemText}
+          </span>
+          <span>{t("common.cart.fresh_message")}</span>
         </div>
 
         <div className={style.cartBody}>
           {cartCount === 0 ? (
             <div className={style.cartEmpty}>
-              <p>Your shopping bag is empty.</p>
+              <p>{t("common.cart.empty_message")}</p>
 
               <button
                 type="button"
                 className={style.cartEmptyBtn}
                 onClick={() => {
                   onClose();
-                  navigate("/products");
+                  navigate(getLocalizedPath("/products"));
                 }}
               >
-                Continue shopping
+                {t("common.cart.continue_shopping")}
               </button>
             </div>
           ) : (
@@ -95,6 +103,7 @@ export default function CartDrawer({
                           <p className={style.cartItemTitle}>
                             {product.title}
                           </p>
+
                           <p className={style.cartItemCategory}>
                             {product.category}
                           </p>
@@ -146,7 +155,7 @@ export default function CartDrawer({
 
         <div className={style.cartFooter}>
           <div className={style.cartSubtotal}>
-            <span>Subtotal</span>
+            <span>{t("common.cart.subtotal")}</span>
             <strong>${subtotal}</strong>
           </div>
 
@@ -155,10 +164,10 @@ export default function CartDrawer({
             className={style.cartViewBtn}
             onClick={() => {
               onClose();
-              navigate("/cart");
+              navigate(getLocalizedPath("/cart"));
             }}
           >
-            View cart
+            {t("common.cart.view_cart")}
           </button>
 
           <button
@@ -166,10 +175,10 @@ export default function CartDrawer({
             className={style.checkoutBtn}
             onClick={() => {
               onClose();
-              navigate("/checkout");
+              navigate(getLocalizedPath("/checkout"));
             }}
           >
-            Checkout
+            {t("common.cart.checkout")}
           </button>
         </div>
       </aside>
