@@ -1,10 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import style from "./mobileMenu.module.scss";
-
-import { SearchIcon, ShoppingIcon, UserIcon } from "@/assets/images/icons";
-
+import LanguageSwitcher from "@/assets/components/languageSwitcher/languageSwitcher";
+import {
+  ShoppingIcon,
+  UserIcon,
+  WishlistIcon,
+} from "@/assets/images/icons";
 import Logo from "@/assets/images/logo/cake-logo.png";
+import { getLocalizedPath } from "@/helpers/languagePath";
+
+import style from "./mobileMenu.module.scss";
 
 type MenuItem = {
   label: string;
@@ -16,11 +22,14 @@ type MobileMenuProps = {
   menu: MenuItem[];
   user: any;
   cartCount: number;
+  wishlistCount: number;
   searchValue: string;
   setSearchValue: (value: string) => void;
   onSearch: (e: React.FormEvent<HTMLFormElement>) => void;
   onClose: () => void;
   onOpenCart: () => void;
+  onOpenLogin: () => void;
+  onWishlist: () => void;
   onLogout: () => void;
 };
 
@@ -29,29 +38,40 @@ export default function MobileMenu({
   menu,
   user,
   cartCount,
-  searchValue,
-  setSearchValue,
-  onSearch,
+  wishlistCount,
   onClose,
   onOpenCart,
+  onOpenLogin,
+  onWishlist,
   onLogout,
 }: MobileMenuProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const goToPage = (path: string) => {
     onClose();
-    navigate(path);
+    navigate(getLocalizedPath(path));
   };
 
-  const handleAccountClick = () => {
+  const handleUserClick = () => {
     onClose();
 
     if (user) {
-      navigate("/account/details");
+      navigate(getLocalizedPath("/account/details"));
       return;
     }
 
-    navigate("/auth/login");
+    onOpenLogin();
+  };
+
+  const handleWishlistClick = () => {
+    onClose();
+    onWishlist();
+  };
+
+  const handleCartClick = () => {
+    onClose();
+    onOpenCart();
   };
 
   return (
@@ -65,43 +85,62 @@ export default function MobileMenu({
           type="button"
           className={style.mobileCloseBtn}
           onClick={onClose}
-          aria-label="Close menu"
+          aria-label={t("common.header.close_menu")}
         >
-          x
+          <span />
+          <span />
         </button>
 
-        <div className={style.mobileLogo} onClick={() => navigate("/")}>
-          <img src={Logo} alt="Cake shop logo" />
+        <div
+          className={style.mobileLogo}
+          onClick={() => navigate(getLocalizedPath("/"))}
+        >
+          <img src={Logo} alt="Cake House" />
         </div>
 
-        <button
-          type="button"
-          className={style.mobileCartBtn}
-          onClick={onOpenCart}
-          aria-label="Open cart"
-        >
-          <img src={ShoppingIcon} alt="" />
+        <div className={style.mobileHeaderActions}>
+          <button
+            type="button"
+            className={style.mobileActionBtn}
+            onClick={handleUserClick}
+            aria-label={t("common.links.account")}
+          >
+            <img src={UserIcon} alt="" />
+          </button>
 
-          {cartCount > 0 && (
-            <span className={style.cartBadge}>{cartCount}</span>
-          )}
-        </button>
+          <button
+            type="button"
+            className={style.mobileActionBtn}
+            onClick={handleWishlistClick}
+            aria-label={t("common.links.wishlist")}
+          >
+            <span className={style.mobileIconWrap}>
+              <img src={WishlistIcon} alt="" />
+
+              {wishlistCount > 0 && (
+                <span className={style.wishlistBadge}>{wishlistCount}</span>
+              )}
+            </span>
+          </button>
+
+          <button
+            type="button"
+            className={style.mobileActionBtn}
+            onClick={handleCartClick}
+            aria-label={t("common.cart.title")}
+          >
+            <span className={style.mobileIconWrap}>
+              <img src={ShoppingIcon} alt="" />
+
+              {cartCount > 0 && (
+                <span className={style.cartBadge}>{cartCount}</span>
+              )}
+            </span>
+          </button>
+        </div>
       </div>
 
       <div className={style.mobileMenuBody}>
-        <form className={style.mobileSearch} onSubmit={onSearch}>
-          <input
-            type="text"
-            placeholder="Search products"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-
-          <button type="submit" aria-label="Search">
-            <img src={SearchIcon} alt="" />
-          </button>
-        </form>
-
         <nav className={style.mobileLinks}>
           {menu.map((item) => (
             <button
@@ -109,8 +148,8 @@ export default function MobileMenu({
               key={item.path}
               onClick={() => goToPage(item.path)}
             >
-              <span>{item.label}</span>
-              <span>-&gt;</span>
+              <span>{t(item.label)}</span>
+              <span>&gt;</span>
             </button>
           ))}
         </nav>
@@ -120,15 +159,17 @@ export default function MobileMenu({
         <button
           type="button"
           className={style.mobileAccountBtn}
-          onClick={handleAccountClick}
+          onClick={handleUserClick}
         >
           <span className={style.accountIcon}>
             <img src={UserIcon} alt="" />
           </span>
 
           <span>
-            <small>{user ? "Signed in" : "Account"}</small>
-            {user ? user.fullName : "MY ACCOUNT"}
+            <small>
+              {user ? t("common.header.signed_in") : t("common.links.account")}
+            </small>
+            {user ? user.fullName : t("common.header.my_account")}
           </span>
         </button>
 
@@ -138,20 +179,17 @@ export default function MobileMenu({
             className={style.mobileLogoutBtn}
             onClick={onLogout}
           >
-            LOG OUT
+            {t("common.header.logout")}
           </button>
         )}
 
         <div className={style.mobileOptionGrid}>
           <div className={style.mobileOptionRow}>
-            <span>Language</span>
-            <strong>English</strong>
+            <span>{t("common.header.change_language")}</span>
+            <LanguageSwitcher placement="top" />
           </div>
 
-          <div className={style.mobileOptionRow}>
-            <span>Currency</span>
-            <strong>$ USD</strong>
-          </div>
+        
         </div>
       </div>
     </div>

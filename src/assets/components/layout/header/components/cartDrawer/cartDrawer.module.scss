@@ -275,7 +275,7 @@
   letter-spacing: 0.1em;
   transition: $transition-fast;
 
-  @include font($size: 13px, $weight: 900);
+  @include font($size: 14px, $weight: 900);
 }
 
 .cartEmptyBtn,

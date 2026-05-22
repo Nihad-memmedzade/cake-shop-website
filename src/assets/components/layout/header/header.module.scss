@@ -3,7 +3,11 @@
 @import "@/styles/utils/maps.module";
 
 .headerWrap {
-  @include position($position: sticky, $top: 0, $z-index: map-get($z-indexes, header));
+  @include position(
+    $position: sticky,
+    $top: 0,
+    $z-index: map-get($z-indexes, header)
+  );
   @include container($width: 100%, $background: rgba(255, 250, 252, 0.96));
 
   backdrop-filter: blur(12px);
@@ -13,14 +17,27 @@
 
 .header_main {
   @include page-container($container-width);
-  @include flex($gap: 24px, $align: center, $justify: space-between);
+  @include flex($gap: 28px, $align: center, $justify: space-between);
 
   padding: $header-padding-desktop;
 }
 
 .headerLeft {
   @include flex($gap: 44px, $align: center);
+
+  flex: 0 0 auto;
 }
+
+.headerRight {
+  @include flex($gap: 14px, $align: center);
+
+  flex: 1;
+  min-width: 0;
+}
+
+// .headerLeft {
+//   @include flex($gap: 55px, $align: center);
+// }
 
 .burger {
   width: 42px;
@@ -47,16 +64,17 @@
   }
 }
 
-
 .headerLogo {
   cursor: pointer;
 
-  @include container($width: 112px, $height: 62px);
+      @include container($width: 76px, $height: 50px);
+
 
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    display: block;
   }
 }
 
@@ -71,6 +89,7 @@
   padding: 0;
   margin: 0;
 }
+
 .navItem {
   @include position($position: relative);
   @include font($size: 14px, $weight: 900, $color: $brand-primary);
@@ -119,14 +138,17 @@
   }
 }
 
-
-
 .headerRight {
   @include flex($gap: 14px, $align: center);
 }
 
+.headerLanguage {
+  @include flex($align: center);
+}
+
 .searchBox {
-  width: clamp(180px, 26vw, 360px);
+  flex: 1;
+  min-width: 220px;
 
   form {
     @include position($position: relative);
@@ -142,15 +164,15 @@
 .searchInput {
   @include container(
     $width: 100%,
-    $height: 44px,
+    $height: 46px,
     $border-r: $radius-pill,
-    $border: 1px solid $border-soft,
+    $border: 2px solid $border-medium,
     $background: $brand-white
   );
 
-  @include font($size: 14px, $color: $brand-dark);
+  @include font($size: 14px, $weight: 700, $color: $brand-dark);
 
-  padding: 0 46px 0 18px;
+  padding: 0 48px 0 20px;
   outline: none;
   transition: $transition-normal;
 
@@ -158,8 +180,12 @@
     color: $text-soft;
   }
 
+  &:hover {
+    border-color: rgba(185, 72, 103, 0.36);
+  }
+
   &:focus {
-    border-color: $border-medium;
+    border-color: $brand-primary;
     box-shadow: 0 12px 30px rgba(185, 72, 103, 0.16);
   }
 }
@@ -174,8 +200,13 @@
 
 .iconBtn {
   @include position($position: relative);
-  @include icon-button($size: 42px, $background: $brand-white, $color: $brand-dark);
+  @include icon-button(
+    $size: 36px,
+    $background: $brand-white,
+    $color: $brand-dark
+  );
 
+  overflow: visible;
   border: 1px solid $border-soft;
 
   img {
@@ -193,22 +224,69 @@
   overflow: visible;
 }
 
+.cartIconWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
 .cartBadge {
-  @include position($position: absolute, $top: 18px, $right: -5px);
+  @include position($position: absolute, $top: 8px, $right: -17px);
   @include container(
-    $width: 18px,
-    $height: 18px,
+    $height: 25px,
     $border-r: 50%,
-    $background: $brand-gold,
-    $min-width: 18px
+    $background: #f58220,
+    $min-width: 25px
   );
 
   display: grid;
   place-items: center;
+  padding: 0 5px;
+  border: 2px solid $brand-white;
+  box-shadow: 0 8px 18px rgba(245, 130, 32, 0.3);
 
-  @include font($size: 11px, $weight: 700, $color: $text-white);
+  @include font($size: 11px, $weight: 900, $color: $text-white);
 }
 
+.wishlistIconBtn {
+  overflow: visible;
+}
+
+.wishlistIconWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.wishlistBadge {
+  @include position($position: absolute, $top: 8px, $right: -17px);
+  @include container(
+    $height: 25px,
+    $border-r: 50%,
+    $background: #f58220,
+    $min-width: 25px
+  );
+
+  display: grid;
+  place-items: center;
+  padding: 0 5px;
+  border: 2px solid $brand-white;
+  box-shadow: 0 8px 18px rgba(245, 130, 32, 0.3);
+
+  @include font($size: 11px, $weight: 900, $color: $text-white);
+}
 @include respond(lg) {
   .headerWrap {
     background: $brand-white;
@@ -218,12 +296,15 @@
 
   .header_main {
     width: 100%;
-    height: $header-height;
-    padding: 0 60px;
+    min-height: 106px;
+    padding: 10px 42px 12px;
 
     display: grid;
-    grid-template-columns: 42px 1fr 42px;
+    grid-template-columns: 38px auto 1fr auto auto auto;
+    grid-template-rows: 42px 46px;
     align-items: center;
+    column-gap: 10px;
+    row-gap: 8px;
   }
 
   .headerLeft {
@@ -233,51 +314,211 @@
   .burger {
     display: block;
     grid-column: 1;
+    grid-row: 1;
+    width: 34px;
+    height: 34px;
   }
 
   .headerLogo {
     grid-column: 2;
-    justify-self: center;
+    grid-row: 1;
+    justify-self: start;
 
-    @include container($width: 140px, $height: 58px);
+    @include container($width: 112px, $height: 40px);
   }
 
   .desktopNav,
-  .searchBox,
-  .headerRight .iconBtn:not(:last-child) {
+  .headerLanguage {
     display: none;
   }
 
   .headerRight {
-    grid-column: 3;
-    justify-self: end;
+    display: contents;
+  }
+
+  .searchBox {
     display: block;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+
+    form {
+      width: 100%;
+    }
+  }
+
+  .searchInput {
+    height: 46px;
+    border-radius: $radius-pill;
+    border: 2px solid rgba(185, 72, 103, 0.26);
+    background: $brand-white;
+    box-shadow: 0 10px 24px rgba(185, 72, 103, 0.08);
+  }
+
+  .searchIcon {
+    width: 18px;
+    height: 18px;
+    right: 17px;
+  }
+
+  .userIconBtn {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .wishlistIconBtn {
+    grid-column: 5;
+    grid-row: 1;
+  }
+
+  .cartIconBtn {
+    grid-column: 6;
+    grid-row: 1;
   }
 
   .iconBtn {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
     border: none;
     background: transparent;
+    box-shadow: none;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
 
     &:hover {
       transform: none;
       box-shadow: none;
     }
   }
+
+  .cartIconWrap,
+  .wishlistIconWrap {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .cartBadge,
+  .wishlistBadge {
+    top: -3px;
+    right: -6px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-width: 1px;
+    background: #f58220;
+
+    @include font($size: 9px, $weight: 900, $color: $text-white);
+  }
 }
 
 @include respond(md) {
   .header_main {
-    padding: 0 34px;
+    padding: 10px 26px 12px;
+    grid-template-columns: 36px auto 1fr auto auto auto;
+    grid-template-rows: 40px 44px;
+    column-gap: 8px;
+  }
+
+  .headerLogo {
+    width: 104px;
+    height: 38px;
+  }
+
+  .searchInput {
+    height: 44px;
+  }
+
+  .iconBtn {
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 17px;
+      height: 17px;
+    }
+  }
+
+  .cartIconWrap,
+  .wishlistIconWrap {
+    img {
+      width: 19px;
+      height: 19px;
+    }
   }
 }
 
 @include respond(sm) {
   .header_main {
-    height: $header-height-mobile;
-    padding: $header-padding-mobile;
+    min-height: 98px;
+    padding: 8px 12px 10px;
+    grid-template-columns: 34px auto 1fr auto auto auto;
+    grid-template-rows: 38px 42px;
+    column-gap: 6px;
+    row-gap: 5px;
+  }
+
+  .burger {
+    width: 32px;
+    height: 32px;
+
+    span {
+      width: 19px;
+      height: 2px;
+      margin: 4px auto;
+    }
   }
 
   .headerLogo {
-    width: 120px;
+    width: 67px;
+    height: 36px;
+  }
+
+  .searchInput {
+    height: 42px;
+    padding: 0 44px 0 16px;
+
+    @include font($size: 13px, $weight: 700, $color: $brand-dark);
+  }
+
+  .searchIcon {
+    width: 17px;
+    height: 17px;
+    right: 15px;
+  }
+
+  .iconBtn {
+    width: 29px;
+    height: 29px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .cartIconWrap,
+  .wishlistIconWrap {
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .cartBadge,
+  .wishlistBadge {
+    top: 8px;
+    right: -7px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3px;
+
+    @include font($size: 8px, $weight: 900, $color: $text-white);
   }
 }

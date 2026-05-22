@@ -1,8 +1,11 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Logo from "@/assets/images/logo/cake-logo.png";
+import {
+  getLocalizedPath,
+  removeLanguageFromPath,
+} from "@/helpers/languagePath";
 import { loginThunk, logout } from "@/store/authSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 
@@ -20,10 +23,14 @@ import style from "./header.module.scss";
 
 export default function Header() {
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
+  const location = useLocation();
   const dispatch = useAppDispatch();
 
   const shoppingList = useAppSelector((state: RootState) => state.cart.items);
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlist.items,
+  );
+
   const { user, error, loading } = useAppSelector(
     (state: RootState) => state.auth,
   );
@@ -50,22 +57,32 @@ export default function Header() {
   const [modalEmail, setModalEmail] = useState("");
   const [modalPassword, setModalPassword] = useState("");
 
+  useEffect(() => {
+    const cleanPath = removeLanguageFromPath(location.pathname);
+    const query = new URLSearchParams(location.search).get("q") || "";
+
+    if (cleanPath === "/products") {
+      setSearchValue(query);
+    }
+  }, [location.pathname, location.search]);
+
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const trimmedValue = searchValue.trim();
-
     if (!trimmedValue) return;
 
-    navigate(`/${i18n.language}/products?q=${trimmedValue}`);
-    setSearchValue("");
+    const params = new URLSearchParams();
+    params.set("q", trimmedValue);
+
+    navigate(`${getLocalizedPath("/products")}?${params.toString()}`);
     closeMobileMenu();
   };
 
   const handleLogout = () => {
     dispatch(logout());
     closeAll();
-    navigate("/");
+    navigate(getLocalizedPath("/"));
   };
 
   const handleModalLogin = async (e: FormEvent<HTMLFormElement>) => {
@@ -83,14 +100,12 @@ export default function Header() {
     setModalEmail("");
     setModalPassword("");
     closeUserModal();
-    navigate("/");
+    navigate(getLocalizedPath("/"));
   };
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        closeAll();
-      }
+      if (e.key === "Escape") closeAll();
     };
 
     window.addEventListener("keydown", handleEscape);
@@ -111,8 +126,11 @@ export default function Header() {
               <span />
             </button>
 
-            <div className={style.headerLogo} onClick={() => navigate("/")}>
-              <img src={Logo} alt="Logo" />
+            <div
+              className={style.headerLogo}
+              onClick={() => navigate(getLocalizedPath("/"))}
+            >
+              <img src={Logo} alt="Cake House" />
             </div>
 
             <DesktopNav menu={HEADER_MENU} />
@@ -120,12 +138,13 @@ export default function Header() {
 
           <HeaderActions
             cartCount={cartCount}
+            wishlistCount={wishlistItems.length}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
             onSearch={handleSearch}
             onOpenLogin={openLoginModal}
             onOpenCart={openCart}
-            onWishlist={() => navigate("/account/wishlist")}
+            onWishlist={() => navigate(getLocalizedPath("/account/wishlist"))}
           />
         </div>
       </header>
@@ -161,11 +180,14 @@ export default function Header() {
           menu={HEADER_MENU}
           user={user}
           cartCount={cartCount}
+          wishlistCount={wishlistItems.length}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           onSearch={handleSearch}
           onClose={closeMobileMenu}
           onOpenCart={openCart}
+          onOpenLogin={openLoginModal}
+          onWishlist={() => navigate(getLocalizedPath("/account/wishlist"))}
           onLogout={handleLogout}
         />
       )}
