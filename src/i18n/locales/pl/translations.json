@@ -1,0 +1,369 @@
+{
+  "common": {
+    "links": {
+      "home": "Strona główna",
+      "shop": "Sklep",
+      "products": "Produkty",
+      "contact": "Kontakt",
+      "about": "O nas",
+      "account": "Konto",
+      "wishlist": "Ulubione"
+    },
+    "header": {
+      "search_input": "Szukaj produktów...",
+      "search": "Szukaj",
+      "open_menu": "Otwórz menu",
+      "close_menu": "Zamknij menu",
+      "change_language": "Zmień język",
+      "signed_in": "Zalogowano",
+      "my_account": "Moje konto",
+      "welcome_back": "Witamy ponownie",
+      "login": "Logowanie",
+      "logout": "Wyloguj",
+      "email": "Adres email",
+      "password": "Hasło",
+      "password_placeholder": "Wpisz swoje hasło",
+      "logging": "Logowanie...",
+      "no_account": "Nie masz konta?",
+      "create_account": "Utwórz konto"
+    },
+    "cart": {
+      "title": "Koszyk",
+      "kicker": "Twój koszyk",
+      "empty_message": "Twój koszyk jest pusty.",
+      "fresh_message": "Świeże torty gotowe do zamówienia",
+      "continue_shopping": "Kontynuuj zakupy",
+      "subtotal": "Suma częściowa",
+      "view_cart": "Zobacz koszyk",
+      "checkout": "Zamówienie",
+      "item": "produkt",
+      "items": "produkty"
+    },
+    "language": {
+      "en": "English",
+      "az": "Azərbaycanca",
+      "pl": "Polski"
+    },
+    "footer": {
+      "description": "Świeże ręcznie robione torty, słodkie okazje i wyjątkowe smaki pieczone z troską na każdą ważną chwilę.",
+      "address": "1418 River Drive, Suite 35 Cottonhall, CA 9622 United States",
+      "sections": {
+        "pages": {
+          "title": "Strony",
+          "home": "Strona główna",
+          "shop": "Sklep",
+          "contact": "Kontakt"
+        },
+        "shop": {
+          "title": "Sklep",
+          "allCakes": "Wszystkie torty",
+          "classicCakes": "Klasyczne torty",
+          "fruitCakes": "Torty owocowe",
+          "birthdayCakes": "Torty urodzinowe",
+          "premiumCakes": "Torty premium"
+        },
+        "account": {
+          "title": "Konto",
+          "login": "Logowanie",
+          "register": "Rejestracja",
+          "myAccount": "Moje konto",
+          "wishlist": "Ulubione",
+          "orders": "Zamówienia",
+          "cart": "Koszyk"
+        }
+      },
+      "bottom": {
+        "rights": "Cake House. Wszelkie prawa zastrzeżone.",
+        "shop": "Sklep",
+        "cart": "Koszyk",
+        "contact": "Kontakt"
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Strona główna",
+      "mainSlider": {
+        "slides": [
+          {
+            "kicker": "Nowy trend",
+            "title": "Czekoladowe torty marzeń",
+            "subtitle": "Urodziny / Wesela / Wyjątkowe dni"
+          },
+          {
+            "kicker": "Lato 2026",
+            "title": "Torty na każdą okazję",
+            "subtitle": "Świeże warstwy, delikatny krem, przygotowane na zamówienie"
+          }
+        ],
+        "cta": "Odkryj teraz"
+      },
+      "category": {
+        "kicker": "Wybierz swój ulubiony smak",
+        "title": "Kategorie",
+        "cards": [
+          {
+            "title": "Klasyczne torty",
+            "subtitle": "Bestsellery",
+            "cta": "Zamów teraz"
+          },
+          {
+            "title": "Torty owocowe",
+            "subtitle": "Świeże i lekkie",
+            "cta": "Zamów teraz"
+          },
+          {
+            "title": "Torty dla dzieci",
+            "subtitle": "Kolorowe i radosne",
+            "cta": "Zamów teraz"
+          },
+          {
+            "title": "Torty na zamówienie",
+            "subtitle": "Przygotowane specjalnie dla Ciebie",
+            "cta": "Zamów teraz"
+          }
+        ]
+      },
+      "trendyProducts": {
+        "title": "nasze modne",
+        "titleStrong": "produkty",
+        "tabs": {
+          "all": "wszystkie",
+          "newArrivals": "nowości",
+          "bestSeller": "bestsellery",
+          "topRated": "najwyżej oceniane"
+        },
+        "loadingTitle": "Ładowanie modnych tortów",
+        "loadingText": "Świeże produkty pojawią się za chwilę.",
+        "discoverMore": "zobacz więcej"
+      },
+      "springCollection": {
+        "tag": "cotygodniowa słodka oferta",
+        "title": "wiosenne",
+        "titleHighlight": "przysmaki",
+        "subtitle": "Świeżo pieczone torty i wypieki - oferta ograniczona czasowo.",
+        "cta": "zobacz słodkości"
+      },
+      "limitedEdition": {
+        "loadingTitle": "Ładowanie limitowanych tortów",
+        "loadingText": "Specjalne torty są właśnie przygotowywane.",
+        "kicker": "Mała seria",
+        "title": "Edycja Limitowana",
+        "subtitle": "Torty z małej serii dostępne tylko przez krótki czas."
+      }
+    },
+    "shop": {
+      "hero": {
+        "kicker": "Cake House",
+        "title": "Sklep",
+        "text": "Świeże torty, wyjątkowe smaki i słodkie propozycje na każdą chwilę."
+      },
+      "loader": {
+        "title": "Ładowanie tortów",
+        "text": "Świeże produkty pojawią się za chwilę."
+      },
+      "toolbar": {
+        "home": "Strona główna",
+        "shop": "Sklep",
+        "loading": "Ładowanie produktów...",
+        "found": "Znaleziono {{count}} produktów",
+        "filter": "Filtr",
+        "sort": {
+          "default": "Domyślne sortowanie",
+          "newest": "Najnowsze",
+          "priceLow": "Cena: od najniższej",
+          "priceHigh": "Cena: od najwyższej",
+          "ratingHigh": "Ocena: od najwyższej",
+          "bestSeller": "Bestseller"
+        }
+      },
+      "empty": {
+        "title": "Nie znaleziono tortów",
+        "text": "Spróbuj innego smaku albo zresetuj wybrane filtry."
+      },
+      "pagination": {
+        "previous": "Poprzednia",
+        "next": "Następna",
+        "aria": "Paginacja sklepu"
+      },
+      "filters": {
+        "kicker": "Filtruj produkty",
+        "title": "Filtry tortów",
+        "close": "Zamknij filtry",
+        "reset": "Resetuj",
+        "resetFilters": "Resetuj filtry",
+        "cakeType": "Rodzaj tortu",
+        "flavors": "Smaki",
+        "dietary": "Opcje dietetyczne",
+        "size": "Rozmiar",
+        "priceRange": "Zakres ceny",
+        "options": {
+          "categories": {
+            "birthdayCake": "Tort urodzinowy",
+            "celebrationCake": "Tort okolicznościowy",
+            "classicCake": "Tort klasyczny",
+            "cheesecake": "Sernik",
+            "fruitCake": "Tort owocowy",
+            "freshCake": "Świeży tort",
+            "premiumCake": "Tort premium"
+          },
+          "flavors": {
+            "chocolate": "Czekolada",
+            "strawberry": "Truskawka",
+            "redVelvet": "Red Velvet",
+            "vanilla": "Wanilia",
+            "caramel": "Karmel",
+            "blueberry": "Borówka",
+            "oreo": "Oreo",
+            "lemon": "Cytryna",
+            "cherryChocolate": "Wiśnia z czekoladą",
+            "pistachio": "Pistacja"
+          },
+          "tags": {
+            "vegan": "Wegańskie",
+            "glutenFree": "Bez glutenu",
+            "nutFree": "Bez orzechów",
+            "dairyFree": "Bez nabiału",
+            "lowSugar": "Mało cukru"
+          },
+          "sizes": {
+            "small": "Mały",
+            "medium": "Średni",
+            "large": "Duży"
+          }
+        }
+      }
+    },
+    "contact": {
+      "hero": {
+        "kicker": "Cake House",
+        "title": "Kontakt",
+        "text": "Odwiedź naszą cukiernię, wyślij wiadomość albo skontaktuj się z nami w sprawie tortów na zamówienie."
+      },
+      "store": {
+        "title": "Sklep w Warszawie",
+        "addressLine1": "Rynek Starego Miasta 1",
+        "addressLine2": "00-272 Warszawa, Polska",
+        "email": "hello@cakehouse.com",
+        "phone": "+1 246-345-0695"
+      },
+      "form": {
+        "kicker": "Wyślij wiadomość",
+        "title": "Skontaktuj się z nami",
+        "name": "Imię *",
+        "email": "Adres email *",
+        "message": "Twoja wiadomość",
+        "submit": "Wyślij",
+        "requiredError": "Wypełnij wszystkie wymagane pola.",
+        "emailError": "Wpisz poprawny adres email.",
+        "success": "Twoja wiadomość została wysłana pomyślnie."
+      }
+    },
+    "account": {
+      "details": {
+        "pageTitle": "Dane konta",
+        "kicker": "Ustawienia profilu",
+        "heading": "Informacje osobiste",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "displayName": "Nazwa wyświetlana",
+        "email": "Adres email",
+        "passwordTitle": "Zmiana hasła",
+        "currentPassword": "Obecne hasło",
+        "newPassword": "Nowe hasło",
+        "confirmNewPassword": "Potwierdź nowe hasło",
+        "saving": "Zapisywanie...",
+        "save": "Zapisz zmiany",
+        "errors": {
+          "fullName": "Pełne imię i nazwisko musi mieć co najmniej 2 znaki.",
+          "passwordLength": "Nowe hasło musi mieć co najmniej 6 znaków.",
+          "passwordMatch": "Nowe hasła nie są takie same."
+        }
+      },
+      "orders": {
+        "pageTitle": "Zamówienia",
+        "kicker": "Historia zamówień",
+        "heading": "Twoje zamówienia",
+        "count": "{{count}} zamówień",
+        "table": {
+          "order": "Zamówienie",
+          "date": "Data",
+          "status": "Status",
+          "total": "Suma",
+          "actions": "Akcje"
+        },
+        "item": "produkt",
+        "items": "produkty",
+        "totalText": "${{total}} za {{count}} {{itemLabel}}",
+        "view": "Zobacz",
+        "empty": {
+          "title": "Brak zamówień",
+          "text": "Twoje zakończone zamówienia tortów pojawią się tutaj po checkout.",
+          "button": "Przejdź do sklepu"
+        },
+        "status": {
+          "pending": "Oczekujące",
+          "confirmed": "Potwierdzone",
+          "cancelled": "Anulowane"
+        }
+      },
+      "wishlist": {
+        "pageTitle": "Ulubione",
+        "kicker": "Zapisane torty",
+        "heading": "Twoja lista ulubionych",
+        "count": "{{count}} produktów",
+        "empty": {
+          "title": "Twoja lista ulubionych jest pusta",
+          "text": "Zapisz swoje ulubione torty i wróć do nich w dowolnym momencie.",
+          "button": "Przejdź do sklepu"
+        }
+      },
+      "layout": {
+        "kicker": "Cake House",
+        "heroText": "Zarządzaj profilem, zamówieniami i zapisanymi tortami w jednym miejscu.",
+        "sidebar": {
+          "accountDetails": "Dane konta",
+          "orders": "Zamówienia",
+          "wishlist": "Ulubione",
+          "logout": "Wyloguj"
+        }
+      }
+    },
+    "auth": {
+      "register": {
+        "title": "Rejestracja",
+        "subtitle": "Utwórz konto, aby cieszyć się naszymi słodkościami",
+        "fullName": "Imię i nazwisko *",
+        "email": "Adres email *",
+        "password": "Hasło *",
+        "confirmPassword": "Potwierdź hasło *",
+        "terms": "Akceptuję Regulamin i Politykę Prywatności",
+        "creating": "Tworzenie...",
+        "createAccount": "Utwórz konto",
+        "alreadyHaveAccount": "Masz już konto?",
+        "login": "Zaloguj się",
+        "errors": {
+          "passwordLength": "Hasło musi mieć co najmniej 6 znaków.",
+          "confirmPasswordLength": "Potwierdzone hasło musi mieć co najmniej 6 znaków.",
+          "passwordMatch": "Hasła nie są takie same."
+        }
+      },
+      "login": {
+        "title": "LOGOWANIE",
+        "subtitle": "Witamy ponownie w Cake House.",
+        "email": "Adres e-mail *",
+        "password": "Hasło *",
+        "remember": "Zapamiętaj mnie",
+        "forgotPassword": "Nie pamiętasz hasła?",
+        "loggingIn": "LOGOWANIE...",
+        "loginButton": "ZALOGUJ SIĘ",
+        "noAccount": "Nie masz konta?",
+        "createAccount": "Utwórz konto",
+        "errors": {
+          "required": "Wpisz adres e-mail i hasło.",
+          "email": "Wpisz poprawny adres e-mail."
+        }
+      }
+    }
+  }
+}
