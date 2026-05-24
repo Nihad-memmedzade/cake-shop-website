@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import style from "./shopPagination.module.scss";
 
 type ShopPaginationProps = {
@@ -11,17 +13,18 @@ export default function ShopPagination({
   totalPages,
   onPageChange,
 }: ShopPaginationProps) {
+  const { t } = useTranslation();
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav className={style.pagination} aria-label="Shop pagination">
+    <nav className={style.pagination} aria-label={t("pages.shop.pagination.aria")}>
       <button
         type="button"
         className={style.navBtn}
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        Previous
+        {t("pages.shop.pagination.previous")}
       </button>
 
       <div className={style.pageNumbers}>
@@ -45,7 +48,7 @@ export default function ShopPagination({
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        Next
+        {t("pages.shop.pagination.next")}
       </button>
     </nav>
   );

@@ -1,11 +1,13 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Star } from "lucide-react";
+
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 import {
   clearReviewSubmitState,
   fetchProductReviews,
   submitProductReview,
 } from "@/store/productSlice";
+
 import styles from "./reviews.module.scss";
 
 type ProductReviewsProps = {
@@ -33,6 +35,7 @@ export default function ProductReviews({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
     dispatch(fetchProductReviews(productId));
@@ -49,29 +52,48 @@ export default function ProductReviews({
       setText("");
       setRating(0);
       setShowRatingError(false);
+      setFormError("");
     }
   }, [reviewSubmitSuccess]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedText = text.trim();
+
     if (!rating) {
       setShowRatingError(true);
+      setFormError("");
+      return;
+    }
+
+    if (trimmedName.length < 2) {
+      setShowRatingError(false);
+      setFormError("Name must be at least 2 characters.");
+      return;
+    }
+
+    if (trimmedText.length < 5) {
+      setShowRatingError(false);
+      setFormError("Review must be at least 5 characters.");
       return;
     }
 
     setShowRatingError(false);
+    setFormError("");
 
     dispatch(
       submitProductReview({
         productId,
         payload: {
-          name,
-          email,
+          name: trimmedName,
+          email: trimmedEmail,
           rating,
-          text,
+          text: trimmedText,
         },
-      })
+      }),
     );
   };
 
@@ -154,6 +176,8 @@ export default function ProductReviews({
             <p className={styles.formNote}>Please select a rating.</p>
           )}
 
+          {formError && <p className={styles.formNote}>{formError}</p>}
+
           {reviewSubmitError && (
             <p className={styles.formNote}>{reviewSubmitError}</p>
           )}
@@ -179,6 +203,7 @@ export default function ProductReviews({
                     onClick={() => {
                       setRating(star);
                       setShowRatingError(false);
+                      setFormError("");
                     }}
                     aria-label={`Rate ${star} star`}
                   >
@@ -193,7 +218,15 @@ export default function ProductReviews({
               placeholder="Your review"
               rows={7}
               value={text}
-              onChange={(event) => setText(event.target.value)}
+              minLength={5}
+              maxLength={1000}
+              onChange={(event) => {
+                setText(event.target.value);
+
+                if (formError) {
+                  setFormError("");
+                }
+              }}
               required
             />
 
@@ -203,7 +236,15 @@ export default function ProductReviews({
                 className={styles.input}
                 placeholder="Name *"
                 value={name}
-                onChange={(event) => setName(event.target.value)}
+                minLength={2}
+                maxLength={80}
+                onChange={(event) => {
+                  setName(event.target.value);
+
+                  if (formError) {
+                    setFormError("");
+                  }
+                }}
                 required
               />
 

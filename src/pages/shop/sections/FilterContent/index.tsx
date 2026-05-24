@@ -1,12 +1,53 @@
-import type { CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
+
 import type { FilterContentProps } from "@/types/shop";
+
 import {
   SHOP_CATEGORIES,
   SHOP_FLAVORS,
   SHOP_SIZES,
   SHOP_TAGS,
 } from "../../constants";
+
 import style from "./filterContent.module.scss";
+
+const categoryLabelKeys: Record<string, string> = {
+  "Birthday Cake": "pages.shop.filters.options.categories.birthdayCake",
+  "Celebration Cake": "pages.shop.filters.options.categories.celebrationCake",
+  "Classic Cake": "pages.shop.filters.options.categories.classicCake",
+  Cheesecake: "pages.shop.filters.options.categories.cheesecake",
+  "Fruit Cake": "pages.shop.filters.options.categories.fruitCake",
+  "Fresh Cake": "pages.shop.filters.options.categories.freshCake",
+  "Premium Cake": "pages.shop.filters.options.categories.premiumCake",
+};
+
+const flavorLabelKeys: Record<string, string> = {
+  Chocolate: "pages.shop.filters.options.flavors.chocolate",
+  Strawberry: "pages.shop.filters.options.flavors.strawberry",
+  "Red Velvet": "pages.shop.filters.options.flavors.redVelvet",
+  Vanilla: "pages.shop.filters.options.flavors.vanilla",
+  Caramel: "pages.shop.filters.options.flavors.caramel",
+  Blueberry: "pages.shop.filters.options.flavors.blueberry",
+  Oreo: "pages.shop.filters.options.flavors.oreo",
+  Lemon: "pages.shop.filters.options.flavors.lemon",
+  "Cherry Chocolate": "pages.shop.filters.options.flavors.cherryChocolate",
+  Pistachio: "pages.shop.filters.options.flavors.pistachio",
+};
+
+const tagLabelKeys: Record<string, string> = {
+  Vegan: "pages.shop.filters.options.tags.vegan",
+  "Gluten Free": "pages.shop.filters.options.tags.glutenFree",
+  "Nut Free": "pages.shop.filters.options.tags.nutFree",
+  "Dairy Free": "pages.shop.filters.options.tags.dairyFree",
+  "Low Sugar": "pages.shop.filters.options.tags.lowSugar",
+};
+
+const sizeLabelKeys: Record<string, string> = {
+  Small: "pages.shop.filters.options.sizes.small",
+  Medium: "pages.shop.filters.options.sizes.medium",
+  Large: "pages.shop.filters.options.sizes.large",
+};
 
 export default function FilterContent({
   selectedCategory,
@@ -22,14 +63,47 @@ export default function FilterContent({
   onMinPriceChange,
   onMaxPriceChange,
 }: FilterContentProps) {
-  const minPercent = Number(minPrice || 0);
-  const maxPercent = Number(maxPrice || 100);
+  const { t } = useTranslation();
+
+  const [draftMinPrice, setDraftMinPrice] = useState(minPrice || "0");
+  const [draftMaxPrice, setDraftMaxPrice] = useState(maxPrice || "100");
+
+  useEffect(() => {
+    setDraftMinPrice(minPrice || "0");
+  }, [minPrice]);
+
+  useEffect(() => {
+    setDraftMaxPrice(maxPrice || "100");
+  }, [maxPrice]);
+
+  const minValue = Number(draftMinPrice || 0);
+  const maxValue = Number(draftMaxPrice || 100);
+
+  const handleMinPriceInput = (value: string) => {
+    const nextValue = Math.min(Number(value), maxValue - 1);
+    setDraftMinPrice(String(nextValue));
+  };
+
+  const handleMaxPriceInput = (value: string) => {
+    const nextValue = Math.max(Number(value), minValue + 1);
+    setDraftMaxPrice(String(nextValue));
+  };
+
+  const commitPriceChanges = () => {
+    if (draftMinPrice !== (minPrice || "0")) {
+      onMinPriceChange(draftMinPrice);
+    }
+
+    if (draftMaxPrice !== (maxPrice || "100")) {
+      onMaxPriceChange(draftMaxPrice);
+    }
+  };
 
   return (
     <>
       <div className={style.block}>
         <div className={style.blockHead}>
-          <h3>Cake type</h3>
+          <h3>{t("pages.shop.filters.cakeType")}</h3>
         </div>
 
         <div className={style.categoryList}>
@@ -42,7 +116,7 @@ export default function FilterContent({
                 selectedCategory === category ? style.categoryBtnActive : ""
               }`}
             >
-              {category}
+              {t(categoryLabelKeys[category] || category)}
             </button>
           ))}
         </div>
@@ -50,7 +124,7 @@ export default function FilterContent({
 
       <div className={style.block}>
         <div className={style.blockHead}>
-          <h3>Flavors</h3>
+          <h3>{t("pages.shop.filters.flavors")}</h3>
         </div>
 
         <div className={style.checkList}>
@@ -61,7 +135,7 @@ export default function FilterContent({
                 checked={selectedFlavors.includes(flavor)}
                 onChange={() => onFlavorChange(flavor)}
               />
-              <span>{flavor}</span>
+              <span>{t(flavorLabelKeys[flavor] || flavor)}</span>
             </label>
           ))}
         </div>
@@ -69,7 +143,7 @@ export default function FilterContent({
 
       <div className={style.block}>
         <div className={style.blockHead}>
-          <h3>Dietary options</h3>
+          <h3>{t("pages.shop.filters.dietary")}</h3>
         </div>
 
         <div className={style.checkList}>
@@ -80,7 +154,7 @@ export default function FilterContent({
                 checked={selectedTags.includes(tag)}
                 onChange={() => onTagChange(tag)}
               />
-              <span>{tag}</span>
+              <span>{t(tagLabelKeys[tag] || tag)}</span>
             </label>
           ))}
         </div>
@@ -88,7 +162,7 @@ export default function FilterContent({
 
       <div className={style.block}>
         <div className={style.blockHead}>
-          <h3>Size</h3>
+          <h3>{t("pages.shop.filters.size")}</h3>
         </div>
 
         <div className={style.pills}>
@@ -101,7 +175,7 @@ export default function FilterContent({
                 selectedSizes.includes(size) ? style.activeFilter : ""
               }`}
             >
-              {size}
+              {t(sizeLabelKeys[size] || size)}
             </button>
           ))}
         </div>
@@ -109,21 +183,21 @@ export default function FilterContent({
 
       <div className={style.block}>
         <div className={style.blockHead}>
-          <h3>Price range</h3>
+          <h3>{t("pages.shop.filters.priceRange")}</h3>
         </div>
 
         <div className={style.priceRangeCard}>
           <div className={style.priceHeader}>
-            <span>${minPrice || 0}</span>
-            <span>${maxPrice || 100}</span>
+            <span>${draftMinPrice}</span>
+            <span>${draftMaxPrice}</span>
           </div>
 
           <div
             className={style.rangeSlider}
             style={
               {
-                "--min-percent": `${minPercent}%`,
-                "--max-percent": `${maxPercent}%`,
+                "--min-percent": `${minValue}%`,
+                "--max-percent": `${maxValue}%`,
               } as CSSProperties
             }
           >
@@ -134,16 +208,22 @@ export default function FilterContent({
               type="range"
               min="0"
               max="100"
-              value={minPrice || 0}
-              onChange={(event) => onMinPriceChange(event.target.value)}
+              value={draftMinPrice}
+              onChange={(event) => handleMinPriceInput(event.target.value)}
+              onMouseUp={commitPriceChanges}
+              onTouchEnd={commitPriceChanges}
+              onBlur={commitPriceChanges}
             />
 
             <input
               type="range"
               min="0"
               max="100"
-              value={maxPrice || 100}
-              onChange={(event) => onMaxPriceChange(event.target.value)}
+              value={draftMaxPrice}
+              onChange={(event) => handleMaxPriceInput(event.target.value)}
+              onMouseUp={commitPriceChanges}
+              onTouchEnd={commitPriceChanges}
+              onBlur={commitPriceChanges}
             />
           </div>
 

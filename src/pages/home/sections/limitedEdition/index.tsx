@@ -1,19 +1,21 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-import "swiper/css/free-mode";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./limitedEdition.scss";
 
-import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
+import PageLoader from "@/assets/components/pageLoader/pageLoader";
 import ProductCard from "@/assets/components/productCard/productCard";
 import { fetchLimitedEditionProducts } from "@/store/productSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
-import PageLoader from "@/assets/components/pageLoader/pageLoader";
 
 export default function LimitedEdition() {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const { limitedEditionItems, limitedEditionLoading } = useAppSelector(
@@ -24,55 +26,85 @@ export default function LimitedEdition() {
     dispatch(fetchLimitedEditionProducts());
   }, [dispatch]);
 
-if (limitedEditionLoading) {
-  return (
-    <PageLoader
-      title="Loading limited cakes"
-      text="Special cakes are being prepared."
-    />
-  );
-}
-
+  if (limitedEditionLoading) {
+    return (
+      <PageLoader
+        title={t("pages.home.limitedEdition.loadingTitle")}
+        text={t("pages.home.limitedEdition.loadingText")}
+      />
+    );
+  }
 
   if (!limitedEditionItems.length) {
     return null;
   }
 
-  
-
   return (
     <section className="limitedEdition">
       <div className="limitedEdition__head">
-        <p className="limited-kicker">Small batch</p>
-        <h1 className="limited-title">Limited Edition</h1>
+        <p className="limited-kicker">
+          {t("pages.home.limitedEdition.kicker")}
+        </p>
+
+        <h1 className="limited-title">
+          {t("pages.home.limitedEdition.title")}
+        </h1>
+
         <p className="limited-subtitle">
-          Small-batch cakes available for a short time only.
+          {t("pages.home.limitedEdition.subtitle")}
         </p>
       </div>
 
-      <Swiper
-        spaceBetween={18}
-        loop={limitedEditionItems.length > 4}
-        freeMode
-        pagination={{ clickable: true }}
-        navigation
-        autoplay={{ delay: 4500, disableOnInteraction: false }}
-        speed={900}
-        modules={[Autoplay, FreeMode, Pagination, Navigation]}
-        className="limitedSwiper"
-        breakpoints={{
-          0: { slidesPerView: 1.2, spaceBetween: 14 },
-          480: { slidesPerView: 2.1, spaceBetween: 16 },
-          768: { slidesPerView: 3, spaceBetween: 18 },
-          1024: { slidesPerView: 4, spaceBetween: 18 },
-        }}
-      >
-        {limitedEditionItems.map((item) => (
-          <SwiperSlide key={item.id}>
-            <ProductCard card={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="limitedSliderShell">
+        <button
+          type="button"
+          className="limitedNav limitedNavPrev"
+          aria-label="Previous products"
+        />
+
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          className="limitedSwiper"
+          slidesPerView="auto"
+          spaceBetween={14}
+          loop={limitedEditionItems.length > 4}
+          watchOverflow
+          navigation={{
+            prevEl: ".limitedNavPrev",
+            nextEl: ".limitedNavNext",
+          }}
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 4500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={800}
+          breakpoints={{
+            0: {
+              spaceBetween: 10,
+            },
+            576: {
+              spaceBetween: 12,
+            },
+            992: {
+              spaceBetween: 14,
+            },
+          }}
+        >
+          {limitedEditionItems.map((item) => (
+            <SwiperSlide key={item.id}>
+              <ProductCard card={item} variant="compact" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <button
+          type="button"
+          className="limitedNav limitedNavNext"
+          aria-label="Next products"
+        />
+      </div>
     </section>
   );
 }

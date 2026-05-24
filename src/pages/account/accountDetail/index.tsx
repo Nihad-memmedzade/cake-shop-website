@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import AccountLayout from "@/assets/components/accountLayout";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import {
@@ -6,12 +8,15 @@ import {
   clearAuthMessages,
   updateProfileThunk,
 } from "@/store/authSlice";
+
 import styles from "./accountDetail.module.scss";
 
 export default function AccountDetailsContent() {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const { user, loading, error, successMessage } = useAppSelector(
-    (state) => state.auth
+    (state) => state.auth,
   );
 
   const [firstName, setFirstName] = useState("");
@@ -52,7 +57,7 @@ export default function AccountDetailsContent() {
     const fullName = `${firstName.trim()} ${lastName.trim()}`.trim();
 
     if (fullName.length < 2) {
-      setLocalError("Full name must be at least 2 characters.");
+      setLocalError(t("pages.account.details.errors.fullName"));
       return;
     }
 
@@ -60,17 +65,17 @@ export default function AccountDetailsContent() {
       updateProfileThunk({
         fullName,
         email: email.trim(),
-      })
+      }),
     );
 
     if (currentPassword || newPassword || confirmNewPassword) {
       if (newPassword.length < 6) {
-        setLocalError("New password must be at least 6 characters.");
+        setLocalError(t("pages.account.details.errors.passwordLength"));
         return;
       }
 
       if (newPassword !== confirmNewPassword) {
-        setLocalError("New passwords do not match.");
+        setLocalError(t("pages.account.details.errors.passwordMatch"));
         return;
       }
 
@@ -78,7 +83,7 @@ export default function AccountDetailsContent() {
         changePasswordThunk({
           currentPassword,
           newPassword,
-        })
+        }),
       );
 
       if (changePasswordThunk.fulfilled.match(result)) {
@@ -90,18 +95,18 @@ export default function AccountDetailsContent() {
   };
 
   return (
-    <AccountLayout title="Account Details">
+    <AccountLayout title={t("pages.account.details.pageTitle")}>
       <div className={styles.formSection}>
         <div className={styles.sectionHead}>
-          <p className={styles.kicker}>Profile settings</p>
-          <h2>Personal information</h2>
+          <p className={styles.kicker}>{t("pages.account.details.kicker")}</p>
+          <h2>{t("pages.account.details.heading")}</h2>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.rowTwo}>
             <input
               type="text"
-              placeholder="First Name"
+              placeholder={t("pages.account.details.firstName")}
               className={styles.input}
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
@@ -110,7 +115,7 @@ export default function AccountDetailsContent() {
 
             <input
               type="text"
-              placeholder="Last Name"
+              placeholder={t("pages.account.details.lastName")}
               className={styles.input}
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
@@ -119,7 +124,7 @@ export default function AccountDetailsContent() {
 
           <input
             type="text"
-            placeholder="Display Name"
+            placeholder={t("pages.account.details.displayName")}
             className={styles.input}
             value={displayName}
             onChange={(event) => setDisplayName(event.target.value)}
@@ -128,7 +133,7 @@ export default function AccountDetailsContent() {
 
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder={t("pages.account.details.email")}
             className={styles.input}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -136,11 +141,13 @@ export default function AccountDetailsContent() {
           />
 
           <div className={styles.passwordBlock}>
-            <h3 className={styles.formTitle}>Password change</h3>
+            <h3 className={styles.formTitle}>
+              {t("pages.account.details.passwordTitle")}
+            </h3>
 
             <input
               type="password"
-              placeholder="Current password"
+              placeholder={t("pages.account.details.currentPassword")}
               className={styles.input}
               value={currentPassword}
               onChange={(event) => setCurrentPassword(event.target.value)}
@@ -148,7 +155,7 @@ export default function AccountDetailsContent() {
 
             <input
               type="password"
-              placeholder="New password"
+              placeholder={t("pages.account.details.newPassword")}
               className={styles.input}
               value={newPassword}
               onChange={(event) => setNewPassword(event.target.value)}
@@ -157,7 +164,7 @@ export default function AccountDetailsContent() {
 
             <input
               type="password"
-              placeholder="Confirm new password"
+              placeholder={t("pages.account.details.confirmNewPassword")}
               className={styles.input}
               value={confirmNewPassword}
               onChange={(event) => setConfirmNewPassword(event.target.value)}
@@ -172,7 +179,9 @@ export default function AccountDetailsContent() {
           )}
 
           <button type="submit" className={styles.submitBtn} disabled={loading}>
-            {loading ? "Saving..." : "Save changes"}
+            {loading
+              ? t("pages.account.details.saving")
+              : t("pages.account.details.save")}
           </button>
         </form>
       </div>

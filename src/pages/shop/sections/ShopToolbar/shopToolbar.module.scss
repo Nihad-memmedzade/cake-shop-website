@@ -12,18 +12,7 @@
   box-shadow: $shadow-soft;
 }
 
-.breadcrumbs {
-  @include flex($align: center, $gap: 8px);
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  @include font(
-    12px,
-    $weight: map-get($font-weights, extra-bold),
-    $height: 1.4,
-    $color: $text-soft
-  );
-}
+
 
 .sep {
   opacity: 0.55;
@@ -32,7 +21,7 @@
 .resultCount {
   margin: 0;
   @include font(
-    13px,
+    17px,
     $weight: map-get($font-weights, semibold),
     $height: 1.5,
     $color: $text-muted
@@ -66,6 +55,7 @@
 
 .filterBtn {
   display: none;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   padding: 0 14px;

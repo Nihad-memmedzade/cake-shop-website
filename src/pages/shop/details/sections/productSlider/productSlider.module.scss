@@ -4,22 +4,24 @@
 
 .productSlider {
   @include flex($align: flex-start, $gap: 16px);
+
   width: 100%;
   max-width: 100%;
   min-width: 0;
 }
 
 .thumbsCol {
-  width: 86px;
-  flex: 0 0 86px;
+  width: 82px;
+  flex: 0 0 82px;
   min-width: 0;
 }
 
 .mainCol {
   width: 100%;
+  max-width: 560px;
   min-width: 0;
-    max-width: 600px;
   flex: 1;
+
   border: 1px solid $border-soft;
   border-radius: $radius-xl;
   overflow: hidden;
@@ -39,7 +41,8 @@
   background: $brand-cream;
 
   img {
-    @include container(100%, 100%);
+    @include container($width: 100%, $height: 100%);
+
     display: block;
     object-fit: cover;
   }
@@ -47,7 +50,7 @@
 
 .thumbsSwiper {
   width: 100%;
-  height: 520px;
+  height: 500px;
 }
 
 .thumbSlide {
@@ -55,7 +58,14 @@
 }
 
 .thumbBox {
-  @include container(100%, auto, $radius-md, 1px solid $border-soft, $brand-white);
+  @include container(
+    $width: 100%,
+    $height: auto,
+    $border-r: $radius-md,
+    $border: 1px solid $border-soft,
+    $background: $brand-white
+  );
+
   aspect-ratio: 1 / 1;
   padding: 0;
   overflow: hidden;
@@ -64,7 +74,8 @@
   transition: $transition-fast;
 
   img {
-    @include container(100%, 100%);
+    @include container($width: 100%, $height: 100%);
+
     display: block;
     object-fit: cover;
   }
@@ -83,8 +94,9 @@
   border: 1px dashed $border-medium;
   border-radius: $radius-xl;
   background: $brand-cream;
+
   @include font(
-    14px,
+    $size: 14px,
     $weight: map-get($font-weights, semibold),
     $height: 1.5,
     $color: $text-muted
@@ -104,12 +116,13 @@
 :global(.productMainSwiper .swiper-button-next),
 :global(.productMainSwiper .swiper-button-prev) {
   @include container(
-    54px,
-    54px,
-    50%,
-    1px solid $border-soft,
-    rgba(255, 255, 255, 0.86)
+    $width: 46px,
+    $height: 46px,
+    $border-r: 50%,
+    $border: 1px solid $border-soft,
+    $background: rgba(255, 255, 255, 0.86)
   );
+
   color: $brand-primary;
   box-shadow: $shadow-soft;
 }
@@ -117,15 +130,13 @@
 :global(.productMainSwiper .swiper-button-next::after),
 :global(.productMainSwiper .swiper-button-prev::after) {
   font-size: 8px !important;
-  width: 38px !important;
-  height: 38px !important;
   line-height: 1 !important;
 }
 
 :global(.productMainSwiper .swiper-button-next svg),
 :global(.productMainSwiper .swiper-button-prev svg) {
-  width: 24px !important;
-  height: 24px !important;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 :global(.productMainSwiper .swiper-button-next svg path),
@@ -141,10 +152,12 @@
   right: 12px;
 }
 
-@include respond(md) {
+@include respond(lg) {
   .productSlider {
     flex-direction: column-reverse;
-    gap: 12px;
+    gap: 14px;
+    max-width: 680px;
+    margin: 0 auto;
   }
 
   .thumbsCol {
@@ -152,21 +165,52 @@
     flex: none;
   }
 
-  .thumbsSwiper {
-    height: auto;
-  }
-
   .mainCol {
+    max-width: 100%;
     border-radius: $radius-lg;
   }
 
   .mainSlide {
-    aspect-ratio: 1 / 1.15;
+    aspect-ratio: 1 / 1.08;
+  }
+
+  .thumbsSwiper {
+    height: auto;
+  }
+
+  .thumbBox {
+    border-radius: $radius-sm;
+  }
+}
+
+@include respond(md) {
+  .productSlider {
+    max-width: 620px;
+    gap: 12px;
+  }
+
+  .mainSlide {
+    aspect-ratio: 1 / 1.02;
+  }
+
+  :global(.productMainSwiper .swiper-button-next),
+  :global(.productMainSwiper .swiper-button-prev) {
+    width: 38px;
+    height: 38px;
+  }
+
+  :global(.productMainSwiper .swiper-button-prev) {
+    left: 10px;
+  }
+
+  :global(.productMainSwiper .swiper-button-next) {
+    right: 10px;
   }
 }
 
 @include respond(sm) {
   .productSlider {
+    max-width: 100%;
     gap: 10px;
   }
 
@@ -175,11 +219,7 @@
   }
 
   .mainSlide {
-    aspect-ratio: 1 / 1.08;
-  }
-
-  .thumbBox {
-    border-radius: $radius-sm;
+    aspect-ratio: 1 / 1.05;
   }
 
   :global(.productMainSwiper) {
@@ -195,19 +235,6 @@
   :global(.productMainSwiper .swiper-button-next::after),
   :global(.productMainSwiper .swiper-button-prev::after) {
     font-size: 7px !important;
-    width: 7px !important;
-    height: 7px !important;
-  }
-
-  :global(.productMainSwiper .swiper-button-next svg),
-  :global(.productMainSwiper .swiper-button-prev svg) {
-    width: 7px !important;
-    height: 7px !important;
-  }
-
-  :global(.productMainSwiper .swiper-button-next svg path),
-  :global(.productMainSwiper .swiper-button-prev svg path) {
-    stroke-width: 1.5px !important;
   }
 
   :global(.productMainSwiper .swiper-button-prev) {

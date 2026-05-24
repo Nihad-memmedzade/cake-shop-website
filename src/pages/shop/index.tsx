@@ -17,36 +17,42 @@ import ShopPagination from "./sections/ShopPagination";
 import ShopToolbar from "./sections/ShopToolbar";
 import style from "./shop.module.scss";
 import PageLoader from "@/assets/components/pageLoader/pageLoader";
+import { useTranslation } from "react-i18next";
 
 const PRODUCTS_PER_PAGE = 6;
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
 
   const { items, loading, error } = useAppSelector(
-    (state: RootState) => state.products
+    (state: RootState) => state.products,
   );
 
   const query = searchParams.get("q") || "";
   const selectedCategory = searchParams.get("category") || "";
   const selectedFlavors = useMemo(
     () => searchParams.getAll("flavors"),
-    [searchParams]
+    [searchParams],
   );
-  const selectedTags = useMemo(() => searchParams.getAll("tags"), [searchParams]);
+  const selectedTags = useMemo(
+    () => searchParams.getAll("tags"),
+    [searchParams],
+  );
   const selectedSizes = useMemo(
     () => searchParams.getAll("sizes"),
-    [searchParams]
+    [searchParams],
   );
   const minPrice = searchParams.get("minPrice") || "";
   const maxPrice = searchParams.get("maxPrice") || "";
   const sort = searchParams.get("sort") || "default";
 
   const pageParam = Number(searchParams.get("page") || "1");
-  const currentPage = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
+  const currentPage =
+    Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
 
   const totalPages = Math.max(1, Math.ceil(items.length / PRODUCTS_PER_PAGE));
 
@@ -251,7 +257,7 @@ export default function Shop() {
           minPrice: minPrice ? Number(minPrice) : undefined,
           maxPrice: maxPrice ? Number(maxPrice) : undefined,
           sort: sort === "default" ? undefined : sort,
-        })
+        }),
       );
       return;
     }
@@ -276,16 +282,14 @@ export default function Shop() {
   }, [loading, currentPage, totalPages]);
 
   if (loading) {
-  return (
-    <PageLoader
-      fullPage
-      title="Loading cakes"
-      text="Fresh products are coming in a moment."
-    />
-  );
-}
-
-
+    return (
+      <PageLoader
+        fullPage
+        title={t("pages.shop.loader.title")}
+        text={t("pages.shop.loader.text")}
+      />
+    );
+  }
   return (
     <Layout>
       <main className={style.page}>

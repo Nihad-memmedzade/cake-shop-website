@@ -5,7 +5,7 @@ import Category from "./sections/category";
 import LimitedEdition from "./sections/limitedEdition";
 import SpringCollection from "./sections/springCollection";
 
-function Home() {
+export default function Home() {
   return (
     <Layout>
       <MainSlider />
@@ -16,4 +16,3 @@ function Home() {
     </Layout>
   );
 }
-export default Home;

@@ -1,13 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import Layout from "@/assets/components/layout";
+import { getLocalizedPath } from "@/helpers/languagePath";
+import { loginThunk } from "@/store/authSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+
 import style from "./../auth.module.scss";
 
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { loginThunk } from "@/store/authSlice";
+const isValidEmail = (value: string) =>
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
 export default function Login() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -15,19 +21,34 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formError, setFormError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail || !password.trim()) {
+      setFormError(t("pages.auth.login.errors.required"));
+      return;
+    }
+
+    if (!isValidEmail(trimmedEmail)) {
+      setFormError(t("pages.auth.login.errors.email"));
+      return;
+    }
+
+    setFormError("");
 
     const result = await dispatch(
       loginThunk({
-        email,
+        email: trimmedEmail,
         password,
-      })
+      }),
     );
 
     if (loginThunk.fulfilled.match(result)) {
-      navigate("/account/details");
+      navigate(getLocalizedPath("/account/details"));
     }
   };
 
@@ -36,10 +57,9 @@ export default function Login() {
       <div className={style.pageCenter}>
         <div className={style.card}>
           <header className={style.header}>
-            <h1 className={style.title}>LOGIN</h1>
-            <p className={style.subtitle}>
-              Welcome back! Please enter your details.
-            </p>
+            <h1 className={style.title}>{t("pages.auth.login.title")}</h1>
+
+            <p className={style.subtitle}>{t("pages.auth.login.subtitle")}</p>
           </header>
 
           <form className={style.form} onSubmit={handleLogin}>
@@ -47,9 +67,10 @@ export default function Login() {
               <input
                 className={style.input}
                 type="email"
-                placeholder="Email address *"
+                placeholder={t("pages.auth.login.email")}
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
+                autoComplete="email"
                 required
               />
             </div>
@@ -58,35 +79,45 @@ export default function Login() {
               <input
                 className={style.input}
                 type="password"
-                placeholder="Password *"
+                placeholder={t("pages.auth.login.password")}
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
                 required
               />
             </div>
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {(formError || error) && (
+              <p className={style.errorText}>{formError || error}</p>
+            )}
 
             <div className={style.row}>
               <label className={style.remember}>
                 <input type="checkbox" />
-                <span>Remember me</span>
+                <span>{t("pages.auth.login.remember")}</span>
               </label>
 
-              <a className={style.link} href="/">
-                Lost password?
-              </a>
+              <button type="button" className={style.inlineBtn}>
+                {t("pages.auth.login.forgotPassword")}
+              </button>
             </div>
 
-            <button type="submit" className={style.submitBtn} disabled={loading}>
-              {loading ? "LOGGING IN..." : "LOG IN"}
+            <button
+              type="submit"
+              className={style.submitBtn}
+              disabled={loading}
+            >
+              {loading
+                ? t("pages.auth.login.loggingIn")
+                : t("pages.auth.login.loginButton")}
             </button>
 
             <p className={style.bottomText}>
-              No account yet?
-              <Link to="/auth/register">
+              {t("pages.auth.login.noAccount")}
+
+              <Link to={getLocalizedPath("/auth/register")}>
                 <button type="button" className={style.inlineBtn}>
-                  Create Account
+                  {t("pages.auth.login.createAccount")}
                 </button>
               </Link>
             </p>

@@ -7,25 +7,35 @@ export const routes = [
   // Contact
   { path: "/contact", component: <Pages.Contact /> },
 
-    // Shop
+  // Shop
   { path: "/products", component: <Pages.Shop /> },
 
-    // Procut Detail
+  // Procut Detail
   { path: "/products/:id", component: <Pages.ProductDetail /> },
 
   //Login
   { path: "/auth/login", component: <Pages.Login /> },
 
   //Register
-  { path: "/auth/register", component: <Pages.Register /> },  
+  { path: "/auth/register", component: <Pages.Register /> },
 
   //Account / Account detail
-  {path:"/account/details", component: <Pages.AccountDetails/>},
+  { path: "/account/details", component: <Pages.AccountDetails /> },
 
   //Account / Wishlist
-  {path:"/account/wishlist", component: <Pages.Wishlist/>}
+  { path: "/account/wishlist", component: <Pages.Wishlist /> },
 
+  //Account / Orders
+  { path: "/account/orders", component: <Pages.Orders /> },
+  
+  // Cart
+  { path: "/cart", component: <Pages.Cart /> },
 
+  // Checkout
+  { path: "/checkout", component: <Pages.Checkout /> },
+
+  // Confirmation
+  { path: "/confirmation", component: <Pages.Confirmation /> },
 ];
 
 export default routes;

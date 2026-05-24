@@ -5,9 +5,11 @@
 .productCard {
   width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   border-radius: 18px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.92);
@@ -16,11 +18,11 @@
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
-}
 
-.productCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.14);
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.14);
+  }
 }
 
 .productImg {
@@ -67,12 +69,13 @@
   position: absolute;
   left: 50%;
   bottom: 14px;
+  z-index: 4;
   transform: translateX(-50%) translateY(10px);
 
   width: calc(100% - 24px);
   height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  background: #fff;
+  background: $brand-white;
   backdrop-filter: blur(10px);
 
   font-size: 12px;
@@ -95,7 +98,7 @@
 }
 
 .addToCart:hover {
-  background: #fff;
+  background: $brand-white;
 }
 
 .addToCart:active {
@@ -117,26 +120,55 @@
   margin-top: 10px;
 
   .categoryName {
+    margin: 0;
+
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.55);
   }
+}
+
+.wishlistBtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
 
   img {
     width: 18px;
     height: 18px;
-    cursor: pointer;
     opacity: 0.9;
     transition:
       transform 0.15s ease,
-      opacity 0.15s ease;
+      opacity 0.15s ease,
+      filter 0.15s ease;
   }
 
-  img:hover {
+  &:hover img {
     transform: scale(1.08);
     opacity: 1;
+  }
+}
+
+.wishlistBtnActive {
+  background: rgba(185, 72, 103, 0.1);
+
+  img {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(32%)
+      saturate(1113%) hue-rotate(296deg) brightness(88%) contrast(88%);
+    opacity: 1;
+  }
+
+  &:hover img {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(32%)
+      saturate(1113%) hue-rotate(296deg) brightness(88%) contrast(88%);
   }
 }
 
@@ -186,17 +218,17 @@
   color: #111;
 }
 
-.productImg .discountBadge {
+.discountBadge {
   position: absolute;
   top: 12px;
   left: 12px;
   z-index: 3;
 
   padding: 8px 10px;
-  border-radius: 999px;
+  border-radius: $radius-pill;
 
   background: rgba(221, 114, 144, 0.92);
-  color: #fff;
+  color: $text-white;
 
   font-size: 11px;
   font-weight: 900;
@@ -204,6 +236,76 @@
   text-transform: uppercase;
 
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.compactCard {
+  max-width: 280px;
+  margin: 0 auto;
+
+  .productImg {
+    aspect-ratio: 1 / 1.08;
+  }
+
+  .addToCart {
+    height: 38px;
+    bottom: 9px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .productCategory_cnt,
+  .product_name,
+  .discountedPrice,
+  .price {
+    padding-inline: 10px;
+  }
+
+  .productCategory_cnt {
+    margin-top: 7px;
+
+    .categoryName {
+      font-size: 10px;
+    }
+  }
+
+  .wishlistBtn {
+    width: 26px;
+    height: 26px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .product_name {
+    font-size: 12px;
+  }
+
+  .discountedPrice,
+  .price {
+    padding-bottom: 10px;
+  }
+
+  .discountedPrice {
+    gap: 6px;
+
+    .oldPrice,
+    .newPrice {
+      font-size: 12px;
+    }
+  }
+
+  .price {
+    font-size: 12px;
+  }
+
+  .discountBadge {
+    top: 9px;
+    left: 9px;
+    padding: 6px 8px;
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -244,6 +346,16 @@
     }
   }
 
+  .wishlistBtn {
+    width: 26px;
+    height: 26px;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
   .product_name {
     font-size: 12px;
   }
@@ -273,5 +385,12 @@
     bottom: 8px;
     height: 38px;
     letter-spacing: 0.06em;
+  }
+
+  .discountBadge {
+    top: 10px;
+    left: 10px;
+    padding: 6px 8px;
+    font-size: 9px;
   }
 }

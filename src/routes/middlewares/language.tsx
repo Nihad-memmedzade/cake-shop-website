@@ -3,18 +3,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import i18n, { supportedLngs } from "@/i18n";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
-}
+};
 
-const LanguageMiddleware = ({ children }: Props) => {
+export default function LanguageMiddleware({ children }: Props) {
   const navigate = useNavigate();
   const { pathname, search, hash } = useLocation();
 
   useEffect(() => {
     const pathLang = pathname.split("/")[1];
 
-    if (!pathLang || supportedLngs.indexOf(pathLang) === -1) {
+    if (!pathLang || !supportedLngs.includes(pathLang)) {
       navigate(`/${i18n.language}${pathname}${search}${hash}`, {
         replace: true,
       });
@@ -23,11 +23,8 @@ const LanguageMiddleware = ({ children }: Props) => {
 
     if (pathLang !== i18n.language) {
       i18n.changeLanguage(pathLang);
-      localStorage.setItem("LANG", pathLang);
     }
   }, [pathname, search, hash, navigate]);
 
-  return <React.Fragment>{children}</React.Fragment>;
-};
-
-export default LanguageMiddleware;
+  return <>{children}</>;
+}

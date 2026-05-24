@@ -1,13 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 
 import Layout from "@/assets/components/layout";
+import { getLocalizedPath } from "@/helpers/languagePath";
+import { registerThunk } from "@/store/authSlice";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+
 import style from "./../auth.module.scss";
 
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { registerThunk } from "@/store/authSlice";
-
 export default function Register() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -25,17 +28,17 @@ export default function Register() {
     setFormError("");
 
     if (password.length < 6) {
-      setFormError("Password must be at least 6 characters.");
+      setFormError(t("pages.auth.register.errors.passwordLength"));
       return;
     }
 
     if (confirmPassword.length < 6) {
-      setFormError("Confirm password must be at least 6 characters.");
+      setFormError(t("pages.auth.register.errors.confirmPasswordLength"));
       return;
     }
 
     if (password !== confirmPassword) {
-      setFormError("Passwords do not match.");
+      setFormError(t("pages.auth.register.errors.passwordMatch"));
       return;
     }
 
@@ -44,11 +47,11 @@ export default function Register() {
         fullName: fullName.trim(),
         email: email.trim(),
         password,
-      })
+      }),
     );
 
     if (registerThunk.fulfilled.match(result)) {
-      navigate("/account/details");
+      navigate(getLocalizedPath("/account/details"));
     }
   };
 
@@ -57,9 +60,9 @@ export default function Register() {
       <div className={style.pageCenter}>
         <div className={style.card}>
           <header className={style.header}>
-            <h1 className={style.title}>REGISTER</h1>
+            <h1 className={style.title}>{t("pages.auth.register.title")}</h1>
             <p className={style.subtitle}>
-              Create your account to enjoy our sweets
+              {t("pages.auth.register.subtitle")}
             </p>
           </header>
 
@@ -68,7 +71,7 @@ export default function Register() {
               <input
                 className={style.input}
                 type="text"
-                placeholder="Full name *"
+                placeholder={t("pages.auth.register.fullName")}
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 minLength={2}
@@ -80,7 +83,7 @@ export default function Register() {
               <input
                 className={style.input}
                 type="email"
-                placeholder="Email address *"
+                placeholder={t("pages.auth.register.email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -91,7 +94,7 @@ export default function Register() {
               <input
                 className={style.input}
                 type="password"
-                placeholder="Password *"
+                placeholder={t("pages.auth.register.password")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 minLength={6}
@@ -103,7 +106,7 @@ export default function Register() {
               <input
                 className={style.input}
                 type="password"
-                placeholder="Confirm password *"
+                placeholder={t("pages.auth.register.confirmPassword")}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 minLength={6}
@@ -117,19 +120,21 @@ export default function Register() {
             <div className={style.row}>
               <label className={style.remember}>
                 <input type="checkbox" required />
-                <span>I agree to the Terms & Privacy Policy</span>
+                <span>{t("pages.auth.register.terms")}</span>
               </label>
             </div>
 
             <button type="submit" className={style.submitBtn} disabled={loading}>
-              {loading ? "CREATING..." : "CREATE ACCOUNT"}
+              {loading
+                ? t("pages.auth.register.creating")
+                : t("pages.auth.register.createAccount")}
             </button>
 
             <p className={style.bottomText}>
-              Already have an account?
-              <Link to="/auth/login">
+              {t("pages.auth.register.alreadyHaveAccount")}
+              <Link to={getLocalizedPath("/auth/login")}>
                 <button type="button" className={style.inlineBtn}>
-                  Log in
+                  {t("pages.auth.register.login")}
                 </button>
               </Link>
             </p>

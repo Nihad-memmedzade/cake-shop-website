@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import type { Product } from "@/types/product";
 
 import "swiper/css";
@@ -27,8 +28,8 @@ export default function ProductSlider({ product }: ProductSliderProps) {
       <div className={styles.thumbsCol}>
         <Swiper
           onSwiper={setThumbsSwiper}
-          direction="vertical"
-          spaceBetween={12}
+          direction="horizontal"
+          spaceBetween={10}
           slidesPerView={4}
           freeMode
           watchSlidesProgress
@@ -38,10 +39,17 @@ export default function ProductSlider({ product }: ProductSliderProps) {
             0: {
               direction: "horizontal",
               slidesPerView: 4,
+              spaceBetween: 8,
             },
-            768: {
+            576: {
+              direction: "horizontal",
+              slidesPerView: 5,
+              spaceBetween: 10,
+            },
+            1025: {
               direction: "vertical",
               slidesPerView: 4,
+              spaceBetween: 12,
             },
           }}
         >

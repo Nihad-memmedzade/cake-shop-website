@@ -104,6 +104,31 @@
   }
 }
 
+.errorMessage,
+.successMessage {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: $radius-md;
+
+  @include font(
+    $size: 13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.5
+  );
+}
+
+.errorMessage {
+  border: 1px solid rgba(217, 48, 37, 0.18);
+  background: rgba(217, 48, 37, 0.08);
+  color: #d93025;
+}
+
+.successMessage {
+  border: 1px solid rgba(64, 130, 91, 0.18);
+  background: rgba(64, 130, 91, 0.1);
+  color: #2f7d4f;
+}
+
 @include respond(sm) {
   .formSection {
     padding: 22px;

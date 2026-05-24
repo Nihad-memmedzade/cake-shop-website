@@ -1,5 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 import type { FilterContentProps } from "@/types/shop";
 import FilterContent from "../FilterContent";
+
 import style from "./filterDrawer.module.scss";
 
 type FilterDrawerProps = FilterContentProps & {
@@ -14,6 +17,8 @@ export default function FilterDrawer({
   onClearFilters,
   ...filterProps
 }: FilterDrawerProps) {
+  const { t } = useTranslation();
+
   return (
     <>
       <div
@@ -27,15 +32,15 @@ export default function FilterDrawer({
       >
         <div className={style.drawerHead}>
           <div>
-            <span>Filter products</span>
-            <h3>Cake filters</h3>
+            <span>{t("pages.shop.filters.kicker")}</span>
+            <h3>{t("pages.shop.filters.title")}</h3>
           </div>
 
           <button
             type="button"
             className={style.drawerClose}
             onClick={onClose}
-            aria-label="Close filters"
+            aria-label={t("pages.shop.filters.close")}
           >
             x
           </button>
@@ -49,7 +54,7 @@ export default function FilterDrawer({
             className={style.drawerClearBtn}
             onClick={onClearFilters}
           >
-            Reset filters
+            {t("pages.shop.filters.resetFilters")}
           </button>
         </div>
       </aside>

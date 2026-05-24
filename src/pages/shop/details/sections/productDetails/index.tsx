@@ -1,3 +1,5 @@
+import { Link, useLocation } from "react-router-dom";
+import { getLocalizedPath } from "@/helpers/languagePath";
 import { useMemo, useState } from "react";
 import { Heart, Star } from "lucide-react";
 import type { Product } from "@/types/product";
@@ -17,8 +19,23 @@ export default function ProductDetails({ product }: ProductDetailProps) {
 
   const dispatch = useAppDispatch();
 
-  const wishlistItems = useAppSelector((state: RootState) => state.wishlist.items);
-  const isInWishlist = wishlistItems.some((item: Product) => item.id === product.id);
+  const location = useLocation();
+
+  const breadcrumbState = location.state as {
+    from?: string;
+    fromLabel?: string;
+  } | null;
+
+  const fromPath = breadcrumbState?.from || "/products";
+  const fromLabel = breadcrumbState?.fromLabel || "Shop";
+  const showSourcePage = fromPath !== "/";
+
+  const wishlistItems = useAppSelector(
+    (state: RootState) => state.wishlist.items,
+  );
+  const isInWishlist = wishlistItems.some(
+    (item: Product) => item.id === product.id,
+  );
 
   const finalPrice =
     product.discountedPrice > 0 ? product.discountedPrice : product.price;
@@ -26,7 +43,10 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   const hasDiscount = product.discountedPrice > 0;
 
   const ratingStars = useMemo(() => {
-    return Array.from({ length: 5 }, (_, index) => index < Math.round(product.rating));
+    return Array.from(
+      { length: 5 },
+      (_, index) => index < Math.round(product.rating),
+    );
   }, [product.rating]);
 
   const increaseQty = () => setSelectedQuantity((prev) => prev + 1);
@@ -40,7 +60,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
       addToCart({
         ...product,
         quantity: selectedQuantity,
-      })
+      }),
     );
   };
 
@@ -51,9 +71,24 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   return (
     <section className={styles.productDetails}>
       <div className={styles.breadcrumb}>
-        <span>Home</span>
+        <Link className={styles.breadcrumbLink} to={getLocalizedPath("/")}>
+          Home
+        </Link>
+
+        {showSourcePage && (
+          <>
+            <span>/</span>
+            <Link
+              className={styles.breadcrumbLink}
+              to={getLocalizedPath(fromPath)}
+            >
+              {fromLabel}
+            </Link>
+          </>
+        )}
+
         <span>/</span>
-        <span>Shop</span>
+        <span className={styles.breadcrumbCurrent}>{product.title}</span>
       </div>
 
       <p className={styles.category}>{product.category}</p>
@@ -74,7 +109,9 @@ export default function ProductDetails({ product }: ProductDetailProps) {
       </div>
 
       <div className={styles.prices}>
-        {hasDiscount && <span className={styles.oldPrice}>${product.price}</span>}
+        {hasDiscount && (
+          <span className={styles.oldPrice}>${product.price}</span>
+        )}
         <span className={styles.price}>${finalPrice}</span>
       </div>
 
@@ -101,21 +138,37 @@ export default function ProductDetails({ product }: ProductDetailProps) {
 
       <div className={styles.cartRow}>
         <div className={styles.quantityBox}>
-          <button type="button" onClick={decreaseQty} aria-label="Decrease quantity">
+          <button
+            type="button"
+            onClick={decreaseQty}
+            aria-label="Decrease quantity"
+          >
             -
           </button>
           <span>{selectedQuantity}</span>
-          <button type="button" onClick={increaseQty} aria-label="Increase quantity">
+          <button
+            type="button"
+            onClick={increaseQty}
+            aria-label="Increase quantity"
+          >
             +
           </button>
         </div>
 
-        <button type="button" className={styles.addToCart} onClick={handleAddCart}>
+        <button
+          type="button"
+          className={styles.addToCart}
+          onClick={handleAddCart}
+        >
           Add to cart
         </button>
       </div>
 
-      <button type="button" className={styles.wishlistBtn} onClick={handleWishlist}>
+      <button
+        type="button"
+        className={styles.wishlistBtn}
+        onClick={handleWishlist}
+      >
         <Heart
           size={17}
           fill={isInWishlist ? "#b94867" : "none"}

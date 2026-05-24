@@ -1,0 +1,49 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.paymentMethods {
+  margin-top: 18px;
+  padding: 28px 30px;
+  border: 1px solid $border-soft;
+  background: $brand-white;
+}
+
+.paymentItem {
+  @include flex($align: flex-start, $gap: 12px);
+
+  margin-bottom: 18px;
+  cursor: pointer;
+
+  input {
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    accent-color: $brand-primary;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 7px;
+
+    @include font($size: 13px, $weight: 900, $color: $text-main);
+  }
+
+  p {
+    margin: 0;
+
+    @include font($size: 12px, $height: 1.7, $color: $text-muted);
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.privacyText {
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid $border-dark;
+
+  @include font($size: 11px, $height: 1.7, $color: $text-muted);
+}
