@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Layout from "@/assets/components/layout";
+import { getLocalizedPath } from "@/helpers/languagePath";
 import { logout } from "@/store/authSlice";
 import { useAppDispatch } from "@/store/store";
 
@@ -13,12 +15,22 @@ type AccountLayoutProps = {
 };
 
 const accountLinks = [
-  { label: "Account Details", path: "/account/details" },
-  { label: "Orders", path: "/account/orders" },
-  { label: "Wishlist", path: "/account/wishlist" },
+  {
+    labelKey: "pages.account.layout.sidebar.accountDetails",
+    path: "/account/details",
+  },
+  {
+    labelKey: "pages.account.layout.sidebar.orders",
+    path: "/account/orders",
+  },
+  {
+    labelKey: "pages.account.layout.sidebar.wishlist",
+    path: "/account/wishlist",
+  },
 ];
 
 export default function AccountLayout({ title, children }: AccountLayoutProps) {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -29,17 +41,17 @@ export default function AccountLayout({ title, children }: AccountLayoutProps) {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/auth/login");
+    navigate(getLocalizedPath("/auth/login"));
   };
 
   return (
     <Layout>
       <main className={styles.myAccount}>
         <section className={styles.hero}>
-          <p className={styles.kicker}>Cake House</p>
+          <p className={styles.kicker}>{t("pages.account.layout.kicker")}</p>
           <h1>{title}</h1>
           <p className={styles.heroText}>
-            Manage your profile, orders and saved cakes in one sweet place.
+            {t("pages.account.layout.heroText")}
           </p>
         </section>
 
@@ -52,12 +64,12 @@ export default function AccountLayout({ title, children }: AccountLayoutProps) {
                 return (
                   <li key={item.path}>
                     <Link
-                      to={item.path}
+                      to={getLocalizedPath(item.path)}
                       className={`${styles.menuLink} ${
                         isActive ? styles.menuLinkActive : ""
                       }`}
                     >
-                      {item.label}
+                      {t(item.labelKey)}
                     </Link>
                   </li>
                 );
@@ -69,7 +81,7 @@ export default function AccountLayout({ title, children }: AccountLayoutProps) {
                   className={`${styles.menuLink} ${styles.logoutBtn}`}
                   onClick={handleLogout}
                 >
-                  Logout
+                  {t("pages.account.layout.sidebar.logout")}
                 </button>
               </li>
             </ul>
