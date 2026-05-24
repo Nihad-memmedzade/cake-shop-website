@@ -1,0 +1,63 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.billingForm {
+  h3 {
+    margin: 0 0 22px;
+    text-transform: uppercase;
+
+    @include font($size: 16px, $weight: 900, $color: $text-main);
+  }
+}
+
+.form {
+  @include flex($direction: column, $gap: 18px);
+
+  input,
+  select {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid $border-medium;
+    background: $brand-white;
+    outline: none;
+    color: $text-main;
+    transition: $transition-fast;
+
+    @include font($size: 14px, $weight: 600);
+  }
+
+  input:focus,
+  select:focus {
+    border-color: $brand-primary;
+    box-shadow: 0 12px 30px rgba(185, 72, 103, 0.1);
+  }
+}
+
+.rowTwo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.inputError {
+  border-color: #d93025 !important;
+  background: rgba(217, 48, 37, 0.04) !important;
+}
+
+.errorText {
+  margin: -4px 0 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(217, 48, 37, 0.14);
+  border-radius: $radius-md;
+  background: rgba(217, 48, 37, 0.08);
+
+  @include font($size: 13px, $weight: 800, $color: #d93025);
+}
+
+@include respond(sm) {
+  .rowTwo {
+    grid-template-columns: 1fr;
+  }
+}
