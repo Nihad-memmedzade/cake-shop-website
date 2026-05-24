@@ -1,4 +1,6 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
 import {
   FacebookIcon,
   InstagramIcon,
@@ -6,42 +8,72 @@ import {
   WhatsappIcon,
 } from "@/assets/images/icons";
 import Logo from "@/assets/images/logo/cake-logo.png";
+import { getLocalizedPath } from "@/helpers/languagePath";
+
 import style from "./footer.module.scss";
 
 type FooterLink = {
-  label: string;
+  labelKey: string;
   path: string;
 };
 
 type FooterSection = {
-  title: string;
+  titleKey: string;
   links: FooterLink[];
 };
 
 const footerSections: FooterSection[] = [
   {
-    title: "Company",
+    titleKey: "common.footer.sections.pages.title",
     links: [
-      { label: "About Us", path: "/about" },
-      { label: "Blog", path: "/blog" },
-      { label: "Contact Us", path: "/contact" },
+      { labelKey: "common.footer.sections.pages.home", path: "/" },
+      { labelKey: "common.footer.sections.pages.shop", path: "/products" },
+      { labelKey: "common.footer.sections.pages.contact", path: "/contact" },
     ],
   },
   {
-    title: "Shop",
+    titleKey: "common.footer.sections.shop.title",
     links: [
-      { label: "All Cakes", path: "/products" },
-      { label: "Birthday Cakes", path: "/products?category=Birthday%20Cake" },
-      { label: "Fruit Cakes", path: "/products?category=Fruit%20Cake" },
-      { label: "Premium Cakes", path: "/products?category=Premium%20Cake" },
+      { labelKey: "common.footer.sections.shop.allCakes", path: "/products" },
+      {
+        labelKey: "common.footer.sections.shop.classicCakes",
+        path: "/products?category=Classic%20Cake",
+      },
+      {
+        labelKey: "common.footer.sections.shop.fruitCakes",
+        path: "/products?category=Fruit%20Cake",
+      },
+      {
+        labelKey: "common.footer.sections.shop.birthdayCakes",
+        path: "/products?category=Birthday%20Cake",
+      },
+      {
+        labelKey: "common.footer.sections.shop.premiumCakes",
+        path: "/products?category=Premium%20Cake",
+      },
     ],
   },
   {
-    title: "Help",
+    titleKey: "common.footer.sections.account.title",
     links: [
-      { label: "Customer Service", path: "/contact" },
-      { label: "Delivery Info", path: "/delivery" },
-      { label: "Refund Policy", path: "/refund-policy" },
+      { labelKey: "common.footer.sections.account.login", path: "/auth/login" },
+      {
+        labelKey: "common.footer.sections.account.register",
+        path: "/auth/register",
+      },
+      {
+        labelKey: "common.footer.sections.account.myAccount",
+        path: "/account/details",
+      },
+      {
+        labelKey: "common.footer.sections.account.wishlist",
+        path: "/account/wishlist",
+      },
+      {
+        labelKey: "common.footer.sections.account.orders",
+        path: "/account/orders",
+      },
+      { labelKey: "common.footer.sections.account.cart", path: "/cart" },
     ],
   },
 ];
@@ -70,40 +102,44 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className={style.footer}>
       <div className={style.footerMain}>
         <div className={style.brandColumn}>
-          <Link to="/" className={style.logo} aria-label="Cake House home">
+          <Link
+            to={getLocalizedPath("/")}
+            className={style.logo}
+            aria-label="Cake House home"
+          >
             <img src={Logo} alt="Cake House" />
           </Link>
 
-          <p className={style.description}>
-            Fresh handmade cakes, sweet celebrations and custom flavors baked
-            with care for every special moment.
-          </p>
+          <p className={style.description}>{t("common.footer.description")}</p>
 
           <div className={style.contactInfo}>
             <a href="mailto:hello@cakehouse.com">hello@cakehouse.com</a>
             <a href="tel:+12463450695">+1 246-345-0695</a>
           </div>
 
-          <div className={style.address}>
-            1418 River Drive, Suite 35 Cottonhall, CA 9622 United States
-          </div>
+          <div className={style.address}>{t("common.footer.address")}</div>
         </div>
 
         <div className={style.rightColumn}>
           <div className={style.linksColumn}>
             {footerSections.map((section) => (
-              <div className={style.footerSection} key={section.title}>
-                <h3 className={style.title}>{section.title}</h3>
+              <div className={style.footerSection} key={section.titleKey}>
+                <h3 className={style.title}>{t(section.titleKey)}</h3>
 
                 <ul className={style.list}>
                   {section.links.map((item) => (
-                    <li key={item.label}>
-                      <Link className={style.link} to={item.path}>
-                        {item.label}
+                    <li key={item.labelKey}>
+                      <Link
+                        className={style.link}
+                        to={getLocalizedPath(item.path)}
+                      >
+                        {t(item.labelKey)}
                       </Link>
                     </li>
                   ))}
@@ -125,16 +161,6 @@ export default function Footer() {
               </a>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className={style.bottomBar}>
-        <p>{"\u00A9"} {new Date().getFullYear()} Cake House. All rights reserved.</p>
-
-        <div className={style.bottomLinks}>
-          <Link to="/privacy">Privacy</Link>
-          <Link to="/terms">Terms</Link>
-          <Link to="/contact">Contact</Link>
         </div>
       </div>
     </footer>
