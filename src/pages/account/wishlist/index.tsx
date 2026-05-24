@@ -1,21 +1,28 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
 import AccountLayout from "@/assets/components/accountLayout";
 import ProductCard from "@/assets/components/productCard/productCard";
+import { getLocalizedPath } from "@/helpers/languagePath";
 import { useAppSelector } from "@/store/store";
+
 import style from "./wishlist.module.scss";
 
 export default function Wishlist() {
+  const { t } = useTranslation();
   const wishlistItems = useAppSelector((state) => state.wishlist.items);
 
   return (
-    <AccountLayout title="Wishlist">
+    <AccountLayout title={t("pages.account.wishlist.pageTitle")}>
       <div className={style.wishlistHead}>
         <div>
-          <p className={style.kicker}>Saved cakes</p>
-          <h2>Your wishlist</h2>
+          <p className={style.kicker}>{t("pages.account.wishlist.kicker")}</p>
+          <h2>{t("pages.account.wishlist.heading")}</h2>
         </div>
 
-        <span className={style.count}>{wishlistItems.length} items</span>
+        <span className={style.count}>
+          {t("pages.account.wishlist.count", { count: wishlistItems.length })}
+        </span>
       </div>
 
       {wishlistItems.length > 0 ? (
@@ -26,9 +33,12 @@ export default function Wishlist() {
         </div>
       ) : (
         <div className={style.emptyState}>
-          <h3>Your wishlist is empty</h3>
-          <p>Save your favorite cakes and come back to them anytime.</p>
-          <Link to="/products">Go to shop</Link>
+          <h3>{t("pages.account.wishlist.empty.title")}</h3>
+          <p>{t("pages.account.wishlist.empty.text")}</p>
+
+          <Link to={getLocalizedPath("/products")}>
+            {t("pages.account.wishlist.empty.button")}
+          </Link>
         </div>
       )}
     </AccountLayout>
