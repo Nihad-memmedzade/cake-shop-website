@@ -1,0 +1,80 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 44px;
+  border-bottom: 1px solid $border-dark;
+}
+
+.step {
+  @include flex($align: flex-start, $gap: 12px);
+
+  width: 100%;
+  padding: 0 0 20px;
+  border-bottom: 2px solid transparent;
+
+  strong {
+    @include font(18px, $weight: 900, $color: $text-muted);
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    text-transform: uppercase;
+
+    @include font(18px, $weight: 900, $color: $text-muted);
+  }
+
+  p {
+    margin: 0;
+
+    @include font(13px, $color: $text-soft);
+  }
+}
+
+.activeStep {
+  margin-bottom: -1px;
+  border-bottom-color: $text-main;
+
+  strong,
+  h3 {
+    color: $text-main;
+  }
+
+  p {
+    color: $text-muted;
+  }
+}
+
+.completedStep {
+  strong,
+  h3 {
+    color: $brand-primary;
+  }
+
+  p {
+    color: $text-muted;
+  }
+}
+
+@include respond(md) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    border-bottom: 0;
+  }
+
+  .step {
+    padding: 16px;
+    border: 1px solid $border-soft;
+    border-radius: $radius-lg;
+    background: $brand-white;
+  }
+
+  .activeStep {
+    border-color: $brand-primary;
+    box-shadow: inset 4px 0 0 $brand-primary;
+  }
+}
