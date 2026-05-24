@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,43 +11,30 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 import mainImageSlider from "@/assets/images/sliders/mainSlider/cake1.jpg";
 import mainImageSlider1 from "@/assets/images/sliders/mainSlider/cake2.jpg";
+import { getLocalizedPath } from "@/helpers/languagePath";
 
-interface FakeData {
-  id: number;
-  p: string;
+type SliderTranslation = {
+  kicker: string;
   title: string;
-  title2: string;
-  img: string;
-}
+  subtitle: string;
+};
 
-const fakeSliderData: FakeData[] = [
-  {
-    id: 1,
-    p: "New trend",
-    title: "Chocolate dream cakes",
-    title2: "Birthdays / Weddings / Special Days",
-    img: mainImageSlider,
-  },
-  {
-    id: 2,
-    p: "Summer 2026",
-    title: "Cakes for every celebration",
-    title2: "Fresh layers, soft cream, made to order",
-    img: mainImageSlider1,
-  },
-];
+const sliderImages = [mainImageSlider, mainImageSlider1];
 
 export default function MainSlider() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const slides = t("pages.home.mainSlider.slides", {
+    returnObjects: true,
+  }) as SliderTranslation[];
 
   return (
     <Swiper
       slidesPerView={1}
       spaceBetween={20}
-      loop={true}
-      pagination={{
-        clickable: true,
-      }}
+      loop
+      pagination={{ clickable: true }}
       autoplay={{
         delay: 4500,
         disableOnInteraction: false,
@@ -55,23 +43,27 @@ export default function MainSlider() {
       modules={[Autoplay, Pagination]}
       className="mySwiper swipper-main"
     >
-      {fakeSliderData.map((slide) => (
-        <SwiperSlide key={slide.id}>
+      {slides.map((slide, index) => (
+        <SwiperSlide key={slide.title}>
           <div className="mainSlider-cnt">
-            <p className="mainSlider-p">{slide.p}</p>
+            <p className="mainSlider-p">{slide.kicker}</p>
             <h1 className="mainSlider-h1">{slide.title}</h1>
-            <p className="mainSlider-h2">{slide.title2}</p>
+            <p className="mainSlider-h2">{slide.subtitle}</p>
 
             <button
               className="mainSlider-p2"
               type="button"
-              onClick={() => navigate("/products")}
+              onClick={() => navigate(getLocalizedPath("/products"))}
             >
-              Discover now
+              {t("pages.home.mainSlider.cta")}
             </button>
           </div>
 
-          <img src={slide.img} alt={slide.title} className="mainSlide-img" />
+          <img
+            src={sliderImages[index]}
+            alt={slide.title}
+            className="mainSlide-img"
+          />
         </SwiperSlide>
       ))}
     </Swiper>
