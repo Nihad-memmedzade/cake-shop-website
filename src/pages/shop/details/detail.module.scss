@@ -4,17 +4,17 @@
 
 .detail {
   @include page-container($container-width);
+
   padding: 48px 0 80px;
   overflow-x: hidden;
 }
 
 .productOverview {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-  gap: clamp(18px, 2.4vw, 25px);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr);
+  gap: clamp(26px, 4vw, 54px);
   align-items: start;
 }
-
 
 .stateBox {
   min-height: 360px;
@@ -25,8 +25,9 @@
   h1,
   p {
     margin: 0;
+
     @include font(
-      clamp(22px, 3vw, 34px),
+      $size: clamp(22px, 3vw, 34px),
       $weight: map-get($font-weights, black),
       $height: 1.2,
       $color: $text-main
@@ -42,6 +43,10 @@
 }
 
 @include respond(lg) {
+  .detail {
+    padding: 42px 0 74px;
+  }
+
   .productOverview {
     grid-template-columns: 1fr;
     gap: 34px;
@@ -50,14 +55,18 @@
 
 @include respond(md) {
   .detail {
-    width: min(94%, 720px);
+    width: $container-width;
     padding: 36px 0 68px;
+  }
+
+  .productOverview {
+    gap: 30px;
   }
 }
 
 @include respond(sm) {
   .detail {
-    width: min(92%, 420px);
+    width: $container-width-small;
     padding: 28px 0 56px;
   }
 

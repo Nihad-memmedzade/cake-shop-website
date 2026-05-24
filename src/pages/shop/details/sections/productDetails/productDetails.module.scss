@@ -14,15 +14,32 @@
 
 .breadcrumb {
   @include flex($align: center, $gap: 8px);
+
   margin-bottom: 18px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  flex-wrap: wrap;
+
   @include font(
     12px,
     $weight: map-get($font-weights, extra-bold),
     $height: 1.4,
     $color: $text-soft
   );
+}
+
+.breadcrumbLink {
+  text-decoration: none;
+  color: $text-soft;
+  transition: $transition-fast;
+
+  &:hover {
+    color: $brand-primary;
+  }
+}
+
+.breadcrumbCurrent {
+  color: $brand-primary;
 }
 
 .category {

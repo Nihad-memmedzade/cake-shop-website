@@ -4,10 +4,12 @@
 
 .relatedProducts {
   margin-top: 88px;
+  overflow: visible;
 }
 
 .sectionHead {
-  margin-bottom: 24px;
+  max-width: 720px;
+  margin: 0 auto 28px;
   text-align: center;
 }
 
@@ -15,8 +17,9 @@
   margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
+
   @include font(
-    11px,
+    $size: 11px,
     $weight: map-get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
@@ -24,10 +27,11 @@
 }
 
 .title {
-  margin: 0 0 10px;
+  margin: 0 0 0px;
   text-transform: uppercase;
+
   @include font(
-    clamp(24px, 2.8vw, 38px),
+    $size: clamp(24px, 2.8vw, 38px),
     $weight: map-get($font-weights, black),
     $height: 1.1,
     $color: $text-main
@@ -37,21 +41,40 @@
 .subtitle {
   max-width: 520px;
   margin: 0 auto;
+
   @include font(
-    14px,
+    $size: 14px,
     $weight: map-get($font-weights, regular),
     $height: 1.7,
     $color: $text-muted
   );
 }
 
+.relatedSliderShell {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .relatedSwiper {
-  padding: 16px 6px 48px;
+  width: 100%;
+  padding: 16px 0 48px;
+  overflow: hidden;
+
+  --swiper-navigation-size: 8px !important;
 }
 
 .slide {
+  width: 270px !important;
   height: auto;
-  background: $brand-cream;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: transparent;
+}
+
+:global(.relatedProductsSwiper .swiper-wrapper) {
+  align-items: stretch;
 }
 
 :global(.relatedProductsSwiper .swiper-pagination) {
@@ -59,9 +82,12 @@
 }
 
 :global(.relatedProductsSwiper .swiper-pagination-bullet) {
-  @include container(8px, 8px, $radius-pill, null, $text-soft);
+  width: 8px;
+  height: 8px;
   opacity: 1;
-  transition: $transition-fast;
+  border-radius: $radius-pill;
+  background: rgba(81, 49, 58, 0.24);
+  transition: $transition-normal;
 }
 
 :global(.relatedProductsSwiper .swiper-pagination-bullet-active) {
@@ -69,59 +95,94 @@
   background: $brand-primary;
 }
 
-:global(.relatedProductsSwiper) {
-  --swiper-navigation-size: 8px !important;
-}
+.relatedNav {
+  position: absolute;
+  top: calc(50% - 24px);
+  z-index: 8;
 
-:global(.relatedProductsSwiper .swiper-button-next),
-:global(.relatedProductsSwiper .swiper-button-prev) {
   @include container(
-    64px,
-    64px,
-    50%,
-    1px solid $border-soft,
-    rgba(255, 255, 255, 0.86)
+    $width: 64px,
+    $height: 64px,
+    $border-r: 50%,
+    $border: 1px solid $border-soft,
+    $background: rgba(255, 255, 255, 0.86)
   );
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
   color: $brand-primary;
   box-shadow: $shadow-soft;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-50%) scale(0.96);
   transition: $transition-fast;
+
+  &::after {
+    display: block;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: $brand-primary;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.96);
+    color: $brand-primary;
+    box-shadow: 0 18px 44px rgba(81, 49, 58, 0.14);
+  }
 }
 
-:global(.relatedProductsSwiper:hover .swiper-button-next),
-:global(.relatedProductsSwiper:hover .swiper-button-prev) {
+.relatedSliderShell:hover .relatedNav {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(-50%) scale(1);
 }
 
-:global(.relatedProductsSwiper .swiper-button-next::after),
-:global(.relatedProductsSwiper .swiper-button-prev::after) {
-  font-size: 8px !important;
-  width: 8px !important;
-  height: 8px !important;
-  line-height: 1 !important;
+.relatedNavPrev {
+  left: 0;
+
+  &::after {
+    content: "‹";
+  }
 }
 
-:global(.relatedProductsSwiper .swiper-button-next svg),
-:global(.relatedProductsSwiper .swiper-button-prev svg) {
-  width: 18px !important;
-  height: 18px !important;
+.relatedNavNext {
+  right: 0;
+
+  &::after {
+    content: "›";
+  }
 }
 
-:global(.relatedProductsSwiper .swiper-button-next svg path),
-:global(.relatedProductsSwiper .swiper-button-prev svg path) {
-  stroke-width: 1.6px !important;
+.relatedNav:global(.swiper-button-disabled) {
+  opacity: 0;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
-:global(.relatedProductsSwiper .swiper-button-prev) {
-  left: 12px;
-}
+@include respond(lg) {
+  .relatedProducts {
+    margin-top: 78px;
+  }
 
-:global(.relatedProductsSwiper .swiper-button-next) {
-  right: 12px;
+  .relatedSliderShell {
+    padding: 0 ;
+  }
+
+  .slide {
+    width: 260px !important;
+  }
+
+  .relatedNav {
+    width: 58px;
+    height: 58px;
+
+    &::after {
+      font-size: 20px;
+    }
+  }
 }
 
 @include respond(md) {
@@ -129,8 +190,23 @@
     margin-top: 66px;
   }
 
-  :global(.relatedProductsSwiper .swiper-button-next),
-  :global(.relatedProductsSwiper .swiper-button-prev) {
+  .sectionHead {
+    margin-bottom: 20px;
+  }
+
+  .relatedSliderShell {
+    padding: 0;
+  }
+
+  .relatedSwiper {
+    padding: 14px 0 44px;
+  }
+
+  .slide {
+    width: 252px !important;
+  }
+
+  .relatedNav {
     display: none;
   }
 }
@@ -138,49 +214,42 @@
 @include respond(sm) {
   .relatedProducts {
     margin-top: 54px;
+    overflow: hidden;
   }
 
   .sectionHead {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    max-width: 290px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .relatedSliderShell {
+    max-width: 100%;
+    padding: 0;
   }
 
   .relatedSwiper {
-    padding: 12px 2px 42px;
+    padding: 10px 0 40px;
   }
 
-  :global(.relatedProductsSwiper) {
-    --swiper-navigation-size: 7px !important;
+  .slide {
+    width: 238px !important;
   }
 
-  :global(.relatedProductsSwiper .swiper-button-next),
-  :global(.relatedProductsSwiper .swiper-button-prev) {
-    width: 30px;
-    height: 30px;
+  :global(.relatedProductsSwiper .swiper-pagination) {
+    bottom: 6px !important;
   }
 
-  :global(.relatedProductsSwiper .swiper-button-next::after),
-  :global(.relatedProductsSwiper .swiper-button-prev::after) {
-    font-size: 7px !important;
-    width: 7px !important;
-    height: 7px !important;
+  :global(.relatedProductsSwiper .swiper-pagination-bullet) {
+    width: 7px;
+    height: 7px;
   }
 
-  :global(.relatedProductsSwiper .swiper-button-next svg),
-  :global(.relatedProductsSwiper .swiper-button-prev svg) {
-    width: 7px !important;
-    height: 7px !important;
-  }
-
-  :global(.relatedProductsSwiper .swiper-button-next svg path),
-  :global(.relatedProductsSwiper .swiper-button-prev svg path) {
-    stroke-width: 1.5px !important;
-  }
-
-  :global(.relatedProductsSwiper .swiper-button-prev) {
-    left: 8px;
-  }
-
-  :global(.relatedProductsSwiper .swiper-button-next) {
-    right: 8px;
+  :global(.relatedProductsSwiper .swiper-pagination-bullet-active) {
+    width: 22px;
   }
 }
