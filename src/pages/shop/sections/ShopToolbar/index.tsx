@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
+
 import style from "./shopToolbar.module.scss";
 
 type ShopToolbarProps = {
@@ -17,17 +20,17 @@ export default function ShopToolbar({
   onSortChange,
   onOpenFilter,
 }: ShopToolbarProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={style.toolbar}>
       <div>
-        <div className={style.breadcrumbs}>
-          <span>Home</span>
-          <span className={style.sep}>/</span>
-          <span>Shop</span>
-        </div>
+   
 
         <p className={style.resultCount}>
-          {loading ? "Loading products..." : `${itemsCount} products found`}
+          {loading
+            ? t("pages.shop.toolbar.loading")
+            : t("pages.shop.toolbar.found", { count: itemsCount })}
         </p>
       </div>
 
@@ -37,16 +40,16 @@ export default function ShopToolbar({
           value={sort}
           onChange={(event) => onSortChange(event.target.value)}
         >
-          <option value="default">Default sorting</option>
-          <option value="newest">Newest</option>
-          <option value="priceLow">Price: Low to High</option>
-          <option value="priceHigh">Price: High to Low</option>
-          <option value="ratingHigh">Rating: High to Low</option>
-          <option value="bestSeller">Best Seller</option>
+          <option value="default">{t("pages.shop.toolbar.sort.default")}</option>
+          <option value="newest">{t("pages.shop.toolbar.sort.newest")}</option>
+          <option value="priceLow">{t("pages.shop.toolbar.sort.priceLow")}</option>
+          <option value="priceHigh">{t("pages.shop.toolbar.sort.priceHigh")}</option>
+          <option value="ratingHigh">{t("pages.shop.toolbar.sort.ratingHigh")}</option>
+          <option value="bestSeller">{t("pages.shop.toolbar.sort.bestSeller")}</option>
         </select>
 
         <button type="button" className={style.filterBtn} onClick={onOpenFilter}>
-          Filter
+          {t("pages.shop.toolbar.filter")}
           {activeFilterCount > 0 && <span>{activeFilterCount}</span>}
         </button>
       </div>
