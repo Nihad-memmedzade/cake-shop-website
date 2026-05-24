@@ -1,0 +1,144 @@
+@import "@/styles/utils/mixin.module";
+@import "@/styles/utils/variables.module";
+@import "@/styles/utils/maps.module";
+
+.languageSwitcher {
+  @include position($position: relative, $z-index: 10000);
+}
+
+.languageTrigger {
+  @include flex($align: center, $justify: center, $gap: 6px);
+  @include container($height: 38px, $background: transparent);
+  @include font($size: 12px, $weight: 800, $color: $brand-dark);
+
+  padding: 0 8px;
+  border: none;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  span {
+    @include font($size: 13px, $height: 1);
+  }
+
+  svg {
+    color: $brand-dark;
+    transition: $transition-fast;
+  }
+
+  &:hover {
+    color: $brand-primary;
+
+    svg {
+      color: $brand-primary;
+    }
+  }
+}
+
+.languageTriggerActive {
+  color: $brand-primary;
+
+  svg {
+    color: $brand-primary;
+  }
+}
+
+.languageDropdown {
+  @include position(
+    $position: absolute,
+    $top: calc(100% + 10px),
+    $right: 0
+  );
+
+  @include container(
+    $width: 176px,
+    $border-r: 14px,
+    $border: 1px solid $border-soft,
+    $background: $brand-white
+  );
+
+  padding: 8px;
+  box-shadow: 0 18px 42px rgba(39, 42, 74, 0.14);
+  animation: dropdownIn 0.2s ease forwards;
+}
+
+.languageDropdownTop {
+  top: auto;
+  bottom: calc(100% + 10px);
+  right: 0;
+  animation: dropdownTopIn 0.2s ease forwards;
+}
+
+.languageOption {
+  @include flex($align: center, $gap: 8px);
+
+  @include container(
+    $width: 100%,
+    $height: 38px,
+    $border-r: 10px,
+    $background: transparent
+  );
+
+  @include font(
+    $size: 14px,
+    $weight: 700,
+    $height: 1.3,
+    $color: $text-main
+  );
+
+  min-height: 38px;
+  padding: 0 10px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: $brand-primary-light;
+    color: $brand-primary;
+  }
+}
+
+.languageCode {
+  min-width: 24px;
+
+  @include font($size: 11px, $weight: 900, $color: $text-main);
+}
+
+.languageLabel {
+  @include line-clamp(1);
+}
+
+.active {
+  background: $brand-primary-light;
+  color: $brand-primary;
+
+  .languageCode {
+    color: $brand-primary;
+  }
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownTopIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
