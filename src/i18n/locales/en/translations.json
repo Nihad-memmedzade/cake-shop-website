@@ -2,385 +2,289 @@
   "common": {
     "links": {
       "home": "Home",
-      "products": "Products",
       "shop": "Shop",
-      "about": "About",
+      "products": "Products",
       "contact": "Contact",
+      "about": "About",
       "account": "Account",
-      "faq": "FAQ",
-      "track_order": "Track Order",
-      "shipping": "Shipping"
-    },
-    "cart": {
-      "title": "Shopping Cart",
-      "subtotal": "Subtotal",
-      "view_cart": "View Cart",
-      "checkout": "Checkout",
-      "empty_message": "Cart is Empty",
-      "total": "Total",
-      "vat": "VAT",
-      "shipping": "Shipping",
-      "product": "Product"
+      "wishlist": "Wishlist"
     },
     "header": {
       "search_input": "Search products...",
-      "category_input": "All Category",
-      "browse_categories": "Browse Categories"
+      "search": "Search",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "change_language": "Change language",
+      "signed_in": "Signed in",
+      "my_account": "My Account",
+      "welcome_back": "Welcome back",
+      "login": "Login",
+      "logout": "Log out",
+      "email": "Email address",
+      "password": "Password",
+      "password_placeholder": "Enter your password",
+      "logging": "Logging...",
+      "no_account": "No account yet?",
+      "create_account": "Create Account"
+    },
+    "cart": {
+      "title": "Shopping Bag",
+      "kicker": "Your cart",
+      "empty_message": "Your shopping bag is empty.",
+      "fresh_message": "Fresh cakes, ready to order",
+      "continue_shopping": "Continue shopping",
+      "subtotal": "Subtotal",
+      "view_cart": "View cart",
+      "checkout": "Checkout",
+      "item": "item",
+      "items": "items"
+    },
+    "language": {
+      "en": "English",
+      "az": "Azərbaycanca",
+      "pl": "Polski"
     },
     "footer": {
-      "menus": [
-        {
-          "title": "Information",
-          "navs": [
-            {
-              "title": "About",
-              "url": "/about"
-            },
-            {
-              "title": "Warranty",
-              "url": "/warranty"
-            },
-            {
-              "title": "Payment & Credit",
-              "url": "/payment-credit"
-            },
-            {
-              "title": "Delivery",
-              "url": "/delivery"
-            },
-            {
-              "title": "Contact",
-              "url": "/contact"
-            },
-            {
-              "title": "FAQ",
-              "url": "/faq"
-            },
-            {
-              "title": "Our Stores",
-              "url": "/stores"
-            }
-          ]
+      "description": "Fresh handmade cakes, sweet celebrations and custom flavors baked with care for every special moment.",
+      "address": "1418 River Drive, Suite 35 Cottonhall, CA 9622 United States",
+      "sections": {
+        "pages": {
+          "title": "Pages",
+          "home": "Home",
+          "shop": "Shop",
+          "contact": "Contact"
         },
-        {
-          "title": "Products",
-          "navs": [
-            {
-              "title": "New arrivals",
-              "url": "/products"
-            },
-            {
-              "title": "Accessories",
-              "url": "/products"
-            },
-            {
-              "title": "Men",
-              "url": "/products"
-            },
-            {
-              "title": "Women",
-              "url": "/products"
-            },
-            {
-              "title": "Kids",
-              "url": "/products"
-            }
-          ]
+        "shop": {
+          "title": "Shop",
+          "allCakes": "All Cakes",
+          "classicCakes": "Classic Cakes",
+          "fruitCakes": "Fruit Cakes",
+          "birthdayCakes": "Birthday Cakes",
+          "premiumCakes": "Premium Cakes"
         },
-        {
-          "title": "Categories"
-        },
-        {
-          "title": "Customer service",
-          "navs": [
-            {
-              "title": "Customer service",
-              "url": "/customer-service"
-            },
-            {
-              "title": "My account",
-              "url": "/my-account"
-            },
-            {
-              "title": "Find a store",
-              "url": "/find-a-store"
-            },
-            {
-              "title": "Legal & Privacy",
-              "url": "/legal-privacy"
-            },
-            {
-              "title": "Contact",
-              "url": "/contact"
-            },
-            {
-              "title": "Gift card",
-              "url": "/gift-card"
-            }
-          ]
+        "account": {
+          "title": "Account",
+          "login": "Login",
+          "register": "Register",
+          "myAccount": "My Account",
+          "wishlist": "Wishlist",
+          "orders": "Orders",
+          "cart": "Cart"
         }
-      ]
-    },
-    "product_card": {
-      "new": "New"
-    },
-    "checkout_steps": [
-      {
-        "title": "Cart",
-        "description": "Review your cart items"
       },
-      {
-        "title": "Checkout",
-        "description": "Enter your billing details"
-      },
-      {
-        "title": "Confirmation",
-        "description": "Review and confirm your order"
+      "bottom": {
+        "rights": "Cake House. All rights reserved.",
+        "shop": "Shop",
+        "cart": "Cart",
+        "contact": "Contact"
       }
-    ],
-    "shipment_type": {
-      "pickup_in_store": "Pickup in store",
-      "shipping_to_address": "Shipping to address"
-    },
-    "payment_method": {
-      "card": {
-        "title": "Credit Card",
-        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliqu"
-      },
-      "cash": {
-        "title": "Cash on Delivery",
-        "description": "Phasellus sed volutpat orci. Fusce eget lore mauris vehicula elementum gravida nec dui. Aenean aliquam varius ipsum, non ultricies tellus sodales eu. Donec dignissim viverra nunc, ut aliquet magna posuere eget."
-      }
-    },
-    "order_status": {
-      "pending": "Pending",
-      "processing": "Processing",
-      "completed": "Completed",
-      "cancelled": "Cancelled"
-    },
-    "product": {
-      "brand": "Brand",
-      "category": "Category",
-      "color": "Color",
-      "size": "Size",
-      "variant": "Variant"
-    },
-    "add_to_cart": "Add to cart",
-    "search": "Search",
-    "language": "Language",
-    "save": "Save"
+    }
   },
   "pages": {
     "home": {
-      "title": "Home page"
-    },
-    "products": {
-      "title": "Products",
-      "view": "View",
-      "shop_categories_title": "You Might Like",
-      "filter": {
-        "title": "Filter By",
-        "product_categories": "Product Categories",
-        "color": "Colors",
-        "sizes": "Sizes",
-        "brands": {
-          "title": "Brands",
-          "search_placeholder": "SEARCH FOR BRANDS"
+      "title": "Home page",
+      "mainSlider": {
+        "slides": [
+          {
+            "kicker": "New trend",
+            "title": "Chocolate dream cakes",
+            "subtitle": "Birthdays / Weddings / Special Days"
+          },
+          {
+            "kicker": "Summer 2026",
+            "title": "Cakes for every celebration",
+            "subtitle": "Fresh layers, soft cream, made to order"
+          }
+        ],
+        "cta": "Discover now"
+      },
+      "category": {
+        "kicker": "Choose your favorite",
+        "title": "Categories",
+        "cards": [
+          {
+            "title": "Classic cakes",
+            "subtitle": "Best sellers",
+            "cta": "Order now"
+          },
+          {
+            "title": "Fruit cakes",
+            "subtitle": "Fresh & light",
+            "cta": "Order now"
+          },
+          {
+            "title": "Kids cakes",
+            "subtitle": "Fun & colorful",
+            "cta": "Order now"
+          },
+          {
+            "title": "Custom cakes",
+            "subtitle": "Made to order",
+            "cta": "Order now"
+          }
+        ]
+      },
+      "trendyProducts": {
+        "title": "our trendy",
+        "titleStrong": "products",
+        "tabs": {
+          "all": "all",
+          "newArrivals": "new arrivals",
+          "bestSeller": "best seller",
+          "topRated": "top rated"
         },
-        "price": {
-          "title": "Price",
-          "min": "Min.",
-          "max": "Max."
+        "loadingTitle": "Loading trendy cakes",
+        "loadingText": "Fresh products are coming soon.",
+        "discoverMore": "discover more"
+      },
+      "springCollection": {
+        "tag": "weekly sweet deal",
+        "title": "spring",
+        "titleHighlight": "treats",
+        "subtitle": "Freshly baked cakes & pastries - limited-time offer.",
+        "cta": "shop sweets"
+      },
+      "limitedEdition": {
+        "loadingTitle": "Loading limited cakes",
+        "loadingText": "Special cakes are being prepared.",
+        "kicker": "Small batch",
+        "title": "Limited Edition",
+        "subtitle": "Small-batch cakes available for a short time only."
+      }
+    },
+    "shop": {
+      "hero": {
+        "kicker": "Cake House",
+        "title": "Shop",
+        "text": "Fresh cakes, premium flavors and sweet favorites for every moment."
+      },
+      "loader": {
+        "title": "Loading cakes",
+        "text": "Fresh products are coming in a moment."
+      },
+      "toolbar": {
+        "home": "Home",
+        "shop": "Shop",
+        "loading": "Loading products...",
+        "found": "{{count}} products found",
+        "filter": "Filter",
+        "sort": {
+          "default": "Default sorting",
+          "newest": "Newest",
+          "priceLow": "Price: Low to High",
+          "priceHigh": "Price: High to Low",
+          "ratingHigh": "Rating: High to Low",
+          "bestSeller": "Best Seller"
         }
       },
-      "sort": {
-        "featured": "Featured",
-        "best_sell": "Best Selling",
-        "alphabetically": {
-          "a-z": "Alphabetically, A-Z",
-          "z-a": "Alphabetically, Z-A"
-        },
-        "price": {
-          "low_to_high": "Price, Low to High",
-          "high_to_low": "Price, Hight to Low"
-        },
-        "date": {
-          "old_to_new": "Дата, от старой к новой",
-          "new_to_old": "Дата, от нового к старому"
-        }
+      "empty": {
+        "title": "No cakes found",
+        "text": "Try another flavor or reset selected filters."
       },
       "pagination": {
-        "next": "Далее",
-        "prev": "Назад"
+        "previous": "Previous",
+        "next": "Next",
+        "aria": "Shop pagination"
+      },
+      "filters": {
+        "kicker": "Filter products",
+        "title": "Cake filters",
+        "close": "Close filters",
+        "reset": "Reset",
+        "resetFilters": "Reset filters",
+        "cakeType": "Cake type",
+        "flavors": "Flavors",
+        "dietary": "Dietary options",
+        "size": "Size",
+        "priceRange": "Price range",
+        "options": {
+          "categories": {
+            "birthdayCake": "Birthday Cake",
+            "celebrationCake": "Celebration Cake",
+            "classicCake": "Classic Cake",
+            "cheesecake": "Cheesecake",
+            "fruitCake": "Fruit Cake",
+            "freshCake": "Fresh Cake",
+            "premiumCake": "Premium Cake"
+          },
+          "flavors": {
+            "chocolate": "Chocolate",
+            "strawberry": "Strawberry",
+            "redVelvet": "Red Velvet",
+            "vanilla": "Vanilla",
+            "caramel": "Caramel",
+            "blueberry": "Blueberry",
+            "oreo": "Oreo",
+            "lemon": "Lemon",
+            "cherryChocolate": "Cherry Chocolate",
+            "pistachio": "Pistachio"
+          },
+          "tags": {
+            "vegan": "Vegan",
+            "glutenFree": "Gluten Free",
+            "nutFree": "Nut Free",
+            "dairyFree": "Dairy Free",
+            "lowSugar": "Low Sugar"
+          },
+          "sizes": {
+            "small": "Small",
+            "medium": "Medium",
+            "large": "Large"
+          }
+        }
       }
-    },
-    "about": {
-      "title": "ABOUT US",
-      "our": {
-        "story": {
-          "title": "OUR STORY",
-          "description": [
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "Saw wherein fruitful good days image them, midst, waters upon, saw. Seas lights seasons. Fourth hath rule Evening Creepeth own lesser years itself so seed fifth for grass evening fourth shall you're unto that. Had. Female replenish for yielding so saw all one to yielding grass you'll air sea it, open waters subdue, hath. Brought second Made. Be. Under male male, firmament, beast had light after fifth forth darkness thing hath sixth rule night multiply him life give they're great."
-          ]
-        },
-        "mission": {
-          "title": "Our Mission",
-          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        },
-        "vision": {
-          "title": "Our Vision",
-          "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        }
-      },
-      "company": {
-        "title": "The Company",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet sapien dignissim a elementum. Sociis metus, hendrerit mauris id in. Quis sit sit ultrices tincidunt euismod luctus diam. Turpis sodales orci etiam phasellus lacus id leo. Amet turpis nunc, nulla massa est viverra interdum. Praesent auctor nulla morbi non posuere mattis. Arcu eu id maecenas cras."
-      },
-      "service_promotion": {
-        "delivery": {
-          "title": "Fast And Free Delivery",
-          "description": "Free delivery for all orders over $140"
-        },
-        "support": {
-          "title": "24/7 Customer Support",
-          "description": "Friendly 24/7 customer support"
-        },
-        "guarantee": {
-          "title": "Money Back Guarantee",
-          "description": "We return money within 30 days"
-        }
-      },
-      "partners_title": "Company Partners"
     },
     "contact": {
-      "title": "Contact Us",
-      "info": {
-        "title": "How to Reach Us?",
-        "phone": "Phone",
-        "email": "Email",
-        "address": "Address"
+      "hero": {
+        "kicker": "Cake House",
+        "title": "Contact",
+        "text": "Visit our cake house, send us a message or contact us for custom orders and sweet celebrations."
+      },
+      "store": {
+        "title": "Store in Warsaw",
+        "addressLine1": "Rynek Starego Miasta 1",
+        "addressLine2": "00-272 Warsaw, Poland",
+        "email": "hello@cakehouse.com",
+        "phone": "+1 246-345-0695"
       },
       "form": {
-        "title": "Stay in touch with us",
-        "first_name": "First Name",
-        "last_name": "Last Name",
-        "phone": "Phone",
-        "email": "Email",
-        "address": "Address",
-        "message": "Message",
-        "send": "Send",
-        "success": "Your message has been sent successfully!",
-        "error": "An error occurred while sending the message. Please try again."
-      }
-    },
-    "cart": {
-      "title": "Shopping Cart",
-      "columns": ["Product", "", "Price", "Quantity", "Total"],
-      "total_title": "Cart Details",
-      "coupon": {
-        "placeholder": "Coupon code",
-        "apply": "Apply"
-      },
-      "proceed": "Proceed to Checkout",
-      "to_home": "Go to Home",
-      "to_shop": "Go to Shop",
-      "or": "or"
-    },
-    "checkout": {
-      "title": "Checkout",
-      "your_order_title": "Your Order Details",
-      "form": {
-        "title": "Billing Details",
-        "fields": {
-          "first_name": "First Name",
-          "last_name": "Last Name",
-          "phone": "Phone",
-          "email": "Email",
-          "city": "City",
-          "street": "Street",
-          "postcode": "Postcode",
-          "note": "Order Notes"
-        }
-      },
-      "privacy_policy": {
-        "title": "Privacy Policy",
-        "description": "I have read and agree to the website terms and conditions."
-      },
-      "place_order": "Place Order"
-    },
-    "confirmation": {
-      "title": "Order Confirmation",
-      "success": {
-        "title": "Order Completed!",
-        "description": "Your order has been successfully completed. Thank you for your purchase."
-      },
-      "order_details": {
-        "title": "Order Details",
-        "order_number": "Order Number",
-        "date": "Date",
-        "payment_method": "Payment Method"
-      }
-    },
-    "auth": {
-      "login": {
-        "title": "Login",
-        "form": {
-          "fields": {
-            "email": "Email",
-            "password": "Password"
-          },
-          "login_btn": "Log in",
-          "success": "Successfully logged in.",
-          "error": "There was a problem logging in."
-        },
-        "remember_me": "Remember me",
-        "lost_password": "Lost password?",
-        "no_account_yet": "No account yet?",
-        "create_account": "Create account"
-      },
-      "register": {
-        "title": "Register",
-        "form": {
-          "fields": {
-            "email": "Email",
-            "password": "Password",
-            "confirm_password": "Confirm Password"
-          },
-          "register_btn": "Register",
-          "success": "Your account has been created successfully",
-          "error": "An error occurred while creating your account. Please try again."
-        },
-        "description": "Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy."
+        "kicker": "Send a message",
+        "title": "Get in touch",
+        "name": "Name *",
+        "email": "Email address *",
+        "message": "Your message",
+        "submit": "Submit",
+        "requiredError": "Please fill in all required fields.",
+        "emailError": "Please enter a valid email address.",
+        "success": "Your message has been sent successfully."
       }
     },
     "account": {
       "details": {
-        "title": "My account",
-        "information_form": {
-          "title": "Personal Information",
-          "fields": {
-            "first_name": "First Name",
-            "last_name": "Last Name",
-            "email": "Email",
-            "phone": "Phone"
-          },
-          "success": "Your information has been updated successfully",
-          "error": "An error occurred while updating your information. Please try again."
-        },
-        "password_form": {
-          "title": "Change Password",
-          "fields": {
-            "current_password": "Current Password",
-            "new_password": "New Password",
-            "confirm_password": "Confirm Password"
-          },
-          "success": "Your password has been updated successfully",
-          "error": "An error occurred while updating your password. Please try again."
+        "pageTitle": "Account Details",
+        "kicker": "Profile settings",
+        "heading": "Personal information",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "displayName": "Display Name",
+        "email": "Email Address",
+        "passwordTitle": "Password change",
+        "currentPassword": "Current password",
+        "newPassword": "New password",
+        "confirmNewPassword": "Confirm new password",
+        "saving": "Saving...",
+        "save": "Save changes",
+        "errors": {
+          "fullName": "Full name must be at least 2 characters.",
+          "passwordLength": "New password must be at least 6 characters.",
+          "passwordMatch": "New passwords do not match."
         }
       },
       "orders": {
-        "title": "Orders",
+        "pageTitle": "Orders",
+        "kicker": "Order history",
+        "heading": "Your orders",
+        "count": "{{count}} orders",
         "table": {
           "order": "Order",
           "date": "Date",
@@ -388,124 +292,78 @@
           "total": "Total",
           "actions": "Actions"
         },
-        "total": "{{quantity}} products - {{price}}",
-        "view": "View"
+        "item": "item",
+        "items": "items",
+        "totalText": "${{total}} for {{count}} {{itemLabel}}",
+        "view": "View",
+        "empty": {
+          "title": "No orders yet",
+          "text": "Your completed cake orders will appear here after checkout.",
+          "button": "Go to shop"
+        },
+        "status": {
+          "pending": "Pending",
+          "confirmed": "Confirmed",
+          "cancelled": "Cancelled"
+        }
       },
-      "favorites": {
-        "title": "Favorites"
+      "wishlist": {
+        "pageTitle": "Wishlist",
+        "kicker": "Saved cakes",
+        "heading": "Your wishlist",
+        "count": "{{count}} items",
+        "empty": {
+          "title": "Your wishlist is empty",
+          "text": "Save your favorite cakes and come back to them anytime.",
+          "button": "Go to shop"
+        }
       },
-      "addresses": {
-        "title": "Addresses"
-      },
-      "logout": "Logout"
-    },
-    "order_details": {
-      "title": "Order Details",
-      "order": "Order",
-      "start_date": "Start Date",
-      "address": "Address",
-      "order_history": "Order History",
-      "subtotal": "SUBTOTAL",
-      "total": "TOTAL",
-      "total_discounts": "TOTAL DISCOUNTS",
-      "item_details": {
-        "title": "Item Details",
-        "product": {
-          "price": "Price",
-          "size": "Size",
-          "quantity": "Quantity",
-          "discount": "Discount"
+      "layout": {
+        "kicker": "Cake House",
+        "heroText": "Manage your profile, orders and saved cakes in one sweet place.",
+        "sidebar": {
+          "accountDetails": "Account Details",
+          "orders": "Orders",
+          "wishlist": "Wishlist",
+          "logout": "Logout"
         }
       }
     },
-    "product_details": {
-      "share": "Share",
-      "add_to_favorite": "Add to favorite",
-      "description": "Description",
-      "additional_information": "Additional Information",
-      "reviews": {
-        "title": "Reviews",
-        "text": "Be the first to review.",
-        "reminder": "Your email address will not be published. Required fields are marked.",
-        "rating": "Your rating",
-        "form": {
-          "fields": {
-            "message": "Message"
-          },
-          "alert_rating": "Please select a rating",
-          "save_information": "Save my name, email, and website in this browser for the next time I comment.",
-          "success": "Your review has been added successfully",
-          "error": "An error occurred while adding your review. Please try again."
+    "auth": {
+      "register": {
+        "title": "Register",
+        "subtitle": "Create your account to enjoy our sweets",
+        "fullName": "Full name *",
+        "email": "Email address *",
+        "password": "Password *",
+        "confirmPassword": "Confirm password *",
+        "terms": "I agree to the Terms & Privacy Policy",
+        "creating": "Creating...",
+        "createAccount": "Create account",
+        "alreadyHaveAccount": "Already have an account?",
+        "login": "Log in",
+        "errors": {
+          "passwordLength": "Password must be at least 6 characters.",
+          "confirmPasswordLength": "Confirm password must be at least 6 characters.",
+          "passwordMatch": "Passwords do not match."
         }
       },
-      "related_products": "Related Products"
-    },
-    "faq": {
-      "title": "FREQUENTLY ASKED QUESTIONS",
-      "sections": [
-        {
-          "title": "Orders",
-          "questions": [
-            {
-              "question": "Bring of had which their whose you're it own?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Over shall air can't subdue fly divide him?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Waters one you'll creeping?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            }
-          ]
-        },
-        {
-          "title": "Shipping",
-          "questions": [
-            {
-              "question": "Bring of had which their whose you're it own?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Over shall air can't subdue fly divide him?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Waters one you'll creeping?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            }
-          ]
-        },
-        {
-          "title": "Payment",
-          "questions": [
-            {
-              "question": "Bring of had which their whose you're it own?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Over shall air can't subdue fly divide him?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            },
-            {
-              "question": "Waters one you'll creeping?",
-              "answer": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-            }
-          ]
+       "login": {
+        "title": "LOGIN",
+        "subtitle": "Welcome back to Cake House.",
+        "email": "Email address *",
+        "password": "Password *",
+        "remember": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "loggingIn": "LOGGING IN...",
+        "loginButton": "LOGIN",
+        "noAccount": "Don't have an account?",
+        "createAccount": "Create account",
+        "errors": {
+          "required": "Please enter your email and password.",
+          "email": "Please enter a valid email address."
         }
-      ]
-    },
-    "stores": {
-      "title": "Our Stores",
-      "see_on_map": "See on map",
-      "search_placeholder": "Enter city name",
-      "days_of_week": "7 days of week"
-    },
-    "notFound": {
-      "title": "Page not found",
-      "message": "Sorry, we couldn't find the page you where looking for. We suggest that you return to home page.",
-      "go_back": "Go Home Page"
+      }
     }
   }
 }
