@@ -363,6 +363,19 @@
           "required": "Wpisz adres e-mail i hasło.",
           "email": "Wpisz poprawny adres e-mail."
         }
+      },
+      "lostPassword": {
+        "title": "PRZYPOMNIJ HASŁO",
+        "subtitle": "Wpisz swój adres e-mail, a wyślemy instrukcje resetowania hasła.",
+        "email": "Adres e-mail *",
+        "submit": "WYŚLIJ LINK RESETUJĄCY",
+        "rememberPassword": "Pamiętasz hasło?",
+        "login": "Zaloguj się",
+        "success": "Instrukcje resetowania hasła zostały wysłane na {{email}}.",
+        "errors": {
+          "required": "Wpisz swój adres e-mail.",
+          "email": "Wpisz poprawny adres e-mail."
+        }
       }
     }
   }

@@ -9,6 +9,8 @@ export { default as Orders } from "./account/orders"
 
 export {default as Login} from "./auth/login"
 export {default as Register} from "./auth/register"
+export {default as LostPassword} from "./auth/lostPassword"
+
 
 export { default as Cart } from "./cart"
 export { default as Checkout } from "./checkout"

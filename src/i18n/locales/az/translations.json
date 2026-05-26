@@ -363,6 +363,19 @@
           "required": "Zəhmət olmasa e-poçt və şifrəni daxil edin.",
           "email": "Zəhmət olmasa düzgün e-poçt ünvanı daxil edin."
         }
+      },
+      "lostPassword": {
+        "title": "ŞİFRƏNİ UNUTDUM",
+        "subtitle": "E-poçt ünvanınızı daxil edin, şifrə bərpası üçün məlumat göndərək.",
+        "email": "E-poçt ünvanı *",
+        "submit": "BƏRPA LİNKİNİ GÖNDƏR",
+        "rememberPassword": "Şifrənizi xatırladınız?",
+        "login": "Daxil ol",
+        "success": "Şifrə bərpası üçün məlumat {{email}} ünvanına göndərildi.",
+        "errors": {
+          "required": "Zəhmət olmasa e-poçt ünvanınızı daxil edin.",
+          "email": "Zəhmət olmasa düzgün e-poçt ünvanı daxil edin."
+        }
       }
     }
   }

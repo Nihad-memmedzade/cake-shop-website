@@ -348,7 +348,7 @@
           "passwordMatch": "Passwords do not match."
         }
       },
-       "login": {
+      "login": {
         "title": "LOGIN",
         "subtitle": "Welcome back to Cake House.",
         "email": "Email address *",
@@ -361,6 +361,19 @@
         "createAccount": "Create account",
         "errors": {
           "required": "Please enter your email and password.",
+          "email": "Please enter a valid email address."
+        }
+      },
+      "lostPassword": {
+        "title": "LOST PASSWORD",
+        "subtitle": "Enter your email address and we will send you reset instructions.",
+        "email": "Email address *",
+        "submit": "SEND RESET LINK",
+        "rememberPassword": "Remember your password?",
+        "login": "Log in",
+        "success": "Password reset instructions were sent to {{email}}.",
+        "errors": {
+          "required": "Please enter your email address.",
           "email": "Please enter a valid email address."
         }
       }

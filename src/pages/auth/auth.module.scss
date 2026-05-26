@@ -116,6 +116,21 @@
   );
 }
 
+.successText {
+  margin: -4px 0 4px;
+  padding: 12px 14px;
+  border: 1px solid rgba(64, 130, 91, 0.18);
+  border-radius: $radius-md;
+  background: rgba(64, 130, 91, 0.1);
+  color: #2f7d4f;
+
+  @include font(
+    $size: 13px,
+    $weight: map-get($font-weights, extra-bold),
+    $height: 1.5
+  );
+}
+
 .row {
   @include flex($align: center, $justify: space-between, $gap: 14px);
   flex-wrap: wrap;
