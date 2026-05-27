@@ -19,6 +19,9 @@ export const routes = [
   //Register
   { path: "/auth/register", component: <Pages.Register /> },
 
+  //Lost Password
+  { path: "/auth/lost-password", component: <Pages.LostPassword /> },
+
   //Account / Account detail
   { path: "/account/details", component: <Pages.AccountDetails /> },
 

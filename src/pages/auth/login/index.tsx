@@ -97,9 +97,11 @@ export default function Login() {
                 <span>{t("pages.auth.login.remember")}</span>
               </label>
 
-              <button type="button" className={style.inlineBtn}>
-                {t("pages.auth.login.forgotPassword")}
-              </button>
+              <Link to={getLocalizedPath("/auth/lost-password")}>
+                <button type="button" className={style.inlineBtn}>
+                  {t("pages.auth.login.forgotPassword")}
+                </button>
+              </Link>
             </div>
 
             <button
