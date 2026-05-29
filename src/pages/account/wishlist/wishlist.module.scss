@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .wishlistHead {
   @include flex($align: center, $justify: space-between, $gap: 18px);
@@ -15,7 +16,7 @@
     margin: 0;
     @include font(
       28px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.15,
       $color: $text-main
     );
@@ -28,7 +29,7 @@
   letter-spacing: 0.14em;
   @include font(
     11px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -41,7 +42,7 @@
   background: $brand-primary-light;
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1,
     $color: $brand-primary
   );
@@ -64,7 +65,7 @@
     margin: 0 0 8px;
     @include font(
       26px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.2,
       $color: $text-main
     );
@@ -93,7 +94,7 @@
     transition: $transition-fast;
     @include font(
       12px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1,
       $color: $text-white
     );

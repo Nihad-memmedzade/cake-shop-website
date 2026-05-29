@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .pageCenter {
   width: 100%;
@@ -41,7 +42,7 @@
   letter-spacing: 0.12em;
   @include font(
     clamp(30px, 4vw, 46px),
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1,
     $color: $text-main
   );
@@ -52,7 +53,7 @@
   margin: 12px auto 0;
   @include font(
     14px,
-    $weight: map-get($font-weights, regular),
+    $weight: map.get($font-weights, regular),
     $height: 1.7,
     $color: $text-muted
   );
@@ -85,7 +86,7 @@
     transform $transition-fast;
   @include font(
     14px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1,
     $color: $text-main
   );
@@ -110,7 +111,7 @@
   background: $brand-primary-light;
   @include font(
     13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.45,
     $color: $brand-primary
   );
@@ -126,7 +127,7 @@
 
   @include font(
     $size: 13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.5
   );
 }
@@ -142,7 +143,7 @@
   cursor: pointer;
   @include font(
     13px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.45,
     $color: $text-muted
   );
@@ -160,7 +161,7 @@
   transition: $transition-fast;
   @include font(
     13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.45,
     $color: $brand-primary
   );
@@ -190,7 +191,7 @@
     box-shadow $transition-fast;
   @include font(
     12px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1,
     $color: $text-white
   );
@@ -215,7 +216,7 @@
   text-align: center;
   @include font(
     14px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.5,
     $color: $text-muted
   );
@@ -235,7 +236,7 @@
   transition: $transition-fast;
   @include font(
     14px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.5,
     $color: $brand-primary
   );

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .ordersHead {
   @include flex($align: center, $justify: space-between, $gap: 18px);
@@ -17,7 +18,7 @@
 
     @include font(
       28px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.15,
       $color: $text-main
     );
@@ -31,7 +32,7 @@
 
   @include font(
     11px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -45,7 +46,7 @@
 
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1,
     $color: $brand-primary
   );
@@ -74,7 +75,7 @@
 
   @include font(
     13px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.3,
     $color: $text-main
   );
@@ -88,7 +89,7 @@
   span {
     @include font(
       14px,
-      $weight: map-get($font-weights, medium),
+      $weight: map.get($font-weights, medium),
       $height: 1.5,
       $color: $text-main
     );
@@ -105,7 +106,7 @@
 
   @include font(
     14px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $text-main
   );
@@ -134,7 +135,7 @@
 
   @include font(
     13px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1,
     $color: $text-white
   );
@@ -158,7 +159,7 @@
 
     @include font(
       26px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.2,
       $color: $text-main
     );
@@ -190,7 +191,7 @@
 
     @include font(
       12px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1,
       $color: $text-white
     );

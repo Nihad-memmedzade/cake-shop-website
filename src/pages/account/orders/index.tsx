@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import AccountLayout from "@/assets/components/accountLayout";
 import { getLocalizedPath } from "@/helpers/languagePath";
-import { selectOrder } from "@/store/orderSlice";
+import { fetchOrders, selectOrder } from "@/store/orderSlice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 
 import styles from "./orders.module.scss";
@@ -13,9 +14,13 @@ export default function Orders() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const orders = useAppSelector((state) => state.orders.orders);
+  const { orders, loading, error } = useAppSelector((state) => state.orders);
 
-  const handleViewOrder = (orderId: string) => {
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, [dispatch]);
+
+  const handleViewOrder = (orderId: number) => {
     dispatch(selectOrder(orderId));
     navigate(getLocalizedPath("/confirmation"));
   };
@@ -33,7 +38,10 @@ export default function Orders() {
         </span>
       </div>
 
-      {orders.length > 0 ? (
+      {loading && <p>Loading orders...</p>}
+      {error && <p>{error}</p>}
+
+      {!loading && orders.length > 0 ? (
         <div className={styles.ordersTable}>
           <div className={styles.tableHead}>
             <span>{t("pages.account.orders.table.order")}</span>
@@ -98,17 +106,19 @@ export default function Orders() {
           </div>
         </div>
       ) : (
-        <div className={styles.emptyState}>
-          <h3>{t("pages.account.orders.empty.title")}</h3>
-          <p>{t("pages.account.orders.empty.text")}</p>
+        !loading && (
+          <div className={styles.emptyState}>
+            <h3>{t("pages.account.orders.empty.title")}</h3>
+            <p>{t("pages.account.orders.empty.text")}</p>
 
-          <button
-            type="button"
-            onClick={() => navigate(getLocalizedPath("/products"))}
-          >
-            {t("pages.account.orders.empty.button")}
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={() => navigate(getLocalizedPath("/products"))}
+            >
+              {t("pages.account.orders.empty.button")}
+            </button>
+          </div>
+        )
       )}
     </AccountLayout>
   );
