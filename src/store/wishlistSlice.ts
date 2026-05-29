@@ -1,47 +1,95 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 
-interface Product {
-  id: number;
-  title: string;
-  quantity: number;
-  category: string;
-  flavor: string;
-  price: number;
-  discountedPrice: number;
-  rating: number;
-  images: string[];
-  brand: string;
-  sizes: { id: number; label: string }[];
-  description: string;
-}
+import {
+  addWishlistProduct,
+  getWishlist,
+  removeWishlistProduct,
+} from "@/api/wishlist";
+
+import {
+  getStoredJson,
+  removeStoredItem,
+  setStoredJson,
+} from "@/helpers/storage";
+import type { Product } from "@/types/product";
 
 interface WishlistState {
   items: Product[];
+  loading: boolean;
+  error: string | null;
 }
 
-const initialState: WishlistState = {
-  items: [],
+const GUEST_WISHLIST_KEY = "guestWishlist";
+
+const getGuestWishlist = (): Product[] => {
+  return getStoredJson<Product[]>(GUEST_WISHLIST_KEY, []);
 };
+
+const saveGuestWishlist = (items: Product[]) => {
+  if (!items.length) {
+    removeStoredItem(GUEST_WISHLIST_KEY);
+    return;
+  }
+
+  setStoredJson(GUEST_WISHLIST_KEY, items);
+};
+
+const initialState: WishlistState = {
+  items: getGuestWishlist(),
+  loading: false,
+  error: null,
+};
+
+export const fetchWishlist = createAsyncThunk(
+  "wishlist/fetchWishlist",
+  async () => {
+    const data = await getWishlist();
+    return data;
+  },
+);
+
+export const syncAddWishlist = createAsyncThunk(
+  "wishlist/syncAddWishlist",
+  async (productId: number) => {
+    const data = await addWishlistProduct(productId);
+    return data;
+  },
+);
+
+export const syncRemoveWishlist = createAsyncThunk(
+  "wishlist/syncRemoveWishlist",
+  async (productId: number) => {
+    const data = await removeWishlistProduct(productId);
+    return data;
+  },
+);
 
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
-    addToWishlist: (state, action) => {
+    toggleGuestWishlist: (state, action: PayloadAction<Product>) => {
       const exists = state.items.find((item) => item.id === action.payload.id);
-      if (!exists) {
+
+      if (exists) {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id,
+        );
+      } else {
         state.items.push(action.payload);
       }
+
+      saveGuestWishlist(state.items);
     },
 
-    removeFromWishlist: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
-    },
+    toggleWishlist: (state, action: PayloadAction<Product>) => {
+      const exists = state.items.find((item) => item.id === action.payload.id);
 
-    toggleWishlist: (state, action) => {
-      const exist = state.items.find((item) => item.id === action.payload.id);
-
-      if (exist) {
+      if (exists) {
         state.items = state.items.filter(
           (item) => item.id !== action.payload.id,
         );
@@ -49,9 +97,48 @@ const wishlistSlice = createSlice({
         state.items.push(action.payload);
       }
     },
+
+    clearWishlist: (state) => {
+      state.items = [];
+      state.error = null;
+    },
+
+    restoreGuestWishlist: (state) => {
+      state.items = getGuestWishlist();
+      state.error = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchWishlist.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchWishlist.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchWishlist.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || "Error";
+      })
+
+      .addCase(syncAddWishlist.rejected, (state, action) => {
+        state.error = action.error.message || "Error";
+      })
+
+      .addCase(syncRemoveWishlist.rejected, (state, action) => {
+        state.error = action.error.message || "Error";
+      });
   },
 });
 
-export const { addToWishlist, removeFromWishlist, toggleWishlist } =
-  wishlistSlice.actions;
+export const {
+  toggleGuestWishlist,
+  toggleWishlist,
+  clearWishlist,
+  restoreGuestWishlist,
+} = wishlistSlice.actions;
+
 export default wishlistSlice.reducer;

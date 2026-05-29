@@ -39,6 +39,12 @@ export const routes = [
 
   // Confirmation
   { path: "/confirmation", component: <Pages.Confirmation /> },
+
+  // Error
+  { path: "/error", component: <Pages.ErrorPage /> },
+
+  // Error / Not found
+  { path: "*", component: <Pages.ErrorPage /> },
 ];
 
 export default routes;

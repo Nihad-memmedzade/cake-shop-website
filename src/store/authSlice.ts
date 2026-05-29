@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import {
   changePassword,
   getCurrentUser,
@@ -10,12 +11,13 @@ import {
   type RegisterPayload,
   type UpdateProfilePayload,
 } from "@/api/auth";
-
-interface User {
-  id: number;
-  fullName: string;
-  email: string;
-}
+import { getApiErrorMessage } from "@/helpers/apiError";
+import {
+  getStoredJson,
+  removeStoredItem,
+  setStoredJson,
+} from "@/helpers/storage";
+import type { User } from "@/types/user";
 
 interface AuthState {
   user: User | null;
@@ -25,11 +27,10 @@ interface AuthState {
   successMessage: string | null;
 }
 
-const savedUser = localStorage.getItem("user");
 const savedToken = localStorage.getItem("accessToken");
 
 const initialState: AuthState = {
-  user: savedUser ? JSON.parse(savedUser) : null,
+  user: getStoredJson<User | null>("user", null),
   accessToken: savedToken,
   loading: false,
   error: null,
@@ -43,12 +44,12 @@ export const registerThunk = createAsyncThunk(
       const response = await registerUser(data);
 
       localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("user", JSON.stringify(response.user));
+      setStoredJson("user", response.user);
 
       return response;
-    } catch (error: any) {
+    } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data?.detail || "Registration failed",
+        getApiErrorMessage(error, "Registration failed"),
       );
     }
   },
@@ -61,12 +62,12 @@ export const loginThunk = createAsyncThunk(
       const response = await loginUser(data);
 
       localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("user", JSON.stringify(response.user));
+      setStoredJson("user", response.user);
 
       return response;
-    } catch (error: any) {
+    } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response?.data?.detail || "Login failed",
+        getApiErrorMessage(error, "Login failed"),
       );
     }
   },
@@ -74,17 +75,17 @@ export const loginThunk = createAsyncThunk(
 
 export const getMeThunk = createAsyncThunk("auth/me", async (_, thunkAPI) => {
   try {
-    const response = await getCurrentUser();
+    const user = await getCurrentUser();
 
-    localStorage.setItem("user", JSON.stringify(response.user));
+    setStoredJson("user", user);
 
-    return response.user;
-  } catch (error: any) {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("user");
+    return user;
+  } catch (error) {
+    removeStoredItem("accessToken");
+    removeStoredItem("user");
 
     return thunkAPI.rejectWithValue(
-      error.response?.data?.detail || "Unauthorized",
+      getApiErrorMessage(error, "Unauthorized"),
     );
   }
 });
@@ -97,12 +98,12 @@ export const updateProfileThunk = createAsyncThunk<
   try {
     const user = await updateProfile(data);
 
-    localStorage.setItem("user", JSON.stringify(user));
+    setStoredJson("user", user);
 
     return user;
-  } catch (error: any) {
+  } catch (error) {
     return thunkAPI.rejectWithValue(
-      error.response?.data?.detail || "Profile update failed",
+      getApiErrorMessage(error, "Profile update failed"),
     );
   }
 });
@@ -115,9 +116,9 @@ export const changePasswordThunk = createAsyncThunk<
   try {
     const response = await changePassword(data);
     return response;
-  } catch (error: any) {
+  } catch (error) {
     return thunkAPI.rejectWithValue(
-      error.response?.data?.detail || "Password change failed",
+      getApiErrorMessage(error, "Password change failed"),
     );
   }
 });
@@ -133,8 +134,8 @@ const authSlice = createSlice({
       state.error = null;
       state.successMessage = null;
 
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("user");
+      removeStoredItem("accessToken");
+      removeStoredItem("user");
     },
 
     clearAuthError: (state) => {
@@ -149,52 +150,48 @@ const authSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-
-      // REGISTER
+      // Register
       .addCase(registerThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-
       .addCase(registerThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
+        state.error = null;
       })
-
       .addCase(registerThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
 
-      // LOGIN
+      // Login
       .addCase(loginThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
+        state.error = null;
       })
-
       .addCase(loginThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
 
-      // GET CURRENT USER
+      // Get current user
       .addCase(getMeThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-
       .addCase(getMeThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.error = null;
       })
-
       .addCase(getMeThunk.rejected, (state, action) => {
         state.loading = false;
         state.user = null;
@@ -202,7 +199,7 @@ const authSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // UPTADE PROFILE
+      // Update profile
       .addCase(updateProfileThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -212,13 +209,14 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload;
         state.successMessage = "Profile updated successfully";
+        state.error = null;
       })
       .addCase(updateProfileThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Profile update failed";
       })
 
-      //CHANGE PASSWORD
+      // Change password
       .addCase(changePasswordThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -227,6 +225,7 @@ const authSlice = createSlice({
       .addCase(changePasswordThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.successMessage = action.payload.message;
+        state.error = null;
       })
       .addCase(changePasswordThunk.rejected, (state, action) => {
         state.loading = false;
