@@ -37,7 +37,8 @@
       "view_cart": "View cart",
       "checkout": "Checkout",
       "item": "item",
-      "items": "items"
+      "items": "items",
+      "add_to_cart": "Add to cart"
     },
     "language": {
       "en": "English",
@@ -78,6 +79,22 @@
         "cart": "Cart",
         "contact": "Contact"
       }
+    },
+    "checkoutSteps": {
+      "shoppingBag": "Shopping Bag",
+      "shoppingBagText": "Manage your items list",
+      "checkout": "Shipping and Checkout",
+      "checkoutText": "Checkout your items list",
+      "confirmation": "Confirmation",
+      "confirmationText": "Review and submit your order"
+    },
+    "orderSummary": {
+      "product": "Product",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "freeShipping": "Free shipping",
+      "vat": "VAT",
+      "total": "Total"
     }
   },
   "pages": {
@@ -232,6 +249,61 @@
             "large": "Large"
           }
         }
+      },
+      "detail": {
+        "loader": {
+          "title": "Preparing product",
+          "text": "We are loading fresh cake details for you."
+        },
+        "details": {
+          "home": "Home",
+          "shop": "Shop",
+          "rating": "{{rating}} rating",
+          "size": "Size",
+          "decreaseQuantity": "Decrease quantity",
+          "increaseQuantity": "Increase quantity",
+          "addToCart": "Add to cart",
+          "addToWishlist": "Add to wishlist",
+          "removeFromWishlist": "Remove from wishlist",
+          "brand": "Brand:",
+          "flavor": "Flavor:",
+          "selectedSize": "Selected size:"
+        },
+        "slider": {
+          "noImage": "No image available",
+          "thumbnailAlt": "{{title}} thumbnail {{number}}",
+          "imageAlt": "{{title}} {{number}}"
+        },
+        "reviews": {
+          "tab": "Reviews ({{count}})",
+          "kicker": "Customer notes",
+          "title": "Reviews",
+          "loading": "Loading reviews...",
+          "empty": "No reviews yet. Be the first to review this cake.",
+          "share": "Share your opinion",
+          "reviewTitle": "Review {{title}}",
+          "emailNotice": "Your email address will not be published.",
+          "ratingRequired": "Please select a rating.",
+          "nameError": "Name must be at least 2 characters.",
+          "textError": "Review must be at least 5 characters.",
+          "success": "Your review was submitted successfully.",
+          "yourRating": "Your rating",
+          "rateStar": "Rate {{star}} star",
+          "reviewPlaceholder": "Your review",
+          "namePlaceholder": "Name *",
+          "emailPlaceholder": "Email address *",
+          "submitting": "Submitting...",
+          "submit": "Submit review"
+        },
+        "related": {
+          "loadingTitle": "Loading related cakes",
+          "loadingText": "Finding similar cakes for you.",
+          "kicker": "You may also like",
+          "title": "Related products",
+          "subtitle": "Handpicked cakes with similar sweet details and fresh flavors.",
+          "previous": "Previous related products",
+          "next": "Next related products"
+        }
       }
     },
     "contact": {
@@ -376,6 +448,111 @@
           "required": "Please enter your email address.",
           "email": "Please enter a valid email address."
         }
+      }
+    },
+    "cart": {
+      "kicker": "Cake House",
+      "title": "Cart",
+      "text": "Review your selected cakes, update quantities and continue to checkout.",
+      "empty": "Your shopping bag is empty.",
+      "goShop": "Go to shop",
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "category": "Category",
+      "flavor": "Flavor",
+      "totals": "Cart totals",
+      "shipping": {
+        "title": "Shipping",
+        "free": "Free shipping",
+        "flat": "Flat rate: $8",
+        "pickup": "Local pickup"
+      },
+      "vat": "VAT",
+      "total": "Total",
+      "checkout": "Proceed to checkout"
+    },
+    "checkout": {
+      "kicker": "Cake House",
+      "title": "Checkout",
+      "text": "Add your delivery details and confirm your sweet order.",
+      "placeOrder": "Place order",
+      "placingOrder": "Placing order...",
+      "authNotice": "Please log in before placing your order.",
+      "billing": {
+        "title": "Billing details",
+        "firstName": "First Name *",
+        "lastName": "Last Name *",
+        "company": "Company Name (optional)",
+        "country": "Country / Region *",
+        "street": "Street Address *",
+        "apartment": "Apartment, suite, unit (optional)",
+        "city": "Town / City *",
+        "postcode": "Postcode / ZIP *",
+        "province": "Province *",
+        "phone": "Phone *",
+        "email": "Your Mail *",
+        "error": "Please fill in all required fields correctly before placing your order.",
+        "countries": {
+          "azerbaijan": "Azerbaijan",
+          "poland": "Poland",
+          "turkey": "Turkey"
+        }
+      },
+      "payment": {
+        "cash": "Cash on delivery",
+        "cashText": "Pay when your cake order is delivered to your address.",
+        "bank": "Bank transfer",
+        "bankText": "Transfer the payment after placing your order. We will contact you with payment details.",
+        "privacy": "Your personal data will be used to process your order and support your experience throughout this website."
+      },
+      "summary": {
+        "title": "Your order"
+      }
+    },
+    "confirmation": {
+      "kicker": "Cake House",
+      "title": "Confirmation",
+      "text": "Review your order details and track your sweet celebration.",
+      "emptyText": "Your order details will appear here after checkout.",
+      "emptyTitle": "No order found",
+      "emptyDescription": "Please complete checkout before opening confirmation.",
+      "backCart": "Back to cart",
+      "successTitle": "Your order is completed!",
+      "successText": "Thank you. Your order has been received.",
+      "orderNumber": "Order Number",
+      "date": "Date",
+      "paymentMethod": "Payment Method",
+      "cash": "Cash on delivery",
+      "bank": "Bank transfer",
+      "details": "Order details",
+      "emptyItems": "No order items found."
+    },
+    "error": {
+      "kicker": "Cake House",
+      "home": "Back to home",
+      "shop": "Go to shop",
+      "notFound": {
+        "title": "Page not found",
+        "text": "The page you are looking for may have moved or no longer exists.",
+        "label": "Error 404",
+        "heading": "This cake is not on the menu.",
+        "description": "Try returning to the home page or continue browsing our cake collection."
+      },
+      "productNotFound": {
+        "title": "Product not found",
+        "text": "This cake may be sold out, removed, or the product link may be incorrect.",
+        "label": "Product error",
+        "heading": "We could not find this product.",
+        "description": "Go back to the shop and choose another cake from the current collection."
+      },
+      "server": {
+        "title": "Something went wrong",
+        "text": "We could not load this page right now.",
+        "label": "Server error",
+        "heading": "The bakery is taking a short pause.",
+        "description": "Please try again soon or return to the shop while we refresh the page."
       }
     }
   }

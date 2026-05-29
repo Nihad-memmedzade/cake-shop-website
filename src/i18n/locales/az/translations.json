@@ -37,7 +37,8 @@
       "view_cart": "Səbətə bax",
       "checkout": "Sifarişi tamamla",
       "item": "məhsul",
-      "items": "məhsul"
+      "items": "məhsullar",
+      "add_to_cart": "Səbətə əlavə et"
     },
     "language": {
       "en": "English",
@@ -78,6 +79,22 @@
         "cart": "Səbət",
         "contact": "Əlaqə"
       }
+    },
+    "checkoutSteps": {
+      "shoppingBag": "Səbət",
+      "shoppingBagText": "Seçilmiş məhsullarınızı idarə edin",
+      "checkout": "Çatdırılma və ödəniş",
+      "checkoutText": "Sifariş məlumatlarını tamamlayın",
+      "confirmation": "Təsdiq",
+      "confirmationText": "Sifarişi yoxlayın və təsdiqləyin"
+    },
+    "orderSummary": {
+      "product": "Məhsul",
+      "subtotal": "Cəm",
+      "shipping": "Çatdırılma",
+      "freeShipping": "Pulsuz çatdırılma",
+      "vat": "ƏDV",
+      "total": "Ümumi"
     }
   },
   "pages": {
@@ -232,7 +249,62 @@
             "large": "Böyük"
           }
         }
+      },
+         "detail": {
+      "loader": {
+        "title": "Məhsul hazırlanır",
+        "text": "Təzə tort məlumatları yüklənir."
+      },
+      "details": {
+        "home": "Ana səhifə",
+        "shop": "Mağaza",
+        "rating": "{{rating}} reytinq",
+        "size": "Ölçü",
+        "decreaseQuantity": "Sayı azalt",
+        "increaseQuantity": "Sayı artır",
+        "addToCart": "Səbətə əlavə et",
+        "addToWishlist": "Sevimlilərə əlavə et",
+        "removeFromWishlist": "Sevimlilərdən sil",
+        "brand": "Brend:",
+        "flavor": "Dad:",
+        "selectedSize": "Seçilmiş ölçü:"
+      },
+      "slider": {
+        "noImage": "Şəkil mövcud deyil",
+        "thumbnailAlt": "{{title}} kiçik şəkil {{number}}",
+        "imageAlt": "{{title}} {{number}}"
+      },
+      "reviews": {
+        "tab": "Rəylər ({{count}})",
+        "kicker": "Müştəri qeydləri",
+        "title": "Rəylər",
+        "loading": "Rəylər yüklənir...",
+        "empty": "Hələ rəy yoxdur. Bu torta ilk rəyi sən yaz.",
+        "share": "Fikrini paylaş",
+        "reviewTitle": "{{title}} üçün rəy yaz",
+        "emailNotice": "Email ünvanınız paylaşılmayacaq.",
+        "ratingRequired": "Zəhmət olmasa reytinq seçin.",
+        "nameError": "Ad ən az 2 simvol olmalıdır.",
+        "textError": "Rəy ən az 5 simvol olmalıdır.",
+        "success": "Rəyiniz uğurla göndərildi.",
+        "yourRating": "Reytinqiniz",
+        "rateStar": "{{star}} ulduz ver",
+        "reviewPlaceholder": "Rəyiniz",
+        "namePlaceholder": "Ad *",
+        "emailPlaceholder": "Email ünvanı *",
+        "submitting": "Göndərilir...",
+        "submit": "Rəy göndər"
+      },
+      "related": {
+        "loadingTitle": "Oxşar tortlar yüklənir",
+        "loadingText": "Sənin üçün oxşar tortlar tapılır.",
+        "kicker": "Bunları da bəyənə bilərsən",
+        "title": "Oxşar məhsullar",
+        "subtitle": "Oxşar dadlara və detallara malik seçilmiş tortlar.",
+        "previous": "Əvvəlki oxşar məhsullar",
+        "next": "Növbəti oxşar məhsullar"
       }
+    }
     },
     "contact": {
       "hero": {
@@ -376,6 +448,111 @@
           "required": "Zəhmət olmasa e-poçt ünvanınızı daxil edin.",
           "email": "Zəhmət olmasa düzgün e-poçt ünvanı daxil edin."
         }
+      }
+    },
+    "cart": {
+      "kicker": "Cake House",
+      "title": "Səbət",
+      "text": "Seçdiyiniz tortları yoxlayın, sayını dəyişin və ödənişə davam edin.",
+      "empty": "Səbətiniz boşdur.",
+      "goShop": "Mağazaya keç",
+      "product": "Məhsul",
+      "price": "Qiymət",
+      "quantity": "Say",
+      "subtotal": "Ara cəm",
+      "category": "Kateqoriya",
+      "flavor": "Dad",
+      "totals": "Səbət cəmi",
+      "shipping": {
+        "title": "Çatdırılma",
+        "free": "Pulsuz çatdırılma",
+        "flat": "Sabit tarif: $8",
+        "pickup": "Mağazadan götürmə"
+      },
+      "vat": "ƏDV",
+      "total": "Ümumi",
+      "checkout": "Ödənişə davam et"
+    },
+    "checkout": {
+      "kicker": "Cake House",
+      "title": "Ödəniş",
+      "text": "Çatdırılma məlumatlarını əlavə edin və sifarişinizi təsdiqləyin.",
+      "placeOrder": "Sifarişi təsdiqlə",
+      "placingOrder": "Sifariş göndərilir...",
+      "authNotice": "Sifariş verməzdən əvvəl daxil olun.",
+      "billing": {
+        "title": "Ödəniş məlumatları",
+        "firstName": "Ad *",
+        "lastName": "Soyad *",
+        "company": "Şirkət adı (istəyə bağlı)",
+        "country": "Ölkə / Region *",
+        "street": "Küçə ünvanı *",
+        "apartment": "Mənzil, blok, mərtəbə (istəyə bağlı)",
+        "city": "Şəhər *",
+        "postcode": "Poçt indeksi *",
+        "province": "Bölgə *",
+        "phone": "Telefon *",
+        "email": "E-poçt *",
+        "error": "Sifariş verməzdən əvvəl bütün vacib xanaları düzgün doldurun.",
+        "countries": {
+          "azerbaijan": "Az?rbaycan",
+          "poland": "Pol?a",
+          "turkey": "T?rkiy?"
+        }
+      },
+      "payment": {
+        "cash": "Çatdırılmada ödəniş",
+        "cashText": "Tort sifarişiniz ünvana çatdırılanda ödəniş edin.",
+        "bank": "Bank köçürməsi",
+        "bankText": "Sifarişdən sonra ödəniş köçürməsi edin. Ödəniş məlumatları üçün sizinlə əlaqə saxlayacağıq.",
+        "privacy": "Şəxsi məlumatlarınız sifarişinizi emal etmək və sayt təcrübənizi dəstəkləmək üçün istifadə olunacaq."
+      },
+      "summary": {
+        "title": "Sifari?iniz"
+      }
+    },
+    "confirmation": {
+      "kicker": "Cake House",
+      "title": "Təsdiq",
+      "text": "Sifariş məlumatlarınızı yoxlayın və sifarişinizi izləyin.",
+      "emptyText": "Sifariş məlumatları checkout-dan sonra burada görünəcək.",
+      "emptyTitle": "Sifariş tapılmadı",
+      "emptyDescription": "Təsdiq səhifəsini açmazdan əvvəl checkout-u tamamlayın.",
+      "backCart": "Səbətə qayıt",
+      "successTitle": "Sifarişiniz tamamlandı!",
+      "successText": "Təşəkkür edirik. Sifarişiniz qəbul edildi.",
+      "orderNumber": "Sifariş nömrəsi",
+      "date": "Tarix",
+      "paymentMethod": "Ödəniş üsulu",
+      "cash": "Çatdırılmada ödəniş",
+      "bank": "Bank köçürməsi",
+      "details": "Sifariş detalları",
+      "emptyItems": "Sifariş məhsulu tapılmadı."
+    },
+    "error": {
+      "kicker": "Cake House",
+      "home": "Ana səhifəyə qayıt",
+      "shop": "Mağazaya keç",
+      "notFound": {
+        "title": "Səhifə tapılmadı",
+        "text": "Axtardığınız səhifə köçürülmüş və ya artıq mövcud olmaya bilər.",
+        "label": "Xəta 404",
+        "heading": "Bu tort menyuda yoxdur.",
+        "description": "Ana səhifəyə qayıda və ya tort kolleksiyamıza baxmağa davam edə bilərsiniz."
+      },
+      "productNotFound": {
+        "title": "Məhsul tapılmadı",
+        "text": "Bu tort satılmış, silinmiş və ya məhsul linki səhv ola bilər.",
+        "label": "Məhsul xətası",
+        "heading": "Bu məhsulu tapa bilmədik.",
+        "description": "Mağazaya qayıdıb aktual kolleksiyadan başqa tort seçə bilərsiniz."
+      },
+      "server": {
+        "title": "Nəsə səhv getdi",
+        "text": "Bu səhifəni hazırda yükləyə bilmədik.",
+        "label": "Server xətası",
+        "heading": "Səhifə qısa fasilədədir.",
+        "description": "Bir az sonra yenidən yoxlayın və ya mağazaya qayıdıb məhsullara baxın."
       }
     }
   }

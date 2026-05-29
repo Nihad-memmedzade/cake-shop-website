@@ -37,7 +37,8 @@
       "view_cart": "Zobacz koszyk",
       "checkout": "Zamówienie",
       "item": "produkt",
-      "items": "produkty"
+      "items": "produkty",
+      "add_to_cart": "Dodaj do koszyka"
     },
     "language": {
       "en": "English",
@@ -78,6 +79,22 @@
         "cart": "Koszyk",
         "contact": "Kontakt"
       }
+    },
+    "checkoutSteps": {
+      "shoppingBag": "Koszyk",
+      "shoppingBagText": "Zarządzaj listą produktów",
+      "checkout": "Dostawa i płatność",
+      "checkoutText": "Uzupełnij dane zamówienia",
+      "confirmation": "Potwierdzenie",
+      "confirmationText": "Sprawdź i zatwierdź zamówienie"
+    },
+    "orderSummary": {
+      "product": "Produkt",
+      "subtotal": "Suma częściowa",
+      "shipping": "Dostawa",
+      "freeShipping": "Darmowa dostawa",
+      "vat": "VAT",
+      "total": "Razem"
     }
   },
   "pages": {
@@ -232,6 +249,61 @@
             "large": "Duży"
           }
         }
+      },
+      "detail": {
+        "loader": {
+          "title": "Przygotowujemy produkt",
+          "text": "Ładujemy świeże informacje o torcie."
+        },
+        "details": {
+          "home": "Strona główna",
+          "shop": "Sklep",
+          "rating": "{{rating}} ocena",
+          "size": "Rozmiar",
+          "decreaseQuantity": "Zmniejsz ilość",
+          "increaseQuantity": "Zwiększ ilość",
+          "addToCart": "Dodaj do koszyka",
+          "addToWishlist": "Dodaj do ulubionych",
+          "removeFromWishlist": "Usuń z ulubionych",
+          "brand": "Marka:",
+          "flavor": "Smak:",
+          "selectedSize": "Wybrany rozmiar:"
+        },
+        "slider": {
+          "noImage": "Brak zdjęcia",
+          "thumbnailAlt": "{{title}} miniatura {{number}}",
+          "imageAlt": "{{title}} {{number}}"
+        },
+        "reviews": {
+          "tab": "Opinie ({{count}})",
+          "kicker": "Opinie klientów",
+          "title": "Opinie",
+          "loading": "Ładowanie opinii...",
+          "empty": "Nie ma jeszcze opinii. Bądź pierwszą osobą, która oceni ten tort.",
+          "share": "Podziel się opinią",
+          "reviewTitle": "Oceń {{title}}",
+          "emailNotice": "Twój adres email nie zostanie opublikowany.",
+          "ratingRequired": "Wybierz ocenę.",
+          "nameError": "Imię musi mieć co najmniej 2 znaki.",
+          "textError": "Opinia musi mieć co najmniej 5 znaków.",
+          "success": "Twoja opinia została wysłana.",
+          "yourRating": "Twoja ocena",
+          "rateStar": "Oceń na {{star}} gwiazdkę",
+          "reviewPlaceholder": "Twoja opinia",
+          "namePlaceholder": "Imię *",
+          "emailPlaceholder": "Adres email *",
+          "submitting": "Wysyłanie...",
+          "submit": "Wyślij opinię"
+        },
+        "related": {
+          "loadingTitle": "Ładowanie podobnych tortów",
+          "loadingText": "Szukamy podobnych tortów dla Ciebie.",
+          "kicker": "Może Ci się spodobać",
+          "title": "Podobne produkty",
+          "subtitle": "Wybrane torty o podobnych smakach i detalach.",
+          "previous": "Poprzednie podobne produkty",
+          "next": "Następne podobne produkty"
+        }
       }
     },
     "contact": {
@@ -376,6 +448,111 @@
           "required": "Wpisz swój adres e-mail.",
           "email": "Wpisz poprawny adres e-mail."
         }
+      }
+    },
+    "cart": {
+      "kicker": "Cake House",
+      "title": "Koszyk",
+      "text": "Sprawdź wybrane ciasta, zmień ilości i przejdź do płatności.",
+      "empty": "Twój koszyk jest pusty.",
+      "goShop": "Przejdź do sklepu",
+      "product": "Produkt",
+      "price": "Cena",
+      "quantity": "Ilość",
+      "subtotal": "Suma częściowa",
+      "category": "Kategoria",
+      "flavor": "Smak",
+      "totals": "Podsumowanie koszyka",
+      "shipping": {
+        "title": "Dostawa",
+        "free": "Darmowa dostawa",
+        "flat": "Stała opłata: $8",
+        "pickup": "Odbiór osobisty"
+      },
+      "vat": "VAT",
+      "total": "Razem",
+      "checkout": "Przejdź do płatności"
+    },
+    "checkout": {
+      "kicker": "Cake House",
+      "title": "Płatność",
+      "text": "Dodaj dane dostawy i potwierdź swoje słodkie zamówienie.",
+      "placeOrder": "Złóż zamówienie",
+      "placingOrder": "Składanie zamówienia...",
+      "authNotice": "Zaloguj się przed złożeniem zamówienia.",
+      "billing": {
+        "title": "Dane rozliczeniowe",
+        "firstName": "Imię *",
+        "lastName": "Nazwisko *",
+        "company": "Nazwa firmy (opcjonalnie)",
+        "country": "Kraj / Region *",
+        "street": "Adres ulicy *",
+        "apartment": "Mieszkanie, lokal (opcjonalnie)",
+        "city": "Miasto *",
+        "postcode": "Kod pocztowy *",
+        "province": "Województwo *",
+        "phone": "Telefon *",
+        "email": "E-mail *",
+        "error": "Przed złożeniem zamówienia wypełnij poprawnie wszystkie wymagane pola.",
+        "countries": {
+          "azerbaijan": "Azerbejd?an",
+          "poland": "Polska",
+          "turkey": "Turcja"
+        }
+      },
+      "payment": {
+        "cash": "Płatność przy odbiorze",
+        "cashText": "Zapłać, gdy zamówienie zostanie dostarczone pod Twój adres.",
+        "bank": "Przelew bankowy",
+        "bankText": "Wykonaj przelew po złożeniu zamówienia. Skontaktujemy się z Tobą z danymi płatności.",
+        "privacy": "Twoje dane osobowe będą używane do obsługi zamówienia i wsparcia korzystania ze strony."
+      },
+      "summary": {
+        "title": "Twoje zam?wienie"
+      }
+    },
+    "confirmation": {
+      "kicker": "Cake House",
+      "title": "Potwierdzenie",
+      "text": "Sprawdź szczegóły zamówienia i śledź swoje słodkie zamówienie.",
+      "emptyText": "Szczegóły zamówienia pojawią się tutaj po płatności.",
+      "emptyTitle": "Nie znaleziono zamówienia",
+      "emptyDescription": "Dokończ płatność przed otwarciem potwierdzenia.",
+      "backCart": "Wróć do koszyka",
+      "successTitle": "Twoje zamówienie zostało złożone!",
+      "successText": "Dziękujemy. Twoje zamówienie zostało przyjęte.",
+      "orderNumber": "Numer zamówienia",
+      "date": "Data",
+      "paymentMethod": "Metoda płatności",
+      "cash": "Płatność przy odbiorze",
+      "bank": "Przelew bankowy",
+      "details": "Szczegóły zamówienia",
+      "emptyItems": "Nie znaleziono produktów w zamówieniu."
+    },
+    "error": {
+      "kicker": "Cake House",
+      "home": "Wróć do strony głównej",
+      "shop": "Przejdź do sklepu",
+      "notFound": {
+        "title": "Nie znaleziono strony",
+        "text": "Strona, której szukasz, mogła zostać przeniesiona albo już nie istnieje.",
+        "label": "Błąd 404",
+        "heading": "Tego ciasta nie ma w menu.",
+        "description": "Wróć na stronę główną albo przejdź do naszej kolekcji ciast."
+      },
+      "productNotFound": {
+        "title": "Nie znaleziono produktu",
+        "text": "To ciasto mogło zostać wyprzedane, usunięte albo link jest nieprawidłowy.",
+        "label": "Błąd produktu",
+        "heading": "Nie udało się znaleźć tego produktu.",
+        "description": "Wróć do sklepu i wybierz inne ciasto z aktualnej kolekcji."
+      },
+      "server": {
+        "title": "Coś poszło nie tak",
+        "text": "Nie możemy teraz załadować tej strony.",
+        "label": "Błąd serwera",
+        "heading": "Strona ma krótką przerwę.",
+        "description": "Spróbuj ponownie za chwilę albo wróć do sklepu."
       }
     }
   }

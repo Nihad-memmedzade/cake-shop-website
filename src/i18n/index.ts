@@ -13,7 +13,7 @@ const resources = {
 
 export const languages = [
   { code: "en", name: "English" },
-  { code: "az", name: "Azərbaycan" },
+  { code: "az", name: "Az?rbaycanca" },
   { code: "pl", name: "Polski" },
 ];
 
