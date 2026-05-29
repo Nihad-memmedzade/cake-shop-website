@@ -1,9 +1,10 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .backWall {
-  @include position($position: fixed, $z-index: map-get($z-indexes, overlay));
+  @include position($position: fixed, $z-index: map.get($z-indexes, overlay));
 
   inset: 0;
   background: rgba(29, 19, 22, 0.48);
@@ -20,7 +21,7 @@
     $position: fixed,
     $top: 0,
     $right: 0,
-    $z-index: map-get($z-indexes, modal)
+    $z-index: map.get($z-indexes, modal)
   );
 
   @include container(

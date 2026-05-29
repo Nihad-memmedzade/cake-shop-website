@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import styles from "./checkoutSteps.module.scss";
 
 type CheckoutStep = {
@@ -10,25 +12,27 @@ type CheckoutStepsProps = {
   activeStep: 1 | 2 | 3;
 };
 
-const steps: CheckoutStep[] = [
-  {
-    number: "01",
-    title: "Shopping Bag",
-    description: "Manage your items list",
-  },
-  {
-    number: "02",
-    title: "Shipping and Checkout",
-    description: "Checkout your items list",
-  },
-  {
-    number: "03",
-    title: "Confirmation",
-    description: "Review and submit your order",
-  },
-];
-
 export default function CheckoutSteps({ activeStep }: CheckoutStepsProps) {
+  const { t } = useTranslation();
+
+  const steps: CheckoutStep[] = [
+    {
+      number: "01",
+      title: t("common.checkoutSteps.shoppingBag"),
+      description: t("common.checkoutSteps.shoppingBagText"),
+    },
+    {
+      number: "02",
+      title: t("common.checkoutSteps.checkout"),
+      description: t("common.checkoutSteps.checkoutText"),
+    },
+    {
+      number: "03",
+      title: t("common.checkoutSteps.confirmation"),
+      description: t("common.checkoutSteps.confirmationText"),
+    },
+  ];
+
   return (
     <section className={styles.steps}>
       {steps.map((step, index) => {

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .backToTop {
   @include container(
@@ -10,7 +11,7 @@
     1px solid $border-medium,
     rgba(255, 255, 255, 0.9)
   );
-  @include position(fixed, null, null, 28px, 28px, map-get($z-indexes, header));
+  @include position(fixed, null, null, 28px, 28px, map.get($z-indexes, header));
   display: grid;
   place-items: center;
   color: $brand-primary;

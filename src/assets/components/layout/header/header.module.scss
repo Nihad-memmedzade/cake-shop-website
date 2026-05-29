@@ -1,12 +1,13 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .headerWrap {
   @include position(
     $position: sticky,
     $top: 0,
-    $z-index: map-get($z-indexes, header)
+    $z-index: map.get($z-indexes, header)
   );
   @include container($width: 100%, $background: rgba(255, 250, 252, 0.96));
 

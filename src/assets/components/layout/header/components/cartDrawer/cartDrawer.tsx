@@ -2,19 +2,25 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { getLocalizedPath } from "@/helpers/languagePath";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
+import type { CartItem } from "@/types/cart";
 
 import {
+  decreaseGuestQuantity,
   decreaseQuantity,
+  increaseGuestQuantity,
   increaseQuantity,
+  removeGuestFromCart,
   removeFromCart,
+  syncRemoveCart,
+  syncUpdateCart,
 } from "@/store/cartSlice";
 
 import style from "./cartDrawer.module.scss";
 
 type CartDrawerProps = {
   isClosing?: boolean;
-  shoppingList: any[];
+  shoppingList: CartItem[];
   subtotal: number;
   onClose: () => void;
 };
@@ -28,10 +34,65 @@ export default function CartDrawer({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const accessToken = useAppSelector(
+    (state: RootState) => state.auth.accessToken,
+  );
 
   const cartCount = shoppingList.length;
   const itemText =
     cartCount === 1 ? t("common.cart.item") : t("common.cart.items");
+
+  const handleRemove = (product: CartItem) => {
+    if (!accessToken) {
+      dispatch(removeGuestFromCart(product));
+      return;
+    }
+
+    dispatch(removeFromCart(product));
+    dispatch(
+      syncRemoveCart({
+        productId: product.id,
+        size: product.selectedSize || null,
+      }),
+    );
+  };
+
+  const handleDecrease = (product: CartItem) => {
+    if (!accessToken) {
+      dispatch(decreaseGuestQuantity(product));
+      return;
+    }
+
+    const nextQuantity = Math.max(1, product.quantity - 1);
+    dispatch(decreaseQuantity(product));
+    dispatch(
+      syncUpdateCart({
+        productId: product.id,
+        quantity: nextQuantity,
+        size: product.selectedSize || null,
+      }),
+    );
+  };
+
+  const handleIncrease = (product: CartItem) => {
+    if (!accessToken) {
+      dispatch(increaseGuestQuantity(product));
+      return;
+    }
+
+    dispatch(increaseQuantity(product));
+    dispatch(
+      syncUpdateCart({
+        productId: product.id,
+        quantity: product.quantity + 1,
+        size: product.selectedSize || null,
+      }),
+    );
+  };
+  const handleOpenProduct = (productId: number) => {
+    onClose();
+    navigate(getLocalizedPath(`/products/${productId}`));
+  };
 
   return (
     <>
@@ -90,7 +151,11 @@ export default function CartDrawer({
                     : product.price;
 
                 return (
-                  <li key={product.id} className={style.cartItem}>
+                  <li
+                    key={`${product.id}-${product.selectedSize || "default"}`}
+                    className={style.cartItem}
+                    onClick={() => handleOpenProduct(product.id)}
+                  >
                     <img
                       className={style.cartImg}
                       src={product.images[0]}
@@ -100,9 +165,7 @@ export default function CartDrawer({
                     <div className={style.cartMeta}>
                       <div className={style.cartTopLine}>
                         <div>
-                          <p className={style.cartItemTitle}>
-                            {product.title}
-                          </p>
+                          <p className={style.cartItemTitle}>{product.title}</p>
 
                           <p className={style.cartItemCategory}>
                             {product.category}
@@ -112,7 +175,10 @@ export default function CartDrawer({
                         <button
                           type="button"
                           className={style.cartRemove}
-                          onClick={() => dispatch(removeFromCart(product))}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            handleRemove(product);
+                          }}
                         >
                           x
                         </button>
@@ -123,7 +189,10 @@ export default function CartDrawer({
                           <button
                             type="button"
                             className={style.cartQtyBtn}
-                            onClick={() => dispatch(decreaseQuantity(product))}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleDecrease(product);
+                            }}
                           >
                             -
                           </button>
@@ -135,7 +204,10 @@ export default function CartDrawer({
                           <button
                             type="button"
                             className={style.cartQtyBtn}
-                            onClick={() => dispatch(increaseQuantity(product))}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              handleIncrease(product);
+                            }}
                           >
                             +
                           </button>

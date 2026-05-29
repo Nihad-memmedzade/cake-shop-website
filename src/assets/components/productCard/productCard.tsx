@@ -7,8 +7,14 @@ import {
   removeLanguageFromPath,
 } from "@/helpers/languagePath";
 
-import { addToCart } from "@/store/cartSlice";
-import { toggleWishlist } from "@/store/wishlistSlice";
+import { addGuestToCart, addToCart, syncAddCart } from "@/store/cartSlice";
+
+import {
+  syncAddWishlist,
+  syncRemoveWishlist,
+  toggleGuestWishlist,
+  toggleWishlist,
+} from "@/store/wishlistSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 import type { Product } from "@/types/product";
 
@@ -24,6 +30,9 @@ export default function ProductCard({
   variant = "default",
 }: ProductProps) {
   const dispatch = useAppDispatch();
+  const accessToken = useAppSelector(
+    (state: RootState) => state.auth.accessToken,
+  );
 
   const location = useLocation();
   const { t } = useTranslation();
@@ -57,11 +66,34 @@ export default function ProductCard({
       : 0;
 
   const handleWishlist = () => {
-    dispatch(toggleWishlist(card));
-  };
+    if (!accessToken) {
+      dispatch(toggleGuestWishlist(card));
+      return;
+    }
 
+    dispatch(toggleWishlist(card));
+
+    if (isInWishlist) {
+      dispatch(syncRemoveWishlist(card.id));
+    } else {
+      dispatch(syncAddWishlist(card.id));
+    }
+  };
   const handleAddToCart = () => {
+    if (!accessToken) {
+      dispatch(addGuestToCart(card));
+      return;
+    }
+
     dispatch(addToCart(card));
+
+    dispatch(
+      syncAddCart({
+        productId: card.id,
+        quantity: 1,
+        size: null,
+      }),
+    );
   };
 
   return (
@@ -89,7 +121,7 @@ export default function ProductCard({
           className={style.addToCart}
           onClick={handleAddToCart}
         >
-          Add to cart
+          {t("common.cart.add_to_cart")}
         </button>
       </div>
 

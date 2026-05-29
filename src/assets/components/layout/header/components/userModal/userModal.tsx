@@ -2,12 +2,13 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 
 import { getLocalizedPath } from "@/helpers/languagePath";
+import type { User } from "@/types/user";
 
 import style from "./userModal.module.scss";
 
 type UserModalProps = {
   isClosing?: boolean;
-  user: any;
+  user: User | null;
   error: string | null;
   loading: boolean;
   modalEmail: string;

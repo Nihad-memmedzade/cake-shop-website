@@ -1,9 +1,10 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .mobileMenu {
-  @include position($position: fixed, $z-index: map-get($z-indexes, drawer));
+  @include position($position: fixed, $z-index: map.get($z-indexes, drawer));
 
   inset: 0;
 

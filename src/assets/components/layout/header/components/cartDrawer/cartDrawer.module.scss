@@ -1,9 +1,10 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .backWall {
-  @include position($position: fixed, $z-index: map-get($z-indexes, overlay));
+  @include position($position: fixed, $z-index: map.get($z-indexes, overlay));
 
   inset: 0;
   background: rgba(29, 19, 22, 0.48);
@@ -20,7 +21,7 @@
     $position: fixed,
     $top: 0,
     $right: 0,
-    $z-index: map-get($z-indexes, drawer)
+    $z-index: map.get($z-indexes, drawer)
   );
 
   @include container(
@@ -68,7 +69,7 @@
     $background: $brand-primary-soft,
     $color: $brand-dark
   );
-  padding-bottom: 4px;  
+  padding-bottom: 4px;
   &:hover {
     background: rgba(185, 72, 103, 0.16);
     transform: translateY(-1px);
@@ -155,12 +156,19 @@
   display: grid;
   grid-template-columns: 92px 1fr;
   gap: 14px;
-
+  cursor: pointer;
+  transition: $transition-fast;
   padding: 12px;
   border-radius: $radius-lg;
   border: 1px solid rgba(81, 49, 58, 0.08);
   background: $brand-white;
   box-shadow: $shadow-soft;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(185, 72, 103, 0.24);
+    box-shadow: 0 18px 42px rgba(81, 32, 46, 0.12);
+  }
 }
 
 .cartImg {

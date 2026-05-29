@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .loaderWrap {
   min-height: 420px;
@@ -43,7 +44,7 @@
     margin: 26px 0 10px;
     @include font(
       clamp(26px, 4vw, 34px),
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.12,
       $color: $text-main
     );
@@ -54,7 +55,7 @@
     margin: 0 auto;
     @include font(
       clamp(15px, 2vw, 17px),
-      $weight: map-get($font-weights, regular),
+      $weight: map.get($font-weights, regular),
       $height: 1.7,
       $color: $text-muted
     );

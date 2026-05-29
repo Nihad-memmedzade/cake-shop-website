@@ -9,6 +9,7 @@ import {
 } from "@/assets/images/icons";
 import Logo from "@/assets/images/logo/cake-logo.png";
 import { getLocalizedPath } from "@/helpers/languagePath";
+import type { User } from "@/types/user";
 
 import style from "./mobileMenu.module.scss";
 
@@ -20,7 +21,7 @@ type MenuItem = {
 type MobileMenuProps = {
   isClosing?: boolean;
   menu: MenuItem[];
-  user: any;
+  user: User | null;
   cartCount: number;
   wishlistCount: number;
   searchValue: string;

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .myAccount {
   @include page-container($container-width);
@@ -35,7 +36,7 @@
 
     @include font(
       clamp(38px, 6vw, 74px),
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 0.95,
       $color: $text-main
     );
@@ -49,7 +50,7 @@
 
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -102,7 +103,7 @@
 
   @include font(
     14px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.35,
     $color: $text-muted
   );
