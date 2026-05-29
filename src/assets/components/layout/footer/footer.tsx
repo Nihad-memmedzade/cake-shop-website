@@ -120,7 +120,7 @@ export default function Footer() {
 
           <div className={style.contactInfo}>
             <a href="mailto:hello@cakehouse.com">hello@cakehouse.com</a>
-            <a href="tel:+12463450695">+1 246-345-0695</a>
+            <a href="tel:+12463450695">+48 777 777 777</a>
           </div>
 
           <div className={style.address}>{t("common.footer.address")}</div>

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .footer {
   @include container($width: 100%);
@@ -48,7 +49,7 @@
 
   @include font(
     $size: 14px,
-    $weight: map-get($font-weights, regular),
+    $weight: map.get($font-weights, regular),
     $height: 1.75,
     $color: $text-muted
   );
@@ -64,7 +65,7 @@
 
     @include font(
       $size: 14px,
-      $weight: map-get($font-weights, extra-bold),
+      $weight: map.get($font-weights, extra-bold),
       $height: 1.4,
       $color: $text-main
     );
@@ -80,7 +81,7 @@
 
   @include font(
     $size: 13px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.65,
     $color: $text-soft
   );
@@ -109,7 +110,7 @@
 
   @include font(
     $size: 13px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.3,
     $color: $text-main
   );
@@ -133,7 +134,7 @@
 
   @include font(
     $size: 14px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.5,
     $color: $text-muted
   );
@@ -202,7 +203,7 @@
 
     @include font(
       $size: 13px,
-      $weight: map-get($font-weights, extra-bold),
+      $weight: map.get($font-weights, extra-bold),
       $height: 1.5,
       $color: $text-muted
     );
