@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .cartPage {
   @include page-container($container-width);
@@ -15,7 +16,12 @@
   border-radius: $radius-xl;
   background:
     radial-gradient(circle at 12% 20%, $brand-primary-soft, transparent 28%),
-    linear-gradient(135deg, $brand-cream 0%, $brand-white 58%, $brand-primary-light 100%);
+    linear-gradient(
+      135deg,
+      $brand-cream 0%,
+      $brand-white 58%,
+      $brand-primary-light 100%
+    );
   box-shadow: $shadow-soft;
 
   h1 {
@@ -24,7 +30,7 @@
 
     @include font(
       $size: clamp(38px, 6vw, 74px),
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 0.95,
       $color: $text-main
     );
@@ -38,7 +44,7 @@
 
   @include font(
     $size: 12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -81,6 +87,11 @@
 .cartItem {
   padding: 30px 0;
   border-bottom: 1px solid $border-dark;
+  cursor: pointer;
+  transition: $transition-fast;
+  &:hover {
+    border-color: rgba(185, 72, 103, 0.22);
+  }
 }
 
 .productInfo {
@@ -251,7 +262,12 @@
   min-height: 360px;
   text-align: center;
 
-  @include flex($direction: column, $align: center, $justify: center, $gap: 20px);
+  @include flex(
+    $direction: column,
+    $align: center,
+    $justify: center,
+    $gap: 20px
+  );
 
   p {
     @include font($size: 20px, $weight: 800, $color: $text-main);
