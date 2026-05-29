@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useAppSelector, type RootState } from "@/store/store";
 
@@ -15,6 +16,7 @@ export default function OrderSummary({
   vat,
   total,
 }: OrderSummaryProps) {
+  const { t } = useTranslation();
   const items = useAppSelector((state: RootState) => state.cart.items);
 
   const subtotal = useMemo(() => {
@@ -26,16 +28,17 @@ export default function OrderSummary({
 
   return (
     <aside className={styles.orderSummary}>
-      <h3>Your order</h3>
+      <h3>{t("pages.checkout.summary.title")}</h3>
 
       <div className={styles.summaryHead}>
-        <span>Product</span>
-        <span>Subtotal</span>
+        <span>{t("common.orderSummary.product")}</span>
+        <span>{t("common.orderSummary.subtotal")}</span>
       </div>
 
       <div className={styles.items}>
         {items.map((item) => {
-          const price = item.discountedPrice > 0 ? item.discountedPrice : item.price;
+          const price =
+            item.discountedPrice > 0 ? item.discountedPrice : item.price;
 
           return (
             <div key={item.id} className={styles.item}>
@@ -49,22 +52,26 @@ export default function OrderSummary({
       </div>
 
       <div className={styles.totalLine}>
-        <span>Subtotal</span>
+        <span>{t("common.orderSummary.subtotal")}</span>
         <strong>${subtotal}</strong>
       </div>
 
       <div className={styles.totalLine}>
-        <span>Shipping</span>
-        <strong>{shipping === 0 ? "Free shipping" : `$${shipping}`}</strong>
+        <span>{t("common.orderSummary.shipping")}</span>
+        <strong>
+          {shipping === 0
+            ? t("common.orderSummary.freeShipping")
+            : `$${shipping}`}
+        </strong>
       </div>
 
       <div className={styles.totalLine}>
-        <span>VAT</span>
+        <span>{t("common.orderSummary.vat")}</span>
         <strong>${vat}</strong>
       </div>
 
       <div className={`${styles.totalLine} ${styles.grandTotal}`}>
-        <span>Total</span>
+        <span>{t("common.orderSummary.total")}</span>
         <strong>${total}</strong>
       </div>
     </aside>

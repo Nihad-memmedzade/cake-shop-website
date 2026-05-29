@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import styles from "./paymentMethods.module.scss";
 
 export type PaymentMethod = "cash" | "bank";
@@ -7,28 +9,29 @@ type PaymentMethodsProps = {
   onChange: (value: PaymentMethod) => void;
 };
 
-const methods: {
-  id: PaymentMethod;
-  title: string;
-  description: string;
-}[] = [
-  {
-    id: "cash",
-    title: "Cash on delivery",
-    description: "Pay when your cake order is delivered to your address.",
-  },
-  {
-    id: "bank",
-    title: "Bank transfer",
-    description:
-      "Transfer the payment after placing your order. We will contact you with payment details.",
-  },
-];
-
 export default function PaymentMethods({
   value,
   onChange,
 }: PaymentMethodsProps) {
+  const { t } = useTranslation();
+
+  const methods: {
+    id: PaymentMethod;
+    title: string;
+    description: string;
+  }[] = [
+    {
+      id: "cash",
+      title: t("pages.checkout.payment.cash"),
+      description: t("pages.checkout.payment.cashText"),
+    },
+    {
+      id: "bank",
+      title: t("pages.checkout.payment.bank"),
+      description: t("pages.checkout.payment.bankText"),
+    },
+  ];
+
   return (
     <section className={styles.paymentMethods}>
       {methods.map((method) => (
@@ -48,8 +51,7 @@ export default function PaymentMethods({
       ))}
 
       <p className={styles.privacyText}>
-        Your personal data will be used to process your order and support your
-        experience throughout this website.
+        {t("pages.checkout.payment.privacy")}
       </p>
     </section>
   );

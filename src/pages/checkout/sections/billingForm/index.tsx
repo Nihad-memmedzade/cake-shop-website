@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import styles from "./billingForm.module.scss";
 
 export type BillingFormValues = {
@@ -23,18 +25,6 @@ type BillingFormProps = {
   ) => void;
 };
 
-const requiredFields: (keyof BillingFormValues)[] = [
-  "firstName",
-  "lastName",
-  "country",
-  "streetAddress",
-  "city",
-  "postcode",
-  "province",
-  "phone",
-  "email",
-];
-
 const getOnlyNumbers = (value: string) => {
   return value.replace(/\D/g, "");
 };
@@ -44,15 +34,15 @@ const isValidEmail = (value: string) => {
 };
 
 export const getIsBillingFormValid = (values: BillingFormValues) => {
-  const hasRequiredValues = requiredFields.every(
-    (field) => values[field].trim().length > 0,
-  );
-
   return (
-    hasRequiredValues &&
-    isValidEmail(values.email) &&
-    values.phone.trim().length > 0 &&
-    values.postcode.trim().length > 0
+    values.firstName.trim().length >= 2 &&
+    values.lastName.trim().length >= 2 &&
+    values.country.trim().length >= 2 &&
+    values.streetAddress.trim().length >= 3 &&
+    values.city.trim().length >= 2 &&
+    values.postcode.trim().length >= 2 &&
+    values.phone.trim().length >= 5 &&
+    isValidEmail(values.email)
   );
 };
 
@@ -61,6 +51,8 @@ export default function BillingForm({
   showErrors,
   onChange,
 }: BillingFormProps) {
+  const { t } = useTranslation();
+
   const getInputClassName = (field: keyof BillingFormValues) => {
     const value = values[field].trim();
 
@@ -81,13 +73,13 @@ export default function BillingForm({
 
   return (
     <section className={styles.billingForm}>
-      <h3>Billing details</h3>
+      <h3>{t("pages.checkout.billing.title")}</h3>
 
       <form className={styles.form}>
         <div className={styles.rowTwo}>
           <input
             type="text"
-            placeholder="First Name *"
+            placeholder={t("pages.checkout.billing.firstName")}
             value={values.firstName}
             className={getInputClassName("firstName")}
             onChange={(event) => onChange("firstName", event.target.value)}
@@ -95,7 +87,7 @@ export default function BillingForm({
 
           <input
             type="text"
-            placeholder="Last Name *"
+            placeholder={t("pages.checkout.billing.lastName")}
             value={values.lastName}
             className={getInputClassName("lastName")}
             onChange={(event) => onChange("lastName", event.target.value)}
@@ -104,7 +96,7 @@ export default function BillingForm({
 
         <input
           type="text"
-          placeholder="Company Name (optional)"
+          placeholder={t("pages.checkout.billing.company")}
           value={values.companyName}
           onChange={(event) => onChange("companyName", event.target.value)}
         />
@@ -115,16 +107,22 @@ export default function BillingForm({
           onChange={(event) => onChange("country", event.target.value)}
         >
           <option value="" disabled>
-            Country / Region *
+            {t("pages.checkout.billing.country")}
           </option>
-          <option value="azerbaijan">Azerbaijan</option>
-          <option value="poland">Poland</option>
-          <option value="turkey">Turkey</option>
+          <option value="azerbaijan">
+            {t("pages.checkout.billing.countries.azerbaijan")}
+          </option>
+          <option value="poland">
+            {t("pages.checkout.billing.countries.poland")}
+          </option>
+          <option value="turkey">
+            {t("pages.checkout.billing.countries.turkey")}
+          </option>
         </select>
 
         <input
           type="text"
-          placeholder="Street Address *"
+          placeholder={t("pages.checkout.billing.street")}
           value={values.streetAddress}
           className={getInputClassName("streetAddress")}
           onChange={(event) => onChange("streetAddress", event.target.value)}
@@ -132,14 +130,14 @@ export default function BillingForm({
 
         <input
           type="text"
-          placeholder="Apartment, suite, unit (optional)"
+          placeholder={t("pages.checkout.billing.apartment")}
           value={values.apartment}
           onChange={(event) => onChange("apartment", event.target.value)}
         />
 
         <input
           type="text"
-          placeholder="Town / City *"
+          placeholder={t("pages.checkout.billing.city")}
           value={values.city}
           className={getInputClassName("city")}
           onChange={(event) => onChange("city", event.target.value)}
@@ -149,7 +147,7 @@ export default function BillingForm({
           type="text"
           inputMode="numeric"
           pattern="[0-9]*"
-          placeholder="Postcode / ZIP *"
+          placeholder={t("pages.checkout.billing.postcode")}
           value={values.postcode}
           className={getInputClassName("postcode")}
           onChange={(event) =>
@@ -159,7 +157,7 @@ export default function BillingForm({
 
         <input
           type="text"
-          placeholder="Province *"
+          placeholder={t("pages.checkout.billing.province")}
           value={values.province}
           className={getInputClassName("province")}
           onChange={(event) => onChange("province", event.target.value)}
@@ -169,7 +167,7 @@ export default function BillingForm({
           type="tel"
           inputMode="numeric"
           pattern="[0-9]*"
-          placeholder="Phone *"
+          placeholder={t("pages.checkout.billing.phone")}
           value={values.phone}
           className={getInputClassName("phone")}
           onChange={(event) =>
@@ -179,7 +177,7 @@ export default function BillingForm({
 
         <input
           type="email"
-          placeholder="Your Mail *"
+          placeholder={t("pages.checkout.billing.email")}
           value={values.email}
           className={getInputClassName("email")}
           onChange={(event) => onChange("email", event.target.value)}
@@ -187,8 +185,7 @@ export default function BillingForm({
 
         {showErrors && !getIsBillingFormValid(values) && (
           <p className={styles.errorText}>
-            Please fill in all required fields correctly before placing your
-            order.
+            {t("pages.checkout.billing.error")}
           </p>
         )}
       </form>
