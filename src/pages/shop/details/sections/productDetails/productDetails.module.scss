@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .productDetails {
   width: 100%;
@@ -22,7 +23,7 @@
 
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $text-soft
   );
@@ -51,7 +52,7 @@
   background: $brand-primary-light;
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -62,7 +63,7 @@
   overflow-wrap: anywhere;
   @include font(
     clamp(30px, 4vw, 48px),
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.05,
     $color: $text-main
   );
@@ -97,7 +98,7 @@
 .price {
   @include font(
     28px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.1,
     $color: $brand-primary
   );
@@ -107,7 +108,7 @@
   text-decoration: line-through;
   @include font(
     18px,
-    $weight: map-get($font-weights, bold),
+    $weight: map.get($font-weights, bold),
     $height: 1.2,
     $color: $text-soft
   );
@@ -129,7 +130,7 @@
   letter-spacing: 0.12em;
   @include font(
     12px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.4,
     $color: $text-main
   );
@@ -148,7 +149,7 @@
   transition: $transition-fast;
   @include font(
     13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1,
     $color: $text-muted
   );
@@ -185,7 +186,7 @@
   }
 
   span {
-    font-weight: map-get($font-weights, extra-bold);
+    font-weight: map.get($font-weights, extra-bold);
   }
 }
 
@@ -199,7 +200,7 @@
   transition: $transition-fast;
   @include font(
     13px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1,
     $color: $text-white
   );
@@ -220,7 +221,7 @@
   text-transform: uppercase;
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $text-main
   );
@@ -244,7 +245,7 @@
 
   span {
     color: $text-main;
-    font-weight: map-get($font-weights, extra-bold);
+    font-weight: map.get($font-weights, extra-bold);
   }
 }
 

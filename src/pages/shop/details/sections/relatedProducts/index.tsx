@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -23,6 +24,7 @@ type RelatedProductsProps = {
 export default function RelatedProducts({
   currentProductId,
 }: RelatedProductsProps) {
+const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   const { relatedProducts, relatedProductsLoading, relatedProductsError } =
@@ -34,13 +36,13 @@ export default function RelatedProducts({
     return () => {
       dispatch(clearRelatedProducts());
     };
-  }, [dispatch, currentProductId]);
+  }, [dispatch, currentProductId,i18n.language]);
 
   if (relatedProductsLoading) {
     return (
       <PageLoader
-        title="Loading related cakes"
-        text="Finding similar cakes for you."
+        title={t("pages.shop.detail.related.loadingTitle")}
+        text={t("pages.shop.detail.related.loadingText")}
       />
     );
   }
@@ -49,8 +51,12 @@ export default function RelatedProducts({
     return (
       <section className={styles.relatedProducts}>
         <div className={styles.sectionHead}>
-          <p className={styles.kicker}>You may also like</p>
-          <h2 className={styles.title}>Related products</h2>
+          <p className={styles.kicker}>
+            {t("pages.shop.detail.related.kicker")}
+          </p>
+          <h2 className={styles.title}>
+            {t("pages.shop.detail.related.title")}
+          </h2>
           <p className={styles.subtitle}>{relatedProductsError}</p>
         </div>
       </section>
@@ -62,10 +68,14 @@ export default function RelatedProducts({
   return (
     <section className={styles.relatedProducts}>
       <div className={styles.sectionHead}>
-        <p className={styles.kicker}>You may also like</p>
-        <h2 className={styles.title}>Related products</h2>
+        <p className={styles.kicker}>
+          {t("pages.shop.detail.related.kicker")}
+        </p>
+        <h2 className={styles.title}>
+          {t("pages.shop.detail.related.title")}
+        </h2>
         <p className={styles.subtitle}>
-          Handpicked cakes with similar sweet details and fresh flavors.
+          {t("pages.shop.detail.related.subtitle")}
         </p>
       </div>
 
@@ -73,7 +83,7 @@ export default function RelatedProducts({
         <button
           type="button"
           className={`${styles.relatedNav} ${styles.relatedNavPrev} relatedProductsPrev`}
-          aria-label="Previous related products"
+          aria-label={t("pages.shop.detail.related.previous")}
         />
 
         <Swiper
@@ -116,7 +126,7 @@ export default function RelatedProducts({
         <button
           type="button"
           className={`${styles.relatedNav} ${styles.relatedNavNext} relatedProductsNext`}
-          aria-label="Next related products"
+          aria-label={t("pages.shop.detail.related.next")}
         />
       </div>
     </section>

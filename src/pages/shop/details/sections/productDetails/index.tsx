@@ -1,10 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { getLocalizedPath } from "@/helpers/languagePath";
 import { useMemo, useState } from "react";
 import { Heart, Star } from "lucide-react";
 import type { Product } from "@/types/product";
-import { addToCart } from "@/store/cartSlice";
-import { toggleWishlist } from "@/store/wishlistSlice";
+import { addGuestToCart, addToCart, syncAddCart } from "@/store/cartSlice";
+import {
+  syncAddWishlist,
+  syncRemoveWishlist,
+  toggleGuestWishlist,
+  toggleWishlist,
+} from "@/store/wishlistSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 import styles from "./productDetails.module.scss";
 
@@ -13,11 +19,16 @@ type ProductDetailProps = {
 };
 
 export default function ProductDetails({ product }: ProductDetailProps) {
+  const { t } = useTranslation();
+
   const firstSize = product.sizes?.[0]?.label || "S";
   const [selectedSize, setSelectedSize] = useState(firstSize);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const dispatch = useAppDispatch();
+  const accessToken = useAppSelector(
+    (state: RootState) => state.auth.accessToken,
+  );
 
   const location = useLocation();
 
@@ -27,7 +38,8 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   } | null;
 
   const fromPath = breadcrumbState?.from || "/products";
-  const fromLabel = breadcrumbState?.fromLabel || "Shop";
+  const fromLabel =
+    breadcrumbState?.fromLabel || t("pages.shop.detail.details.shop");
   const showSourcePage = fromPath !== "/";
 
   const wishlistItems = useAppSelector(
@@ -56,23 +68,48 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   };
 
   const handleAddCart = () => {
+    const cartProduct = {
+      ...product,
+      quantity: selectedQuantity,
+      selectedSize,
+    };
+
+    if (!accessToken) {
+      dispatch(addGuestToCart(cartProduct));
+      return;
+    }
+
+    dispatch(addToCart(cartProduct));
+
     dispatch(
-      addToCart({
-        ...product,
+      syncAddCart({
+        productId: product.id,
         quantity: selectedQuantity,
+        size: selectedSize,
       }),
     );
   };
 
   const handleWishlist = () => {
+    if (!accessToken) {
+      dispatch(toggleGuestWishlist(product));
+      return;
+    }
+
     dispatch(toggleWishlist(product));
+
+    if (isInWishlist) {
+      dispatch(syncRemoveWishlist(product.id));
+    } else {
+      dispatch(syncAddWishlist(product.id));
+    }
   };
 
   return (
     <section className={styles.productDetails}>
       <div className={styles.breadcrumb}>
         <Link className={styles.breadcrumbLink} to={getLocalizedPath("/")}>
-          Home
+          {t("pages.shop.detail.details.home")}
         </Link>
 
         {showSourcePage && (
@@ -105,7 +142,11 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             />
           ))}
         </div>
-        <span>{product.rating} rating</span>
+        <span>
+          {t("pages.shop.detail.details.rating", {
+            rating: product.rating,
+          })}
+        </span>
       </div>
 
       <div className={styles.prices}>
@@ -118,7 +159,9 @@ export default function ProductDetails({ product }: ProductDetailProps) {
       <p className={styles.description}>{product.description}</p>
 
       <div className={styles.optionRow}>
-        <p className={styles.optionLabel}>Size</p>
+        <p className={styles.optionLabel}>
+          {t("pages.shop.detail.details.size")}
+        </p>
 
         <div className={styles.sizes}>
           {product.sizes.map((size) => (
@@ -141,7 +184,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           <button
             type="button"
             onClick={decreaseQty}
-            aria-label="Decrease quantity"
+            aria-label={t("pages.shop.detail.details.decreaseQuantity")}
           >
             -
           </button>
@@ -149,7 +192,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           <button
             type="button"
             onClick={increaseQty}
-            aria-label="Increase quantity"
+            aria-label={t("pages.shop.detail.details.increaseQuantity")}
           >
             +
           </button>
@@ -160,7 +203,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           className={styles.addToCart}
           onClick={handleAddCart}
         >
-          Add to cart
+          {t("pages.shop.detail.details.addToCart")}
         </button>
       </div>
 
@@ -174,18 +217,21 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           fill={isInWishlist ? "#b94867" : "none"}
           stroke={isInWishlist ? "#b94867" : "currentColor"}
         />
-        {isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
+        {isInWishlist
+          ? t("pages.shop.detail.details.removeFromWishlist")
+          : t("pages.shop.detail.details.addToWishlist")}
       </button>
 
       <div className={styles.meta}>
         <p>
-          <span>Brand:</span> {product.brand}
+          <span>{t("pages.shop.detail.details.brand")}</span> {product.brand}
         </p>
         <p>
-          <span>Flavor:</span> {product.flavor}
+          <span>{t("pages.shop.detail.details.flavor")}</span> {product.flavor}
         </p>
         <p>
-          <span>Selected size:</span> {selectedSize}
+          <span>{t("pages.shop.detail.details.selectedSize")}</span>{" "}
+          {selectedSize}
         </p>
       </div>
     </section>

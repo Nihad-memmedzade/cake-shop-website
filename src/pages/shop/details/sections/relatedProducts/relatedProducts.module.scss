@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .relatedProducts {
   margin-top: 88px;
@@ -20,7 +21,7 @@
 
   @include font(
     $size: 11px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -32,7 +33,7 @@
 
   @include font(
     $size: clamp(24px, 2.8vw, 38px),
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.1,
     $color: $text-main
   );
@@ -44,7 +45,7 @@
 
   @include font(
     $size: 14px,
-    $weight: map-get($font-weights, regular),
+    $weight: map.get($font-weights, regular),
     $height: 1.7,
     $color: $text-muted
   );

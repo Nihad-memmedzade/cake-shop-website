@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .productSlider {
   @include flex($align: flex-start, $gap: 16px);
@@ -97,7 +98,7 @@
 
   @include font(
     $size: 14px,
-    $weight: map-get($font-weights, semibold),
+    $weight: map.get($font-weights, semibold),
     $height: 1.5,
     $color: $text-muted
   );

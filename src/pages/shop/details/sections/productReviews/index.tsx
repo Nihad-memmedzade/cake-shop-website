@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { Star } from "lucide-react";
 
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
@@ -19,6 +20,7 @@ export default function ProductReviews({
   productId,
   productTitle,
 }: ProductReviewsProps) {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const {
@@ -71,13 +73,13 @@ export default function ProductReviews({
 
     if (trimmedName.length < 2) {
       setShowRatingError(false);
-      setFormError("Name must be at least 2 characters.");
+      setFormError(t("pages.shop.detail.reviews.nameError"));
       return;
     }
 
     if (trimmedText.length < 5) {
       setShowRatingError(false);
-      setFormError("Review must be at least 5 characters.");
+      setFormError(t("pages.shop.detail.reviews.textError"));
       return;
     }
 
@@ -101,26 +103,32 @@ export default function ProductReviews({
     <section className={styles.reviewsSection}>
       <div className={styles.tabs}>
         <button type="button" className={`${styles.tab} ${styles.activeTab}`}>
-          Reviews ({reviews.length})
+          {t("pages.shop.detail.reviews.tab", { count: reviews.length })}
         </button>
       </div>
 
       <div className={styles.reviewsBlock}>
         <div className={styles.sectionHead}>
-          <p className={styles.kicker}>Customer notes</p>
-          <h2 className={styles.heading}>Reviews</h2>
+          <p className={styles.kicker}>
+            {t("pages.shop.detail.reviews.kicker")}
+          </p>
+          <h2 className={styles.heading}>
+            {t("pages.shop.detail.reviews.title")}
+          </h2>
         </div>
 
         <div className={styles.reviewList}>
           {reviewsLoading && (
-            <p className={styles.formNote}>Loading reviews...</p>
+            <p className={styles.formNote}>
+              {t("pages.shop.detail.reviews.loading")}
+            </p>
           )}
 
           {reviewsError && <p className={styles.formNote}>{reviewsError}</p>}
 
           {!reviewsLoading && !reviewsError && reviews.length === 0 && (
             <p className={styles.formNote}>
-              No reviews yet. Be the first to review this cake.
+              {t("pages.shop.detail.reviews.empty")}
             </p>
           )}
 
@@ -164,16 +172,24 @@ export default function ProductReviews({
 
         <div className={styles.formBlock}>
           <div className={styles.sectionHead}>
-            <p className={styles.kicker}>Share your opinion</p>
-            <h3 className={styles.formTitle}>Review {productTitle}</h3>
+            <p className={styles.kicker}>
+              {t("pages.shop.detail.reviews.share")}
+            </p>
+            <h3 className={styles.formTitle}>
+              {t("pages.shop.detail.reviews.reviewTitle", {
+                title: productTitle,
+              })}
+            </h3>
           </div>
 
           <p className={styles.formNote}>
-            Your email address will not be published.
+            {t("pages.shop.detail.reviews.emailNotice")}
           </p>
 
           {showRatingError && (
-            <p className={styles.formNote}>Please select a rating.</p>
+            <p className={styles.formNote}>
+              {t("pages.shop.detail.reviews.ratingRequired")}
+            </p>
           )}
 
           {formError && <p className={styles.formNote}>{formError}</p>}
@@ -184,13 +200,15 @@ export default function ProductReviews({
 
           {reviewSubmitSuccess && (
             <p className={styles.formNote}>
-              Your review was submitted successfully.
+              {t("pages.shop.detail.reviews.success")}
             </p>
           )}
 
           <form className={styles.reviewForm} onSubmit={handleSubmit}>
             <div className={styles.ratingInputRow}>
-              <span className={styles.ratingLabel}>Your rating</span>
+              <span className={styles.ratingLabel}>
+                {t("pages.shop.detail.reviews.yourRating")}
+              </span>
 
               <div className={styles.interactiveStars}>
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -205,7 +223,9 @@ export default function ProductReviews({
                       setShowRatingError(false);
                       setFormError("");
                     }}
-                    aria-label={`Rate ${star} star`}
+                    aria-label={t("pages.shop.detail.reviews.rateStar", {
+                      star,
+                    })}
                   >
                     <Star size={20} />
                   </button>
@@ -215,7 +235,7 @@ export default function ProductReviews({
 
             <textarea
               className={styles.textarea}
-              placeholder="Your review"
+              placeholder={t("pages.shop.detail.reviews.reviewPlaceholder")}
               rows={7}
               value={text}
               minLength={5}
@@ -234,7 +254,7 @@ export default function ProductReviews({
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Name *"
+                placeholder={t("pages.shop.detail.reviews.namePlaceholder")}
                 value={name}
                 minLength={2}
                 maxLength={80}
@@ -251,7 +271,7 @@ export default function ProductReviews({
               <input
                 type="email"
                 className={styles.input}
-                placeholder="Email address *"
+                placeholder={t("pages.shop.detail.reviews.emailPlaceholder")}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
@@ -263,7 +283,9 @@ export default function ProductReviews({
               className={styles.submitBtn}
               disabled={reviewSubmitLoading}
             >
-              {reviewSubmitLoading ? "Submitting..." : "Submit review"}
+              {reviewSubmitLoading
+                ? t("pages.shop.detail.reviews.submitting")
+                : t("pages.shop.detail.reviews.submit")}
             </button>
           </form>
         </div>
