@@ -32,7 +32,7 @@ export default function SpringCollection() {
           onClick={() => navigate(getLocalizedPath("/products"))}
         >
           {t("pages.home.springCollection.cta")}{" "}
-          <span className={style.arrow}>-&gt;</span>
+          <span className={style.arrow}>&gt;</span>
         </button>
       </div>
 

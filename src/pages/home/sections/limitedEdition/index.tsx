@@ -15,7 +15,7 @@ import { fetchLimitedEditionProducts } from "@/store/productSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 
 export default function LimitedEdition() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   const { limitedEditionItems, limitedEditionLoading } = useAppSelector(
@@ -24,7 +24,7 @@ export default function LimitedEdition() {
 
   useEffect(() => {
     dispatch(fetchLimitedEditionProducts());
-  }, [dispatch]);
+  }, [dispatch, i18n.language]);
 
   if (limitedEditionLoading) {
     return (

@@ -17,15 +17,21 @@ import style from "./trendyProducts.module.scss";
 
 const TABS = [
   { type: "all", labelKey: "pages.home.trendyProducts.tabs.all" },
-  { type: "new arrivals", labelKey: "pages.home.trendyProducts.tabs.newArrivals" },
-  { type: "best seller", labelKey: "pages.home.trendyProducts.tabs.bestSeller" },
+  {
+    type: "new arrivals",
+    labelKey: "pages.home.trendyProducts.tabs.newArrivals",
+  },
+  {
+    type: "best seller",
+    labelKey: "pages.home.trendyProducts.tabs.bestSeller",
+  },
   { type: "top rated", labelKey: "pages.home.trendyProducts.tabs.topRated" },
 ];
 
 const PRODUCT_LIMIT = 8;
 
 export default function TrendyProducts() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -46,7 +52,7 @@ export default function TrendyProducts() {
     if (currentTab === "new arrivals") dispatch(fetchNewArrivalsProduct());
     if (currentTab === "best seller") dispatch(fetchBestSellerProducts());
     if (currentTab === "top rated") dispatch(fetchTopRatedProducts());
-  }, [dispatch, activeTab]);
+  }, [dispatch, activeTab,i18n.language]);
 
   return (
     <div className={style.products}>
