@@ -1,4 +1,5 @@
-@import "./maps.module";
+@use "sass:map";
+@use "./maps.module" as *;
 
 @mixin flex($direction: null, $gap: null, $align: null, $justify: null) {
   display: flex;
@@ -58,7 +59,7 @@
 
 // Responsive helper
 @mixin respond($breakpoint) {
-  @media (max-width: map-get($breakpoints, $breakpoint)) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
     @content;
   }
 }
