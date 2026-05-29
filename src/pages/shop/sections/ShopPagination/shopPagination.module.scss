@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .pagination {
   @include flex($align: center, $justify: center, $gap: 18px);
@@ -23,7 +24,7 @@
   transition: $transition-fast;
   @include font(
     13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1,
     $color: $text-muted
   );

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .block {
   padding: 20px 0;
@@ -16,7 +17,7 @@
     letter-spacing: 0.12em;
     @include font(
       12px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.4,
       $color: $text-main
     );
@@ -45,7 +46,7 @@
   transition: $transition-fast;
   @include font(
     13px,
-    $weight: map-get($font-weights, semibold),
+    $weight: map.get($font-weights, semibold),
     $height: 1.4
   );
 
@@ -68,7 +69,7 @@
   cursor: pointer;
   @include font(
     13px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.35,
     $color: $text-muted
   );
@@ -98,7 +99,7 @@
   transition: $transition-fast;
   @include font(
     12px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1
   );
 
@@ -139,7 +140,7 @@
     box-shadow: 0 8px 20px $brand-primary-soft;
     @include font(
       13px,
-      $weight: map-get($font-weights, extra-bold),
+      $weight: map.get($font-weights, extra-bold),
       $height: 1
     );
   }
@@ -201,7 +202,7 @@
   span {
     @include font(
       11px,
-      $weight: map-get($font-weights, semibold),
+      $weight: map.get($font-weights, semibold),
       $height: 1.4,
       $color: $text-soft
     );

@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .emptyState {
   padding: 54px 20px;
@@ -13,7 +14,7 @@
     margin: 0 0 8px;
     @include font(
       24px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.2,
       $color: $text-main
     );
@@ -23,7 +24,7 @@
     margin: 0;
     @include font(
       14px,
-      $weight: map-get($font-weights, regular),
+      $weight: map.get($font-weights, regular),
       $height: 1.6,
       $color: $text-muted
     );

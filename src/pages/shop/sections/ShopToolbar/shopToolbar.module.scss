@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .toolbar {
   @include flex($align: center, $justify: space-between, $gap: 18px);
@@ -22,7 +23,7 @@
   margin: 0;
   @include font(
     17px,
-    $weight: map-get($font-weights, semibold),
+    $weight: map.get($font-weights, semibold),
     $height: 1.5,
     $color: $text-muted
   );
@@ -42,7 +43,7 @@
   );
   @include font(
     13px,
-    $weight: map-get($font-weights, semibold),
+    $weight: map.get($font-weights, semibold),
     $color: $text-main
   );
 }
@@ -61,7 +62,7 @@
   padding: 0 14px;
   cursor: pointer;
   color: $brand-primary;
-  font-weight: map-get($font-weights, extra-bold);
+  font-weight: map.get($font-weights, extra-bold);
   text-transform: uppercase;
 
   span {

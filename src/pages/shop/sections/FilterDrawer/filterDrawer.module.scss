@@ -1,9 +1,10 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .overlay {
-  @include position(fixed, $z-index: map-get($z-indexes, overlay));
+  @include position(fixed, $z-index: map.get($z-indexes, overlay));
   inset: 0;
   background: rgba(29, 19, 22, 0.45);
   opacity: 0;
@@ -17,7 +18,7 @@
 }
 
 .drawer {
-  @include position(fixed, 0, $right: 0, $z-index: map-get($z-indexes, drawer));
+  @include position(fixed, 0, $right: 0, $z-index: map.get($z-indexes, drawer));
   @include container(min(420px, 92vw), 100vh, 0, null, $brand-white);
   box-shadow: $shadow-drawer;
   transform: translateX(110%);
@@ -41,7 +42,7 @@
     letter-spacing: 0.12em;
     @include font(
       11px,
-      $weight: map-get($font-weights, bold),
+      $weight: map.get($font-weights, bold),
       $height: 1.4,
       $color: $text-soft
     );
@@ -51,7 +52,7 @@
     margin: 0;
     @include font(
       18px,
-      $weight: map-get($font-weights, black),
+      $weight: map.get($font-weights, black),
       $height: 1.2,
       $color: $text-main
     );
@@ -62,7 +63,7 @@
   @include icon-button(40px, $brand-primary-light, $brand-primary);
   border: 1px solid $border-medium;
   font-size: 16px;
-  font-weight: map-get($font-weights, black);
+  font-weight: map.get($font-weights, black);
 
   &:hover {
     background: $brand-primary;
@@ -87,7 +88,7 @@
   margin-top: 18px;
   color: $text-white;
   cursor: pointer;
-  font-weight: map-get($font-weights, extra-bold);
+  font-weight: map.get($font-weights, extra-bold);
   transition: $transition-fast;
 
   &:hover {
