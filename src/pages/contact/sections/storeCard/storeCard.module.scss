@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .topGrid {
   min-width: 0;
@@ -18,7 +19,7 @@
   margin: 0 0 18px;
   @include font(
     24px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.15,
     $color: $text-main
   );
@@ -41,7 +42,7 @@
   transition: $transition-fast;
   @include font(
     14px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.7,
     $color: $text-main
   );

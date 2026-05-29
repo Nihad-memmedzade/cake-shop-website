@@ -1,6 +1,7 @@
-@import "@/styles/utils/mixin.module";
-@import "@/styles/utils/variables.module";
-@import "@/styles/utils/maps.module";
+@use "sass:map";
+@use "@/styles/utils/mixin.module" as *;
+@use "@/styles/utils/variables.module" as *;
+@use "@/styles/utils/maps.module" as *;
 
 .formSection {
   min-width: 0;
@@ -17,7 +18,7 @@
   letter-spacing: 0.14em;
   @include font(
     11px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.4,
     $color: $brand-primary
   );
@@ -27,7 +28,7 @@
   margin: 0 0 20px;
   @include font(
     28px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1.15,
     $color: $text-main
   );
@@ -52,7 +53,7 @@
   transition: $transition-fast;
   @include font(
     14px,
-    $weight: map-get($font-weights, medium),
+    $weight: map.get($font-weights, medium),
     $height: 1.5,
     $color: $text-main
   );
@@ -92,7 +93,7 @@
   transition: $transition-fast;
   @include font(
     12px,
-    $weight: map-get($font-weights, black),
+    $weight: map.get($font-weights, black),
     $height: 1,
     $color: $text-white
   );
@@ -112,7 +113,7 @@
 
   @include font(
     $size: 13px,
-    $weight: map-get($font-weights, extra-bold),
+    $weight: map.get($font-weights, extra-bold),
     $height: 1.5
   );
 }
