@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import Layout from "@/assets/components/layout";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
 import { clearSelectedProduct, fetchProductById } from "@/store/productSlice";
@@ -9,73 +10,71 @@ import ProductReviews from "./sections/productReviews";
 import RelatedProducts from "./sections/relatedProducts";
 import style from "./detail.module.scss";
 import PageLoader from "@/assets/components/pageLoader/pageLoader";
+import ErrorPage from "@/pages/error";
 
 export default function Details() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const productId = Number(id);
+  const hasValidProductId = Number.isInteger(productId) && productId > 0;
 
   const { selectedProductById, loading, error } = useAppSelector(
     (state: RootState) => state.products,
   );
 
   useEffect(() => {
-    if (id) {
-      dispatch(fetchProductById(Number(id)));
+    if (hasValidProductId) {
+      dispatch(fetchProductById(productId));
     }
 
     return () => {
       dispatch(clearSelectedProduct());
     };
-  }, [dispatch, id]);
+  }, [dispatch, hasValidProductId, productId]);
+
+  if (!hasValidProductId) {
+    return <ErrorPage variant="productNotFound" />;
+  }
 
   if (loading) {
-  return (
-    <PageLoader
-      fullPage
-      title="Preparing product"
-      text="We are loading fresh cake details for you."
-    />
-  );
-}
+    return (
+      <PageLoader
+        fullPage
+        title={t("pages.shop.detail.loader.title")}
+        text={t("pages.shop.detail.loader.text")}
+      />
+    );
+  }
 
+  if (error) {
+    const normalizedError = error.toLowerCase();
+    const isNotFoundError =
+      normalizedError.includes("404") ||
+      normalizedError.includes("not found");
+
+    return (
+      <ErrorPage variant={isNotFoundError ? "productNotFound" : "server"} />
+    );
+  }
+
+  if (!selectedProductById) {
+    return <ErrorPage variant="productNotFound" />;
+  }
 
   return (
     <Layout>
       <main className={style.detail}>
-        {loading && (
-          <PageLoader
-            title="Preparing product"
-            text="We are loading fresh cake details for you."
-          />
-        )}
+        <section className={style.productOverview}>
+          <ProductSlider product={selectedProductById} />
+          <ProductDetails product={selectedProductById} />
+        </section>
 
-        {error && (
-          <div className={style.stateBox}>
-            <p>{error}</p>
-          </div>
-        )}
-
-        {!loading && !error && !selectedProductById && (
-          <div className={style.stateBox}>
-            <h1>Product not found</h1>
-            <Link to="/products">Back to shop</Link>
-          </div>
-        )}
-
-        {selectedProductById && (
-          <>
-            <section className={style.productOverview}>
-              <ProductSlider product={selectedProductById} />
-              <ProductDetails product={selectedProductById} />
-            </section>
-
-            <ProductReviews
-              productId={selectedProductById.id}
-              productTitle={selectedProductById.title}
-            />
-            <RelatedProducts currentProductId={selectedProductById.id} />
-          </>
-        )}
+        <ProductReviews
+          productId={selectedProductById.id}
+          productTitle={selectedProductById.title}
+        />
+        <RelatedProducts currentProductId={selectedProductById.id} />
       </main>
     </Layout>
   );
