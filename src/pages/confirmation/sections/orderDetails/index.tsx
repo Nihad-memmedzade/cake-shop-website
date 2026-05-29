@@ -1,12 +1,8 @@
-import styles from "./orderDetails.module.scss";
+import { useTranslation } from "react-i18next";
 
-type OrderItem = {
-  id: number;
-  title: string;
-  quantity: number;
-  price: number;
-  discountedPrice: number;
-};
+import type { OrderItem } from "@/types/order";
+
+import styles from "./orderDetails.module.scss";
 
 type OrderDetailsProps = {
   items: OrderItem[];
@@ -23,50 +19,54 @@ export default function OrderDetails({
   vat,
   total,
 }: OrderDetailsProps) {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.orderDetails}>
-      <h3>Order details</h3>
+      <h3>{t("pages.confirmation.details")}</h3>
 
       <div className={styles.head}>
-        <span>Product</span>
-        <span>Subtotal</span>
+        <span>{t("common.orderSummary.product")}</span>
+        <span>{t("common.orderSummary.subtotal")}</span>
       </div>
 
       {items.length === 0 ? (
-        <p className={styles.emptyText}>No order items found.</p>
+        <p className={styles.emptyText}>
+          {t("pages.confirmation.emptyItems")}
+        </p>
       ) : (
-        items.map((item) => {
-          const price =
-            item.discountedPrice > 0 ? item.discountedPrice : item.price;
+        items.map((item) => (
+          <div key={item.id} className={styles.productLine}>
+            <span>
+              {item.title} x {item.quantity}
+            </span>
 
-          return (
-            <div key={item.id} className={styles.productLine}>
-              <span>
-                {item.title} x {item.quantity}
-              </span>
-              <strong>${price * item.quantity}</strong>
-            </div>
-          );
-        })
+            <strong>${item.subtotal}</strong>
+          </div>
+        ))
       )}
 
       <div className={styles.totalLine}>
-        <span>Subtotal</span>
+        <span>{t("common.orderSummary.subtotal")}</span>
         <strong>${subtotal}</strong>
       </div>
 
       <div className={styles.totalLine}>
-        <span>Shipping</span>
-        <strong>{shipping === 0 ? "Free shipping" : `$${shipping}`}</strong>
+        <span>{t("common.orderSummary.shipping")}</span>
+        <strong>
+          {shipping === 0
+            ? t("common.orderSummary.freeShipping")
+            : `$${shipping}`}
+        </strong>
       </div>
 
       <div className={styles.totalLine}>
-        <span>VAT</span>
+        <span>{t("common.orderSummary.vat")}</span>
         <strong>${vat}</strong>
       </div>
 
       <div className={`${styles.totalLine} ${styles.grandTotal}`}>
-        <span>Total</span>
+        <span>{t("common.orderSummary.total")}</span>
         <strong>${total}</strong>
       </div>
     </section>
