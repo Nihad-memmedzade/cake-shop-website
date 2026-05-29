@@ -24,7 +24,7 @@ const PRODUCTS_PER_PAGE = 6;
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const dispatch = useAppDispatch();
 
@@ -273,6 +273,7 @@ export default function Shop() {
     maxPrice,
     sort,
     dispatch,
+    i18n.language,
   ]);
 
   useEffect(() => {
