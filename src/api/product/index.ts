@@ -1,97 +1,88 @@
 import api from "@/api";
+import i18n from "@/i18n";
 import type {
   CreateProductReviewPayload,
   ProductReview,
 } from "@/types/review";
 import type { Product } from "@/types/product";
-// type Filters = {
-//   category?: string;
-//   flavors?: string[];
-//   tags?: string[];
-//   sizes?: string[];
-//   minPrice?: number;
-//   maxPrice?: number;
-//   sort?: string;
-// };
+
+const getProductLanguage = () => i18n.language?.split("-")[0] || "en";
 
 export const getProducts = async () => {
-  // try {
-  //   const response = await api.get("/products");
-  //   return response.data;
-  // } catch (error) {
-  //   console.error("Error, products don't pull", error);
-  //   throw error;
-  // }
-  const response = await api.get("/products");
+  const response = await api.get("/products", {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-
-
-// Arrival Products
 export const getNewArrivalProducts = async () => {
-  const response = await api.get("/products/new-arrivals");
+  const response = await api.get("/products/new-arrivals", {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
+
 export const getTopRatedProducts = async () => {
-  const response = await api.get("/products/top-rated");
+  const response = await api.get("/products/top-rated", {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-// Best Seller Products
 export const getBestSellerProducts = async () => {
-  const response = await api.get("/products/best-seller");
+  const response = await api.get("/products/best-seller", {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-// Limited edition Products
 export const getLimitedEditionProducts = async () => {
-  const response = await api.get("/products/limited-edition");
+  const response = await api.get("/products/limited-edition", {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-// Get reviews of product
 export const getProductReviews = async (
-  productId: number
+  productId: number,
 ): Promise<ProductReview[]> => {
   const response = await api.get(`/products/${productId}/reviews`);
   return response.data;
 };
 
-// Create review of product
 export const createProductReview = async (
   productId: number,
-  payload: CreateProductReviewPayload
+  payload: CreateProductReviewPayload,
 ): Promise<ProductReview> => {
   const response = await api.post(`/products/${productId}/reviews`, payload);
   return response.data;
 };
 
-// Related Products
 export const getRelatedProducts = async (
   productId: number,
-  limit = 8
+  limit = 8,
 ): Promise<Product[]> => {
   const response = await api.get(`/products/${productId}/related`, {
-    params: { limit },
+    params: { limit, lang: getProductLanguage() },
   });
 
   return response.data;
 };
 
-// Product By ID
 export const getProductById = async (id: number) => {
-  const response = await api.get(`/products/${id}`);
+  const response = await api.get(`/products/${id}`, {
+    params: { lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-// Search Products
 export const getSearchProducts = async (searchText: string) => {
-  const response = await api.get(`/products/search?q=${searchText}`);
+  const response = await api.get("/products/search", {
+    params: { q: searchText, lang: getProductLanguage() },
+  });
   return response.data;
 };
 
-// Filtered Products
 export const getFilteredProducts = async (filters: {
   category?: string;
   flavors?: string[];
@@ -102,6 +93,8 @@ export const getFilteredProducts = async (filters: {
   sort?: string;
 }) => {
   const params = new URLSearchParams();
+
+  params.append("lang", getProductLanguage());
 
   if (filters.category) {
     params.append("category", filters.category);
