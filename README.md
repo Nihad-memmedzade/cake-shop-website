@@ -31,7 +31,6 @@ The application includes a multilingual interface and supports product data retu
 
 ## Screenshots
 
-> Add your screenshots inside the `screenshots` folder with the same file names used below.
 
 ### Desktop Views
 
@@ -255,15 +254,9 @@ cd Cake_House
 npm install
 ```
 
-### 4. Create environment file
 
-Create a `.env` file in the project root:
 
-```env
-VITE_API_URL=http://127.0.0.1:8000
-```
-
-### 5. Run the development server
+### 4. Run the development server
 
 ```bash
 npm run dev
@@ -274,14 +267,6 @@ The app will usually run at:
 ```text
 http://localhost:5173
 ```
-
-## Environment Variables
-
-| Variable | Description | Example |
-| --- | --- | --- |
-| `VITE_API_URL` | Backend API base URL | `http://127.0.0.1:8000` |
-
-Do not commit `.env` to Git. Use `.env.example` for shared configuration examples.
 
 ## Available Scripts
 
@@ -412,60 +397,8 @@ These files include reusable values and helpers for:
 
 Most page and component styles are colocated with their related component.
 
-## Backend Requirements
 
-This frontend expects a backend API with support for:
-
-- Authentication
-- Products
-- Product translations
-- Product reviews
-- Wishlist
-- Cart
-- Orders
-
-Expected local backend URL:
-
-```text
-http://127.0.0.1:8000
-```
-
-The backend should return product data in the active language when the frontend sends the `lang` query parameter.
-
-## Git Notes
-
-Recommended workflow:
-
-```bash
-git status
-```
-
-Stage related files by feature:
-
-```bash
-git add src/pages/shop src/api/product src/store/productSlice.ts
-```
-
-Commit with a clear message:
-
-```bash
-git commit -m "Update shop product filtering"
-```
-
-Push changes:
-
-```bash
-git push origin main
-```
-
-Avoid committing:
-
-```text
-.env
-node_modules/
-dist/
-```
 
 ## Author
 
-Developed by Nihad Memmedzade.
+Developed by Nihad Mammadzada.
