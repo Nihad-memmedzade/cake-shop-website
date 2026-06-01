@@ -394,6 +394,13 @@ These files include reusable values and helpers for:
 
 Most page and component styles are colocated with their related component.
 
+## License
+
+Copyright © 2026 Nihad Memmedzade. All rights reserved.
+
+This project is shared for portfolio and educational review purposes only.
+The source code, UI design, assets, and project structure may not be copied,
+reused, modified, or redistributed without written permission.
 
 
 ## Author
