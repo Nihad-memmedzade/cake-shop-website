@@ -13,14 +13,11 @@ Cake House is an e-commerce style bakery application where users can browse cake
 - [Project Structure](#project-structure)
 - [Pages and Routes](#pages-and-routes)
 - [Getting Started](#getting-started)
-- [Environment Variables](#environment-variables)
 - [Available Scripts](#available-scripts)
 - [State Management](#state-management)
 - [API Integration](#api-integration)
 - [Internationalization](#internationalization)
 - [Styling System](#styling-system)
-- [Backend Requirements](#backend-requirements)
-- [Git Notes](#git-notes)
 - [Author](#author)
 
 ## Overview
