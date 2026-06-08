@@ -523,3 +523,69 @@
     @include font($size: 8px, $weight: 900, $color: $text-white);
   }
 }
+
+.iconBtn.userIconBtn {
+  padding: 2px;
+  overflow: visible;
+
+  &:has(.userInitial) {
+    border: 1px solid $border-medium;
+    background: $brand-white;
+    box-shadow: $shadow-soft;
+  }
+
+  &:has(.userInitial):hover {
+    border-color: $brand-primary;
+    transform: translateY(-2px) scale(1.04);
+  }
+}
+
+.iconBtn.userIconBtn .userInitial {
+  @include flex($align: center, $justify: center);
+
+  width: 100%;
+  height: 100%;
+  border: 0px solid $brand-white;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    $brand-primary 0%,
+    $brand-dark 100%
+  );
+
+  @include font(
+    $size: 14px,
+    $weight: map.get($font-weights, black),
+    $color: $text-white
+  );
+
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px $brand-dark;
+  user-select: none;
+  transition: $transition-fast;
+}
+
+@include respond(lg) {
+  .iconBtn.userIconBtn .userInitial {
+    font-size: 13px;
+  }
+}
+
+@include respond(md) {
+  .iconBtn.userIconBtn .userInitial {
+    font-size: 12px;
+  }
+}
+
+@include respond(sm) {
+  .iconBtn.userIconBtn {
+    padding: 2px;
+  }
+
+  .iconBtn.userIconBtn .userInitial {
+    font-size: 11px;
+    border-width: 1px;
+  }
+}

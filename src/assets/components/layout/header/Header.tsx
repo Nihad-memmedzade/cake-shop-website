@@ -137,6 +137,7 @@ export default function Header() {
           </div>
 
           <HeaderActions
+            user={user}
             cartCount={cartCount}
             wishlistCount={wishlistItems.length}
             searchValue={searchValue}

@@ -384,3 +384,58 @@
     transform: translateY(-14px);
   }
 }
+
+.mobileActionBtn {
+  &:has(.userInitial) {
+    padding: 2px;
+    border: 1px solid $border-medium;
+    background: $brand-white;
+    box-shadow: $shadow-soft;
+  }
+}
+
+.userInitial {
+  @include flex($align: center, $justify: center);
+
+  width: 100%;
+  height: 100%;
+  border: 0px solid $brand-white;
+  border-radius: 50%;
+
+  background: linear-gradient(145deg, $brand-primary 0%, $brand-dark 100%);
+
+  @include font(
+    $size: 12px,
+    $weight: map.get($font-weights, black),
+    $color: $text-white
+  );
+
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px $brand-dark;
+  user-select: none;
+}
+
+.accountIcon {
+  &:has(.userInitial) {
+    padding: 3px;
+    border: 0px solid $border-medium;
+    background: $brand-white;
+    box-shadow: $shadow-soft;
+  }
+
+  .userInitial {
+    font-size: 14px;
+  }
+}
+
+@include respond(sm) {
+  .mobileActionBtn .userInitial {
+    font-size: 11px;
+    border-width: 1px;
+  }
+
+  .accountIcon .userInitial {
+    font-size: 13px;
+  }
+}

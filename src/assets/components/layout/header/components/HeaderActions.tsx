@@ -2,6 +2,7 @@ import type { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 import LanguageSwitcher from "@/assets/components/languageSwitcher/languageSwitcher";
+import type { User } from "@/types/user";
 
 import {
   SearchIcon,
@@ -13,6 +14,7 @@ import {
 import style from "../header.module.scss";
 
 type HeaderActionsProps = {
+  user: User | null;
   cartCount: number;
   wishlistCount: number;
   searchValue: string;
@@ -24,6 +26,7 @@ type HeaderActionsProps = {
 };
 
 export default function HeaderActions({
+  user,
   cartCount,
   wishlistCount,
   searchValue,
@@ -34,6 +37,10 @@ export default function HeaderActions({
   onWishlist,
 }: HeaderActionsProps) {
   const { t } = useTranslation();
+
+  const userInitial = user
+    ? (user.fullName.trim()[0] || user.email.trim()[0] || "").toUpperCase()
+    : "";
 
   return (
     <div className={style.headerRight}>
@@ -59,7 +66,11 @@ export default function HeaderActions({
         onClick={onOpenLogin}
         aria-label={t("common.links.account")}
       >
-        <img src={UserIcon} alt="" />
+        {userInitial ? (
+          <span className={style.userInitial}>{userInitial}</span>
+        ) : (
+          <img src={UserIcon} alt="" />
+        )}
       </button>
 
       <button
@@ -86,7 +97,9 @@ export default function HeaderActions({
         <span className={style.cartIconWrap}>
           <img src={ShoppingIcon} alt="" />
 
-          {cartCount > 0 && <span className={style.cartBadge}>{cartCount}</span>}
+          {cartCount > 0 && (
+            <span className={style.cartBadge}>{cartCount}</span>
+          )}
         </span>
       </button>
 

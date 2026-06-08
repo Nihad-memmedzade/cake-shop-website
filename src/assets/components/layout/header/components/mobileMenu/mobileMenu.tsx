@@ -2,11 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import LanguageSwitcher from "@/assets/components/languageSwitcher/languageSwitcher";
-import {
-  ShoppingIcon,
-  UserIcon,
-  WishlistIcon,
-} from "@/assets/images/icons";
+import { ShoppingIcon, UserIcon, WishlistIcon } from "@/assets/images/icons";
 import Logo from "@/assets/images/logo/cake-logo.png";
 import { getLocalizedPath } from "@/helpers/languagePath";
 import type { User } from "@/types/user";
@@ -75,6 +71,10 @@ export default function MobileMenu({
     onOpenCart();
   };
 
+  const userInitial = user
+    ? (user.fullName.trim()[0] || user.email.trim()[0] || "").toUpperCase()
+    : "";
+
   return (
     <div
       className={`${style.mobileMenu} ${
@@ -106,7 +106,13 @@ export default function MobileMenu({
             onClick={handleUserClick}
             aria-label={t("common.links.account")}
           >
-            <img src={UserIcon} alt="" />
+            {userInitial ? (
+              <span className={style.userInitial} aria-hidden="true">
+                {userInitial}
+              </span>
+            ) : (
+              <img src={UserIcon} alt="" />
+            )}
           </button>
 
           <button
@@ -163,7 +169,13 @@ export default function MobileMenu({
           onClick={handleUserClick}
         >
           <span className={style.accountIcon}>
-            <img src={UserIcon} alt="" />
+            {userInitial ? (
+              <span className={style.userInitial} aria-hidden="true">
+                {userInitial}
+              </span>
+            ) : (
+              <img src={UserIcon} alt="" />
+            )}
           </span>
 
           <span>
@@ -189,8 +201,6 @@ export default function MobileMenu({
             <span>{t("common.header.change_language")}</span>
             <LanguageSwitcher placement="top" />
           </div>
-
-        
         </div>
       </div>
     </div>
