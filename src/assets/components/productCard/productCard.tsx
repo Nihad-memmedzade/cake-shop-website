@@ -79,19 +79,28 @@ export default function ProductCard({
       dispatch(syncAddWishlist(card.id));
     }
   };
+
   const handleAddToCart = () => {
+    const defaultSize = card.sizes?.[0]?.label ?? null;
+
+    const cartProduct = {
+      ...card,
+      quantity: 1,
+      selectedSize: defaultSize,
+    };
+
     if (!accessToken) {
-      dispatch(addGuestToCart(card));
+      dispatch(addGuestToCart(cartProduct));
       return;
     }
 
-    dispatch(addToCart(card));
+    dispatch(addToCart(cartProduct));
 
     dispatch(
       syncAddCart({
         productId: card.id,
         quantity: 1,
-        size: null,
+        size: defaultSize,
       }),
     );
   };

@@ -1,4 +1,5 @@
 import api from "@/api";
+import i18n from "@/i18n";
 import type { CartItem } from "@/types/cart";
 
 export type AddCartPayload = {
@@ -18,21 +19,36 @@ export type RemoveCartPayload = {
   size?: string | null;
 };
 
+const getLanguage = () =>
+  i18n.resolvedLanguage?.split("-")[0] || i18n.language?.split("-")[0] || "en";
+
 export const getCart = async () => {
-  const response = await api.get<CartItem[]>("/cart");
+  const response = await api.get<CartItem[]>("/cart", {
+    params: { lang: getLanguage() },
+  });
+
   return response.data;
 };
 
 export const addCartProduct = async (data: AddCartPayload) => {
-  const response = await api.post<CartItem>("/cart", data);
+  const response = await api.post<CartItem>("/cart", data, {
+    params: { lang: getLanguage() },
+  });
+
   return response.data;
 };
 
 export const updateCartProduct = async (data: UpdateCartPayload) => {
-  const response = await api.put<CartItem>(`/cart/${data.productId}`, {
-    quantity: data.quantity,
-    size: data.size || null,
-  });
+  const response = await api.put<CartItem>(
+    `/cart/${data.productId}`,
+    {
+      quantity: data.quantity,
+      size: data.size || null,
+    },
+    {
+      params: { lang: getLanguage() },
+    },
+  );
 
   return response.data;
 };

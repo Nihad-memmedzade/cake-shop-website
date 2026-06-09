@@ -1,8 +1,13 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { getLocalizedPath } from "@/helpers/languagePath";
-import { useMemo, useState } from "react";
 import { Heart, Star } from "lucide-react";
+
+import {
+  getLocalizedPath,
+  removeLanguageFromPath,
+} from "@/helpers/languagePath";
+
 import type { Product } from "@/types/product";
 import { addGuestToCart, addToCart, syncAddCart } from "@/store/cartSlice";
 import {
@@ -12,59 +17,91 @@ import {
   toggleWishlist,
 } from "@/store/wishlistSlice";
 import { useAppDispatch, useAppSelector, type RootState } from "@/store/store";
+
 import styles from "./productDetails.module.scss";
 
 type ProductDetailProps = {
   product: Product;
 };
 
+type BreadcrumbState = {
+  from?: string;
+  fromLabel?: string;
+};
+
 export default function ProductDetails({ product }: ProductDetailProps) {
   const { t } = useTranslation();
-
-  const firstSize = product.sizes?.[0]?.label || "S";
-  const [selectedSize, setSelectedSize] = useState(firstSize);
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-
   const dispatch = useAppDispatch();
+  const location = useLocation();
+
   const accessToken = useAppSelector(
     (state: RootState) => state.auth.accessToken,
   );
 
-  const location = useLocation();
-
-  const breadcrumbState = location.state as {
-    from?: string;
-    fromLabel?: string;
-  } | null;
-
-  const fromPath = breadcrumbState?.from || "/products";
-  const fromLabel =
-    breadcrumbState?.fromLabel || t("pages.shop.detail.details.shop");
-  const showSourcePage = fromPath !== "/";
-
   const wishlistItems = useAppSelector(
     (state: RootState) => state.wishlist.items,
   );
+
+  const breadcrumbState = location.state as BreadcrumbState | null;
+  const fromPath = breadcrumbState?.from || "/products";
+  const cleanFromPath = removeLanguageFromPath(fromPath.split("?")[0]);
+  const showSourcePage = cleanFromPath !== "/";
+
+  const firstSize = product.sizes?.[0]?.label ?? null;
+
+  const [selectedSize, setSelectedSize] = useState<string | null>(firstSize);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  useEffect(() => {
+    setSelectedSize(firstSize);
+    setSelectedQuantity(1);
+  }, [product.id, firstSize]);
+
+  const sourceLabel = useMemo(() => {
+    if (cleanFromPath.startsWith("/account/wishlist")) {
+      return t("common.links.wishlist");
+    }
+
+    if (cleanFromPath.startsWith("/cart")) {
+      return t("common.cart.title");
+    }
+
+    if (cleanFromPath.startsWith("/products")) {
+      return t("pages.shop.detail.details.shop");
+    }
+
+    return (
+      breadcrumbState?.fromLabel || t("pages.shop.detail.details.shop")
+    );
+  }, [breadcrumbState?.fromLabel, cleanFromPath, t]);
+
   const isInWishlist = wishlistItems.some(
     (item: Product) => item.id === product.id,
   );
 
-  const finalPrice =
-    product.discountedPrice > 0 ? product.discountedPrice : product.price;
-
   const hasDiscount = product.discountedPrice > 0;
 
-  const ratingStars = useMemo(() => {
-    return Array.from(
-      { length: 5 },
-      (_, index) => index < Math.round(product.rating),
+  const finalPrice = hasDiscount
+    ? product.discountedPrice
+    : product.price;
+
+  const ratingStars = useMemo(
+    () =>
+      Array.from(
+        { length: 5 },
+        (_, index) => index < Math.round(product.rating),
+      ),
+    [product.rating],
+  );
+
+  const increaseQuantity = () => {
+    setSelectedQuantity((previousQuantity) => previousQuantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setSelectedQuantity((previousQuantity) =>
+      Math.max(1, previousQuantity - 1),
     );
-  }, [product.rating]);
-
-  const increaseQty = () => setSelectedQuantity((prev) => prev + 1);
-
-  const decreaseQty = () => {
-    setSelectedQuantity((prev) => Math.max(1, prev - 1));
   };
 
   const handleAddCart = () => {
@@ -108,27 +145,35 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   return (
     <section className={styles.productDetails}>
       <div className={styles.breadcrumb}>
-        <Link className={styles.breadcrumbLink} to={getLocalizedPath("/")}>
+        <Link
+          className={styles.breadcrumbLink}
+          to={getLocalizedPath("/")}
+        >
           {t("pages.shop.detail.details.home")}
         </Link>
 
         {showSourcePage && (
           <>
             <span>/</span>
+
             <Link
               className={styles.breadcrumbLink}
               to={getLocalizedPath(fromPath)}
             >
-              {fromLabel}
+              {sourceLabel}
             </Link>
           </>
         )}
 
         <span>/</span>
-        <span className={styles.breadcrumbCurrent}>{product.title}</span>
+
+        <span className={styles.breadcrumbCurrent}>
+          {product.title}
+        </span>
       </div>
 
       <p className={styles.category}>{product.category}</p>
+
       <h1 className={styles.title}>{product.title}</h1>
 
       <div className={styles.ratingRow}>
@@ -142,6 +187,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             />
           ))}
         </div>
+
         <span>
           {t("pages.shop.detail.details.rating", {
             rating: product.rating,
@@ -151,48 +197,65 @@ export default function ProductDetails({ product }: ProductDetailProps) {
 
       <div className={styles.prices}>
         {hasDiscount && (
-          <span className={styles.oldPrice}>${product.price}</span>
+          <span className={styles.oldPrice}>
+            ${product.price}
+          </span>
         )}
-        <span className={styles.price}>${finalPrice}</span>
+
+        <span className={styles.price}>
+          ${finalPrice}
+        </span>
       </div>
 
-      <p className={styles.description}>{product.description}</p>
+      <p className={styles.description}>
+        {product.description}
+      </p>
 
-      <div className={styles.optionRow}>
-        <p className={styles.optionLabel}>
-          {t("pages.shop.detail.details.size")}
-        </p>
+      {product.sizes.length > 0 && (
+        <div className={styles.optionRow}>
+          <p className={styles.optionLabel}>
+            {t("pages.shop.detail.details.size")}
+          </p>
 
-        <div className={styles.sizes}>
-          {product.sizes.map((size) => (
-            <button
-              key={size.id}
-              type="button"
-              className={`${styles.sizeBtn} ${
-                selectedSize === size.label ? styles.activeSize : ""
-              }`}
-              onClick={() => setSelectedSize(size.label)}
-            >
-              {size.label}
-            </button>
-          ))}
+          <div className={styles.sizes}>
+            {product.sizes.map((size) => (
+              <button
+                key={size.id}
+                type="button"
+                className={`${styles.sizeBtn} ${
+                  selectedSize === size.label
+                    ? styles.activeSize
+                    : ""
+                }`}
+                onClick={() => setSelectedSize(size.label)}
+              >
+                {size.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={styles.cartRow}>
         <div className={styles.quantityBox}>
           <button
             type="button"
-            onClick={decreaseQty}
-            aria-label={t("pages.shop.detail.details.decreaseQuantity")}
+            onClick={decreaseQuantity}
+            aria-label={t(
+              "pages.shop.detail.details.decreaseQuantity",
+            )}
           >
             -
           </button>
+
           <span>{selectedQuantity}</span>
+
           <button
             type="button"
-            onClick={increaseQty}
-            aria-label={t("pages.shop.detail.details.increaseQuantity")}
+            onClick={increaseQuantity}
+            aria-label={t(
+              "pages.shop.detail.details.increaseQuantity",
+            )}
           >
             +
           </button>
@@ -217,6 +280,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           fill={isInWishlist ? "#b94867" : "none"}
           stroke={isInWishlist ? "#b94867" : "currentColor"}
         />
+
         {isInWishlist
           ? t("pages.shop.detail.details.removeFromWishlist")
           : t("pages.shop.detail.details.addToWishlist")}
@@ -224,14 +288,20 @@ export default function ProductDetails({ product }: ProductDetailProps) {
 
       <div className={styles.meta}>
         <p>
-          <span>{t("pages.shop.detail.details.brand")}</span> {product.brand}
+          <span>{t("pages.shop.detail.details.brand")}</span>{" "}
+          {product.brand}
         </p>
+
         <p>
-          <span>{t("pages.shop.detail.details.flavor")}</span> {product.flavor}
+          <span>{t("pages.shop.detail.details.flavor")}</span>{" "}
+          {product.flavor}
         </p>
+
         <p>
-          <span>{t("pages.shop.detail.details.selectedSize")}</span>{" "}
-          {selectedSize}
+          <span>
+            {t("pages.shop.detail.details.selectedSize")}
+          </span>{" "}
+          {selectedSize || "-"}
         </p>
       </div>
     </section>

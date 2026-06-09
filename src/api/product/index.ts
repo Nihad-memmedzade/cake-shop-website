@@ -1,9 +1,6 @@
 import api from "@/api";
 import i18n from "@/i18n";
-import type {
-  CreateProductReviewPayload,
-  ProductReview,
-} from "@/types/review";
+import type { CreateProductReviewPayload, ProductReview } from "@/types/review";
 import type { Product } from "@/types/product";
 
 const getProductLanguage = () => i18n.language?.split("-")[0] || "en";
@@ -71,8 +68,14 @@ export const getRelatedProducts = async (
 
 export const getProductById = async (id: number) => {
   const response = await api.get(`/products/${id}`, {
-    params: { lang: getProductLanguage() },
+    params: {
+      lang:
+        i18n.resolvedLanguage?.split("-")[0] ||
+        i18n.language?.split("-")[0] ||
+        "en",
+    },
   });
+
   return response.data;
 };
 

@@ -1,8 +1,17 @@
 import api from "@/api";
+import i18n from "@/i18n";
 import type { Product } from "@/types/product";
 
+const getLanguage = () =>
+  i18n.resolvedLanguage?.split("-")[0] ||
+  i18n.language?.split("-")[0] ||
+  "en";
+
 export const getWishlist = async () => {
-  const response = await api.get<Product[]>("/wishlist");
+  const response = await api.get<Product[]>("/wishlist", {
+    params: { lang: getLanguage() },
+  });
+
   return response.data;
 };
 

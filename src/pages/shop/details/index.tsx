@@ -13,7 +13,7 @@ import PageLoader from "@/assets/components/pageLoader/pageLoader";
 import ErrorPage from "@/pages/error";
 
 export default function Details() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const productId = Number(id);
@@ -23,15 +23,22 @@ export default function Details() {
     (state: RootState) => state.products,
   );
 
+  const currentLanguage =
+    i18n.resolvedLanguage?.split("-")[0] ||
+    i18n.language?.split("-")[0] ||
+    "en";
+
   useEffect(() => {
     if (hasValidProductId) {
       dispatch(fetchProductById(productId));
     }
+  }, [dispatch, hasValidProductId, productId, currentLanguage]);
 
+  useEffect(() => {
     return () => {
       dispatch(clearSelectedProduct());
     };
-  }, [dispatch, hasValidProductId, productId]);
+  }, [dispatch]);
 
   if (!hasValidProductId) {
     return <ErrorPage variant="productNotFound" />;
@@ -50,8 +57,7 @@ export default function Details() {
   if (error) {
     const normalizedError = error.toLowerCase();
     const isNotFoundError =
-      normalizedError.includes("404") ||
-      normalizedError.includes("not found");
+      normalizedError.includes("404") || normalizedError.includes("not found");
 
     return (
       <ErrorPage variant={isNotFoundError ? "productNotFound" : "server"} />
